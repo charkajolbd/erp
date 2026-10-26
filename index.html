@@ -1,143 +1,434 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Charkajolbd-ERP</title>
-<style>
-:root{--navy:#082b59;--blue:#087ac2;--cyan:#18b6d2;--bg:#f2f6fb;--card:#fff;--text:#203047;--muted:#68788d;--line:#e2eaf2;--green:#168653}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,"Noto Sans Bengali",sans-serif;background:var(--bg);color:var(--text)}
-.topbar{height:64px;background:linear-gradient(100deg,#07194d,#087ac2,#12b9d0);color:white;display:flex;align-items:center;justify-content:space-between;padding:0 20px;position:sticky;top:0;z-index:5;box-shadow:0 3px 12px #001a3b25}
-.brand{font-size:20px;font-weight:800;display:flex;gap:10px;align-items:center}
-.brand-mark{width:35px;height:35px;border-radius:50%;background:white;color:#087ac2;display:grid;place-items:center;font-weight:900}
-.top-user{font-size:14px}
-.layout{display:flex;min-height:calc(100vh - 64px)}
-.sidebar{width:255px;flex-shrink:0;background:#102c4a;color:#fff;padding:18px 12px}
-.profile{text-align:center;padding:12px 8px 22px;border-bottom:1px solid #ffffff22;margin-bottom:12px}
-.avatar{width:72px;height:72px;margin:auto auto 10px;border-radius:50%;background:#e6f7ff;color:#087ac2;display:grid;place-items:center;font-size:35px;border:3px solid #ffffffaa}
-.profile h2{font-size:19px;margin:8px 0 4px}.profile p{font-size:13px;color:#c8d9ec;margin:0}
-.menu-label{font-size:11px;text-transform:uppercase;color:#91b5d5;padding:12px 12px 7px;letter-spacing:1px}
-.menu button{width:100%;border:0;text-align:left;padding:12px 13px;margin:3px 0;border-radius:8px;background:transparent;color:#eaf4ff;font-size:15px;cursor:pointer}
-.menu button:hover,.menu button.active{background:#087ac2;color:white}
-.main{flex:1;min-width:0;padding:22px}
-.welcome{background:linear-gradient(120deg,#0875b9,#22b8d0);color:white;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 8px 22px #0b6a9c20}
-.welcome .eyebrow{font-size:13px;opacity:.9}.welcome h1{font-size:clamp(24px,3vw,36px);margin:10px 0}.welcome p{margin:0;line-height:1.7;max-width:760px}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:20px}
-.card,.panel{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:18px;box-shadow:0 3px 12px #17385c08}
-.card .icon{font-size:25px}.card h3{margin:12px 0 5px;font-size:15px}.card p{margin:0;color:var(--muted);font-size:13px}
-.section-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:24px 0 12px}
-.section-title h2{font-size:20px;margin:0}
-.btn{border:0;border-radius:8px;padding:10px 14px;background:#087ac2;color:white;cursor:pointer;font-weight:700}
-.btn.secondary{background:#eaf4fc;color:#075c95}
-.panel{margin-bottom:18px}
-.form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}
-input,select,textarea{width:100%;padding:10px 11px;border:1px solid #ccd9e7;border-radius:8px;font:inherit;background:white}
-textarea{min-height:80px;resize:vertical}
-.field{margin-bottom:10px}
-.table-wrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;min-width:560px}
-th,td{text-align:left;padding:11px;border-bottom:1px solid var(--line);font-size:14px}
-th{background:#f4f8fc;color:#334c67}
-.badge{display:inline-block;padding:4px 8px;border-radius:20px;background:#e2f7eb;color:#147345;font-size:12px}
-.hidden{display:none!important}
-.notice{padding:12px 14px;border-radius:9px;background:#fff7df;color:#765819;margin:12px 0;font-size:13px;line-height:1.6}
-footer{text-align:center;color:var(--muted);padding:18px;font-size:12px}
-@media(max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sidebar{width:220px}}
-@media(max-width:700px){.topbar{padding:0 12px;height:58px}.brand{font-size:15px}.top-user{font-size:12px}.layout{display:block}.sidebar{width:100%;padding:10px}.profile{display:none}.menu-label{padding-top:5px}.menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}.menu button{font-size:13px;padding:10px}.main{padding:12px}.welcome{padding:20px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card,.panel{padding:13px}.form-grid{grid-template-columns:1fr}}
-</style>
-</head>
-<body>
-<header class="topbar">
-  <div class="brand"><span class="brand-mark">চ</span><span>চর কাজল সমাজ কল্যাণ সংগঠন ERP</span></div>
-  <div class="top-user">👤 শাকিল মাহমুদ <strong>[এডমিন]</strong></div>
-</header>
-<div class="layout">
-  <aside class="sidebar">
-    <div class="profile"><div class="avatar">👤</div><h2>শাকিল মাহমুদ</h2><p>এডমিন</p></div>
-    <div class="menu-label">প্রধান মেনু</div>
-    <nav class="menu">
-      <button class="active" data-page="home">🏠 ড্যাশবোর্ড</button>
-      <button data-page="admin">🛡️ এডমিন প্যানেল</button>
-      <button data-page="user">👥 ইউজার প্যানেল</button>
-      <button data-page="committee">📋 কমিটির তালিকা</button>
-      <button data-page="members">🧑‍🤝‍🧑 সদস্য তালিকা</button>
-    </nav>
-    <div class="notice">এটি ওয়েবসাইটের প্রাথমিক ডেমো। সদস্যের তথ্য এই ব্রাউজারেই সংরক্ষিত হবে; অনলাইনে সবার সঙ্গে শেয়ার হবে না।</div>
-  </aside>
-  <main class="main">
-    <section id="page-home" class="page">
-      <div class="welcome"><div class="eyebrow">স্বাগতম • CharkajolBD ERP</div><h1>চর কাজল সমাজ কল্যাণ সংগঠন</h1><p>সংগঠনের সদস্য, কমিটি এবং প্রশাসনিক তথ্য সহজে সাজিয়ে রাখার জন্য আপনার ড্যাশবোর্ড।</p></div>
-      <div class="grid">
-        <div class="card"><div class="icon">🛡️</div><h3>এডমিন প্যানেল</h3><p>প্রশাসনিক বিভাগ</p></div>
-        <div class="card"><div class="icon">👥</div><h3>ইউজার প্যানেল</h3><p>সাধারণ ব্যবহারকারী</p></div>
-        <div class="card"><div class="icon">📋</div><h3>কমিটির তালিকা</h3><p>কমিটির দায়িত্বশীলদের তথ্য</p></div>
-        <div class="card"><div class="icon">🧑‍🤝‍🧑</div><h3>সদস্য তালিকা</h3><p>সদস্যের প্রাথমিক তথ্য</p></div>
-      </div>
-      <div class="panel"><h2>সংগঠনের পরিচিতি</h2><p>এখানে সংগঠনের উদ্দেশ্য, কার্যক্রম, যোগাযোগের তথ্য এবং বিজ্ঞপ্তি যোগ করা যাবে।</p><span class="badge">প্রাথমিক সংস্করণ</span></div>
-    </section>
-    <section id="page-admin" class="page hidden">
-      <div class="section-title"><h2>🛡️ এডমিন প্যানেল</h2></div>
-      <div class="panel"><h3>এডমিন পরিচিতি</h3><p><strong>নাম:</strong> শাকিল মাহমুদ</p><p><strong>পদবী:</strong> এডমিন</p><p><strong>সংগঠন:</strong> চর কাজল সমাজ কল্যাণ সংগঠন</p><div class="notice">নিরাপত্তা: এটি শুধু সামনের দিকের ডেমো—এখানে এখনো লগইন বা সার্ভারভিত্তিক অনুমতি ব্যবস্থা নেই।</div></div>
-    </section>
-    <section id="page-user" class="page hidden">
-      <div class="section-title"><h2>👥 ইউজার প্যানেল</h2></div>
-      <div class="panel"><h3>ব্যবহারকারীদের জন্য</h3><p>সংগঠনের তথ্য, কমিটির তালিকা ও সদস্য তালিকা দেখার বিভাগ।</p><p>সদস্যের ব্যক্তিগত তথ্য প্রকাশের আগে অনুমতি নিশ্চিত করুন।</p></div>
-    </section>
-    <section id="page-committee" class="page hidden">
-      <div class="section-title"><h2>📋 কমিটির তালিকা</h2><button class="btn" id="addCommitteeBtn">+ কমিটির সদস্য যোগ</button></div>
-      <div class="panel">
-        <form id="committeeForm" class="hidden">
-          <div class="form-grid">
-            <div class="field"><label for="cName">নাম</label><input id="cName" required></div>
-            <div class="field"><label for="cRole">পদবী</label><input id="cRole" required placeholder="যেমন: সভাপতি"></div>
-            <div class="field"><label for="cPhone">মোবাইল (ঐচ্ছিক)</label><input id="cPhone" type="tel"></div>
-          </div><button class="btn" type="submit">সংরক্ষণ</button> <button class="btn secondary" type="button" id="cancelCommittee">বাতিল</button>
-        </form>
-        <div class="table-wrap"><table><thead><tr><th>নাম</th><th>পদবী</th><th>মোবাইল</th><th>অবস্থা</th></tr></thead><tbody id="committeeRows"><tr><td colspan="4">এখনো কোনো কমিটির সদস্য যোগ করা হয়নি।</td></tr></tbody></table></div>
-      </div>
-    </section>
-    <section id="page-members" class="page hidden">
-      <div class="section-title"><h2>🧑‍🤝‍🧑 সদস্য তালিকা</h2><button class="btn" id="addMemberBtn">+ সদস্য যোগ</button></div>
-      <div class="panel">
-        <form id="memberForm" class="hidden">
-          <div class="form-grid">
-            <div class="field"><label for="mName">সদস্যের নাম</label><input id="mName" required></div>
-            <div class="field"><label for="mPhone">মোবাইল (ঐচ্ছিক)</label><input id="mPhone" type="tel"></div>
-            <div class="field"><label for="mArea">গ্রাম/এলাকা (ঐচ্ছিক)</label><input id="mArea"></div>
-          </div><button class="btn" type="submit">সংরক্ষণ</button> <button class="btn secondary" type="button" id="cancelMember">বাতিল</button>
-        </form>
-        <div class="table-wrap"><table><thead><tr><th>সদস্যের নাম</th><th>মোবাইল</th><th>গ্রাম/এলাকা</th><th>অবস্থা</th></tr></thead><tbody id="memberRows"><tr><td colspan="4">এখনো কোনো সদস্য যোগ করা হয়নি।</td></tr></tbody></table></div>
-      </div>
-    </section>
-    <footer>© <span id="year"></span> চর কাজল সমাজ কল্যাণ সংগঠন • ERP</footer>
-  </main>
-</div>
-<script>
-const pages=[...document.querySelectorAll('.page')];
-document.querySelectorAll('[data-page]').forEach(btn=>btn.addEventListener('click',()=>{
-  document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b===btn));
-  pages.forEach(p=>p.classList.toggle('hidden',p.id!=='page-'+btn.dataset.page));
-}));
-document.getElementById('year').textContent=new Date().getFullYear();
-function setupForm(formId,buttonId,cancelId,fields,tbodyId){
- const form=document.getElementById(formId);
- document.getElementById(buttonId).addEventListener('click',()=>form.classList.remove('hidden'));
- document.getElementById(cancelId).addEventListener('click',()=>{form.reset();form.classList.add('hidden')});
- form.addEventListener('submit',e=>{
-   e.preventDefault();
-   const values=fields.map(id=>document.getElementById(id).value.trim());
-   const row=document.createElement('tr');
-   values.forEach(v=>{const td=document.createElement('td');td.textContent=v||'—';row.appendChild(td)});
-   const status=document.createElement('td');status.innerHTML='<span class="badge">সক্রিয়</span>';row.appendChild(status);
-   const tbody=document.getElementById(tbodyId);
-   if(tbody.rows.length===1 && tbody.rows[0].cells.length===1)tbody.innerHTML='';
-   tbody.appendChild(row);form.reset();form.classList.add('hidden');
- });
+package com.charkajolbd.charkajolbd
+
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Message
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+import com.charkajolbd.charkajolbd.generated.resources.Res
+import com.charkajolbd.charkajolbd.generated.resources.*
+
+@Composable
+fun DrawerContent(
+    adminBitmap: ImageBitmap?,
+    userRole: UserRole = UserRole.ADMIN,
+    onPhotoClick: () -> Unit,
+    onItemClick: (String) -> Unit
+) {
+    val menuItems = listOf(
+        DrawerItemData(stringResource(Res.string.dashboard), Icons.Default.Dashboard, isHeader = true),
+        DrawerItemData(stringResource(Res.string.committee), Icons.Default.People, hasBadge = true),
+        DrawerItemData(stringResource(Res.string.user), Icons.Default.Person, hasBadge = true),
+        DrawerItemData(stringResource(Res.string.area), Icons.Default.LocationOn),
+        DrawerItemData(stringResource(Res.string.customer), Icons.Default.Group, hasBadge = true),
+        DrawerItemData(stringResource(Res.string.loan), Icons.Default.AccountBalanceWallet, hasBadge = true),
+        DrawerItemData(stringResource(Res.string.accounts), Icons.Default.AccountBalance, hasBadge = true),
+        DrawerItemData(stringResource(Res.string.welfare), Icons.Default.VolunteerActivism, hasBadge = true),
+        DrawerItemData(stringResource(Res.string.online_payment), Icons.Default.Payment, hasBadge = true),
+        DrawerItemData(stringResource(Res.string.banking), Icons.Default.Bungalow),
+        DrawerItemData(stringResource(Res.string.income_expense), Icons.Default.BarChart),
+        DrawerItemData(stringResource(Res.string.employee_salary), Icons.Default.Payments),
+        DrawerItemData(stringResource(Res.string.reports), Icons.Default.Assessment, hasBadge = true),
+        DrawerItemData(stringResource(Res.string.profit_distribution), Icons.Default.PieChart),
+        DrawerItemData(stringResource(Res.string.transactions), Icons.Default.History),
+        DrawerItemData(stringResource(Res.string.messages), Icons.AutoMirrored.Filled.Message, hasBadge = true),
+        DrawerItemData(stringResource(Res.string.notice), Icons.Default.HomeWork),
+        DrawerItemData("ওয়েব পোর্টাল", Icons.Default.Public),
+        DrawerItemData("divider", Icons.Default.History, isDivider = true),
+        DrawerItemData(stringResource(Res.string.recovery), Icons.Default.DeleteSweep),
+        DrawerItemData(stringResource(Res.string.factory_reset), Icons.Default.Sync),
+        DrawerItemData(stringResource(Res.string.settings), Icons.Default.Tune, hasBadge = true),
+        DrawerItemData(stringResource(Res.string.packages), Icons.Default.ShoppingCart, hasBadge = true),
+        DrawerItemData(stringResource(Res.string.agreement), Icons.Default.AttachFile, hasBadge = true),
+        DrawerItemData("divider2", Icons.Default.History, isDivider = true),
+        DrawerItemData(stringResource(Res.string.logout), Icons.Default.PowerSettingsNew)
+    )
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(
+                Brush.verticalGradient(
+                    colors = listOf(
+                        Color(0xFF0369A1), // Deep Sky Blue
+                        Color(0xFF0284C7), // Deep Ocean Blue
+                        Color(0xFF075985), // Dark Midnight Blue
+                        Color(0xFF0C4A6E)  // Rich Dark Navy Blue
+                    )
+                )
+            )
+            .border(
+                width = 1.5.dp,
+                brush = Brush.linearGradient(
+                    colors = listOf(
+                        Color.White.copy(alpha = 0.9f),
+                        Color.White.copy(alpha = 0.3f),
+                        Color.White.copy(alpha = 0.7f)
+                    )
+                ),
+                shape = RoundedCornerShape(topEnd = 32.dp, bottomEnd = 0.dp)
+            )
+    ) {
+        // Glass Profile Card Header
+        Surface(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            shape = RoundedCornerShape(24.dp),
+            color = Color.White.copy(alpha = 0.22f),
+            border = BorderStroke(1.dp, Color.White.copy(alpha = 0.5f))
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Box(
+                        modifier = Modifier
+                            .size(64.dp)
+                            .background(Color.White.copy(alpha = 0.2f), CircleShape)
+                            .border(2.dp, Color.White.copy(alpha = 0.6f), CircleShape)
+                            .padding(2.dp)
+                            .then(
+                                if (userRole == UserRole.ADMIN) Modifier.clickable { onPhotoClick() } else Modifier
+                            ),
+                        contentAlignment = Alignment.BottomEnd
+                    ) {
+                        if (userRole == UserRole.ADMIN) {
+                            if (adminBitmap != null) {
+                                Image(
+                                    bitmap = adminBitmap,
+                                    contentDescription = stringResource(Res.string.admin_photo_desc),
+                                    modifier = Modifier.fillMaxSize().clip(CircleShape),
+                                    contentScale = ContentScale.Crop
+                                )
+                            } else {
+                                Image(
+                                    painter = painterResource(Res.drawable.admin_profile),
+                                    contentDescription = null,
+                                    modifier = Modifier.fillMaxSize().clip(CircleShape),
+                                    contentScale = ContentScale.Crop
+                                )
+                            }
+                            
+                            Box(
+                                modifier = Modifier
+                                    .size(24.dp)
+                                    .background(Color.White, CircleShape)
+                                    .border(1.dp, Color(0xFF0EA5E9), CircleShape)
+                                    .padding(4.dp),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.CameraAlt,
+                                    contentDescription = stringResource(Res.string.change_photo_desc),
+                                    tint = Color(0xFF0EA5E9),
+                                    modifier = Modifier.size(12.dp)
+                                )
+                            }
+                        } else {
+                            // Member Avatar (No Admin Photo, No Camera Badge)
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .clip(CircleShape)
+                                    .background(Color(0xFF0284C7)),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Person,
+                                    contentDescription = "Member",
+                                    tint = Color.White,
+                                    modifier = Modifier.size(38.dp)
+                                )
+                            }
+                        }
+                    }
+                    Spacer(modifier = Modifier.width(14.dp))
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = if (userRole == UserRole.ADMIN) stringResource(Res.string.admin) else "সাধারণ সদস্য",
+                            color = Color.White,
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.ExtraBold
+                        )
+                        Text(
+                            text = if (OrgRepository.orgName.value.isBlank()) stringResource(Res.string.org_name) else OrgRepository.orgName.value,
+                            color = Color(0xFFFDE047),
+                            fontSize = 15.sp,
+                            fontWeight = FontWeight.Bold,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                    }
+                }
+            }
+        }
+
+        var isCommitteeExpanded by remember { mutableStateOf(false) }
+        var isUserExpanded by remember { mutableStateOf(false) }
+        var isCustomerExpanded by remember { mutableStateOf(false) }
+        var isOnlinePaymentExpanded by remember { mutableStateOf(false) }
+
+        val committeeLabel = stringResource(Res.string.committee)
+        val userLabel = stringResource(Res.string.user)
+        val customerLabel = stringResource(Res.string.customer)
+        val dashboardLabel = stringResource(Res.string.dashboard)
+        val onlinePaymentLabel = stringResource(Res.string.online_payment)
+        val noticeLabel = stringResource(Res.string.notice)
+        val messagesLabel = stringResource(Res.string.messages)
+        val settingsLabel = stringResource(Res.string.settings)
+        val logoutLabel = stringResource(Res.string.logout)
+
+        val memberAllowedTitles = setOf(
+            dashboardLabel,
+            onlinePaymentLabel,
+            noticeLabel,
+            messagesLabel,
+            settingsLabel,
+            logoutLabel
+        )
+
+        val visibleMenuItems = if (userRole == UserRole.ADMIN) {
+            menuItems
+        } else {
+            menuItems.filter { it.title in memberAllowedTitles }
+        }
+
+        LazyColumn(
+            modifier = Modifier.weight(1f),
+            contentPadding = PaddingValues(vertical = 12.dp)
+        ) {
+            items(visibleMenuItems) { item ->
+                when (item.title) {
+                    committeeLabel -> {
+                        DrawerItemView(
+                            item = item,
+                            isExpanded = isCommitteeExpanded,
+                            onItemClick = { isCommitteeExpanded = !isCommitteeExpanded }
+                        )
+                        if (isCommitteeExpanded) {
+                            SubDrawerItemView(stringResource(Res.string.add_committee), Icons.Default.GroupAdd, onItemClick)
+                            SubDrawerItemView(stringResource(Res.string.committee_list), Icons.Default.Groups, onItemClick)
+                        }
+                    }
+                    userLabel -> {
+                        DrawerItemView(
+                            item = item,
+                            isExpanded = isUserExpanded,
+                            onItemClick = { isUserExpanded = !isUserExpanded }
+                        )
+                        if (isUserExpanded) {
+                            SubDrawerItemView(stringResource(Res.string.add_user), Icons.Default.PersonAdd, onItemClick)
+                            SubDrawerItemView(stringResource(Res.string.user_list), Icons.Default.FormatListBulleted, onItemClick)
+                        }
+                    }
+                    customerLabel -> {
+                        DrawerItemView(
+                            item = item,
+                            isExpanded = isCustomerExpanded,
+                            onItemClick = { isCustomerExpanded = !isCustomerExpanded }
+                        )
+                        if (isCustomerExpanded) {
+                            SubDrawerItemView(stringResource(Res.string.add), Icons.Default.PersonAdd, onItemClick)
+                            SubDrawerItemView(stringResource(Res.string.customer_list), Icons.Default.Groups, onItemClick)
+                            SubDrawerItemView(stringResource(Res.string.customer_ledger), Icons.Default.GridView, onItemClick)
+                        }
+                    }
+                    onlinePaymentLabel -> {
+                        DrawerItemView(
+                            item = item,
+                            isExpanded = isOnlinePaymentExpanded,
+                            onItemClick = { isOnlinePaymentExpanded = !isOnlinePaymentExpanded }
+                        )
+                        if (isOnlinePaymentExpanded) {
+                            SubDrawerItemDrawableView(stringResource(Res.string.bkash), Res.drawable.ic_bkash, onItemClick)
+                            SubDrawerItemDrawableView(stringResource(Res.string.nagad), Res.drawable.ic_nagad, onItemClick)
+                            SubDrawerItemDrawableView(stringResource(Res.string.rocket), Res.drawable.ic_rocket, onItemClick)
+                            SubDrawerItemDrawableView(stringResource(Res.string.upay), Res.drawable.ic_upay, onItemClick)
+                        }
+                    }
+                    else -> {
+                        DrawerItemView(item = item, onItemClick = onItemClick)
+                    }
+                }
+            }
+        }
+    }
 }
-setupForm('committeeForm','addCommitteeBtn','cancelCommittee',['cName','cRole','cPhone'],'committeeRows');
-setupForm('memberForm','addMemberBtn','cancelMember',['mName','mPhone','mArea'],'memberRows');
-</script>
-</body>
-</html>
+
+@Composable
+fun SubDrawerItemDrawableView(title: String, drawable: org.jetbrains.compose.resources.DrawableResource, onClick: (String) -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 44.dp, end = 16.dp, top = 2.dp, bottom = 2.dp)
+            .clip(RoundedCornerShape(14.dp))
+            .background(Color.White.copy(alpha = 0.15f))
+            .border(0.8.dp, Color.White.copy(alpha = 0.4f), RoundedCornerShape(14.dp))
+            .clickable { onClick(title) }
+            .padding(horizontal = 14.dp, vertical = 10.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(
+            painter = painterResource(drawable),
+            contentDescription = null,
+            tint = Color.Unspecified,
+            modifier = Modifier.size(22.dp)
+        )
+        Spacer(modifier = Modifier.width(10.dp))
+        Text(
+            text = title,
+            color = Color(0xFFFEF3C7),
+            fontSize = 16.sp,
+            fontWeight = FontWeight.ExtraBold
+        )
+    }
+}
+
+@Composable
+fun SubDrawerItemView(title: String, icon: ImageVector, onClick: (String) -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 44.dp, end = 16.dp, top = 2.dp, bottom = 2.dp)
+            .clip(RoundedCornerShape(14.dp))
+            .background(Color.White.copy(alpha = 0.15f))
+            .border(0.8.dp, Color.White.copy(alpha = 0.4f), RoundedCornerShape(14.dp))
+            .clickable { onClick(title) }
+            .padding(horizontal = 14.dp, vertical = 10.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = null,
+            tint = Color(0xFF7DD3FC),
+            modifier = Modifier.size(20.dp)
+        )
+        Spacer(modifier = Modifier.width(10.dp))
+        Text(
+            text = title,
+            color = Color(0xFFFEF3C7),
+            fontSize = 16.sp,
+            fontWeight = FontWeight.ExtraBold
+        )
+    }
+}
+
+@Composable
+fun DrawerItemView(
+    item: DrawerItemData,
+    isExpanded: Boolean = false,
+    onItemClick: (String) -> Unit
+) {
+
+    if (item.isDivider) {
+        HorizontalDivider(
+            modifier = Modifier.padding(horizontal = 24.dp, vertical = 10.dp),
+            color = Color.White.copy(alpha = 0.25f),
+            thickness = 1.dp
+        )
+        return
+    }
+
+    val isHeader = item.isHeader
+    val logoutStr = stringResource(Res.string.logout)
+    val isLogout = item.title == logoutStr
+
+    val backgroundColor = when {
+        isLogout -> Color(0xFFEF4444).copy(alpha = 0.22f)
+        isHeader -> Color.White.copy(alpha = 0.28f)
+        isExpanded -> Color.White.copy(alpha = 0.20f)
+        else -> Color.White.copy(alpha = 0.08f)
+    }
+    val borderColor = when {
+        isLogout -> Color(0xFFF87171).copy(alpha = 0.5f)
+        isHeader -> Color.White.copy(alpha = 0.6f)
+        isExpanded -> Color.White.copy(alpha = 0.45f)
+        else -> Color.White.copy(alpha = 0.22f)
+    }
+    val textColor = when {
+        isLogout -> Color(0xFFFECACA)
+        isHeader -> Color(0xFFFEF08A)
+        isExpanded -> Color.White
+        else -> Color.White
+    }
+    val iconColor = when {
+        isLogout -> Color(0xFFF87171)
+        isHeader -> Color(0xFFFDE047)
+        isExpanded -> Color(0xFFBAE6FD)
+        else -> Color(0xFFE0F2FE)
+    }
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 3.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .background(backgroundColor)
+            .border(
+                width = 1.dp,
+                color = borderColor,
+                shape = RoundedCornerShape(16.dp)
+            )
+            .clickable { onItemClick(item.title) }
+            .padding(horizontal = 16.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(
+            imageVector = item.icon,
+            contentDescription = null,
+            tint = iconColor,
+            modifier = Modifier.size(24.dp)
+        )
+        Spacer(modifier = Modifier.width(14.dp))
+        Text(
+            text = item.title,
+            color = textColor,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.ExtraBold,
+            modifier = Modifier.weight(1f)
+        )
+        if (item.hasBadge) {
+            Icon(
+                imageVector = if (isExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
+                contentDescription = null,
+                tint = if (isExpanded) Color(0xFFFDE047) else Color.White.copy(alpha = 0.8f),
+                modifier = Modifier.size(20.dp)
+            )
+        }
+    }
+}
+
+data class DrawerItemData(
+    val title: String,
+    val icon: ImageVector,
+    val isHeader: Boolean = false,
+    val hasBadge: Boolean = false,
+    val isDivider: Boolean = false
+)
