@@ -28,48 +28,341 @@
             border-radius: 28px;
         }
 
-        .liquid-glass-input {
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            color: #0F172A;
-            transition: all 0.3s ease;
-        }
-        .liquid-glass-input::placeholder {
-            color: #475569;
-        }
-        .liquid-glass-input:focus {
-            outline: none;
-            background: #FFFFFF;
-            border-color: #0284C7;
-            box-shadow: 0 0 18px rgba(56, 189, 248, 0.6);
-        }
+        .<!-- CHAR KAJAL LOGIN INTERFACE -->
+<style>
+#ck-login {
+  font-family: Arial, sans-serif;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 35px;
+  padding: 35px;
+  min-height: 600px;
+  color: #07345d;
+  background:
+    radial-gradient(ellipse at 20% 10%,
+      rgba(255,255,255,.9), transparent 30%),
+    linear-gradient(180deg,
+      #78c8f4 0%,
+      #d9f3ff 43%,
+      #70bd65 44%,
+      #167e4b 65%,
+      #06466b 100%);
+  box-sizing: border-box;
+}
 
-        .liquid-btn {
-            background: linear-gradient(135deg, #0284C7 0%, #0ea5e9 100%);
-            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.6);
-            transition: all 0.3s ease;
-        }
-        .liquid-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(2, 132, 199, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.9);
-        }
+#ck-login * {
+  box-sizing: border-box;
+}
 
-        /* Ultra Elegant Welcome Banner */
-        .welcome-liquid-banner {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(2, 132, 199, 0.45) 50%, rgba(3, 105, 161, 0.65) 100%);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1.5px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 20px 50px rgba(2, 132, 199, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.8);
-            border-radius: 26px;
-        }
+#ck-login .ck-brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 55px;
+}
 
-        .gradient-text-gold {
-            background: linear-gradient(90deg, #FFE066 0%, #38BDF8 50%, #FDE047 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+#ck-login .ck-logo {
+  width: 135px;
+  height: 135px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: none;
+  mix-blend-mode: normal;
+}
+
+#ck-login h1 {
+  font-size: clamp(22px, 2.5vw, 36px);
+  margin: 0 0 10px;
+  color: #07345d;
+}
+
+#ck-login .ck-english {
+  font-size: 14px;
+  font-weight: bold;
+  color: #07815d;
+}
+
+#ck-login .ck-motto {
+  font-size: 16px;
+}
+
+#ck-login .ck-quote {
+  color: white;
+  font-size: clamp(23px, 2.4vw, 32px);
+  font-weight: bold;
+  line-height: 1.6;
+  text-shadow: 0 2px 5px #17465a;
+}
+
+#ck-login .ck-card {
+  width: 100%;
+  max-width: 520px;
+  justify-self: end;
+  padding: 30px;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 25px;
+  background: rgba(255,255,255,.34);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 15px 45px rgba(0,40,70,.2);
+}
+
+#ck-login .ck-card-head {
+  text-align: center;
+}
+
+#ck-login .ck-card-logo {
+  width: 85px;
+  height: 85px;
+  object-fit: contain;
+  filter: none;
+  mix-blend-mode: normal;
+}
+
+#ck-login h2 {
+  font-size: 23px;
+  line-height: 1.5;
+}
+
+#ck-login .ck-login-title {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+#ck-login .ck-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+  padding: 0 14px;
+  height: 55px;
+  border: 1px solid rgba(255,255,255,.95);
+  border-radius: 13px;
+  background: rgba(255,255,255,.45);
+}
+
+#ck-login .ck-field input {
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+}
+
+#ck-login .ck-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 18px 0;
+  font-size: 13px;
+}
+
+#ck-login a {
+  color: #064b79;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#ck-login .ck-button {
+  width: 100%;
+  min-height: 54px;
+  border: none;
+  border-radius: 13px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+#ck-login .ck-submit {
+  color: white;
+  font-weight: bold;
+  background: linear-gradient(100deg,#00a875,#0075a5);
+}
+
+#ck-login .ck-or {
+  text-align: center;
+  margin: 20px 0;
+}
+
+#ck-login .ck-google {
+  border: 1px solid white;
+  background: rgba(255,255,255,.4);
+  color: #164f77;
+}
+
+#ck-login .ck-signup {
+  text-align: center;
+  margin-top: 20px;
+}
+
+@media(max-width:850px) {
+  #ck-login {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  #ck-login .ck-brand {
+    margin-bottom: 10px;
+  }
+
+  #ck-login .ck-logo {
+    width: 85px;
+    height: 85px;
+  }
+
+  #ck-login h1 {
+    font-size: 21px;
+  }
+
+  #ck-login .ck-quote {
+    display: none;
+  }
+
+  #ck-login .ck-card {
+    justify-self: center;
+  }
+}
+
+@media(max-width:480px) {
+  #ck-login {
+    padding: 12px;
+  }
+
+  #ck-login .ck-card {
+    padding: 20px 15px;
+  }
+
+  #ck-login h1 {
+    font-size: 17px;
+  }
+
+  #ck-login .ck-options {
+    font-size: 11px;
+  }
+}
+</style>
+
+<section id="ck-login">
+
+  <div class="ck-left">
+
+    <div class="ck-brand">
+
+      <!-- এখানে আপনার বর্তমান লোগোর সঠিক ফাইলের নাম দিন -->
+      <img
+        class="ck-logo"
+        src="1000044687.jpg"
+        alt="সংগঠনের লোগো"
+      >
+
+      <div>
+        <h1>চরকাজল সমাজ কল্যাণ সংগঠন</h1>
+
+        <p class="ck-english">
+          CHAR KAJAL SOCIAL WELFARE ORGANIZATION
+        </p>
+
+        <p class="ck-motto">
+          মানবতার সেবায়, সমাজের পাশে
+        </p>
+      </div>
+
+    </div>
+
+    <p class="ck-quote">
+      একটি উন্নত সমাজ গড়ার<br>
+      স্বপ্ন নিয়ে আমরা একসাথে...
+    </p>
+
+  </div>
+
+  <div class="ck-card">
+
+    <div class="ck-card-head">
+
+      <img
+        class="ck-card-logo"
+        src="1000044687.jpg"
+        alt="সংগঠনের লোগো"
+      >
+
+      <h2>চরকাজল সমাজ কল্যাণ সংগঠন</h2>
+
+      <p class="ck-english">
+        CHAR KAJAL SOCIAL WELFARE ORGANIZATION
+      </p>
+
+      <div class="ck-login-title">লগইন করুন</div>
+
+      <p>আপনার অ্যাকাউন্টে প্রবেশ করুন</p>
+
+    </div>
+
+    <!--
+    গুরুত্বপূর্ণ:
+    আপনার পুরোনো লগইন ফর্মের action, method,
+    input name এবং authentication সংযোগ বজায় রাখুন।
+    নিচের ফর্মটি নমুনা; পুরোনো ফর্মের বিকল্প নয়।
+    -->
+
+    <form id="ckLoginForm">
+
+      <div class="ck-field">
+        <span>👤</span>
+        <input
+          type="text"
+          name="user_id"
+          placeholder="Enter Your ID"
+          required
+        >
+      </div>
+
+      <div class="ck-field">
+        <span>🔒</span>
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        >
+      </div>
+
+      <div class="ck-options">
+
+        <label>
+          <input type="checkbox" checked>
+          আমাকে মনে রাখুন
+        </label>
+
+        <a href="#">পাসওয়ার্ড ভুলে গেছেন?</a>
+
+      </div>
+
+      <button class="ck-button ck-submit" type="submit">
+        লগইন করুন
+      </button>
+
+      <div class="ck-or">অথবা</div>
+
+      <button
+        class="ck-button ck-google"
+        type="button"
+      >
+        Google দিয়ে লগইন করুন
+      </button>
+
+      <p class="ck-signup">
+        নতুন সদস্য?
+        <a href="signup.html">Sign Up</a>
+      </p>
+
+    </form>
+
+  </div>
+
+</section>
         }
 
         /* Floating Liquid Animated Background Orbs */
