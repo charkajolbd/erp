@@ -1,434 +1,528 @@
-package com.charkajolbd.charkajolbd
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>চরকাজল সমাজ কল্যাণ সংগঠন - সম্পূর্ণ অ্যাপ পোর্টাল</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: linear-gradient(to bottom, #0369A1, #0284C7, #075985, #0C4A6E);
+            min-height: 100vh;
+            color: white;
+            user-select: none;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(12px);
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+        }
+        .glass-drawer {
+            background: linear-gradient(to bottom, rgba(3, 105, 161, 0.95), rgba(2, 132, 199, 0.92), rgba(7, 89, 133, 0.98));
+            backdrop-filter: blur(15px);
+            border-right: 1.5px solid rgba(255, 255, 255, 0.5);
+        }
+        .glass-pill {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1.2px solid rgba(255, 255, 255, 0.35);
+            border-radius: 14px;
+        }
+        .ticker-bar {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1.2px solid rgba(125, 211, 252, 0.8);
+            border-radius: 16px;
+            padding: 8px 16px;
+        }
+        .bottom-nav {
+            background: linear-gradient(to bottom, #0369A1, #0284C7);
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            border-radius: 22px;
+        }
+    </style>
+</head>
+<body class="flex flex-col h-screen overflow-hidden">
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.Message
-import androidx.compose.material.icons.filled.*
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.resources.stringResource
-import com.charkajolbd.charkajolbd.generated.resources.Res
-import com.charkajolbd.charkajolbd.generated.resources.*
+    <!-- Top App Bar Header -->
+    <header class="bg-gradient-to-b from-[#0369A1] to-[#0284C7] p-3 border-b border-white/20 shadow-md flex justify-between items-center px-4 pt-3 pb-3 relative z-30">
+        <button id="menu-btn" onclick="toggleDrawer()" class="w-11 h-11 flex items-center justify-center rounded-xl bg-white/10 text-white hover:bg-white/20 text-2xl transition">
+            <i class="fas fa-bars"></i>
+        </button>
 
-@Composable
-fun DrawerContent(
-    adminBitmap: ImageBitmap?,
-    userRole: UserRole = UserRole.ADMIN,
-    onPhotoClick: () -> Unit,
-    onItemClick: (String) -> Unit
-) {
-    val menuItems = listOf(
-        DrawerItemData(stringResource(Res.string.dashboard), Icons.Default.Dashboard, isHeader = true),
-        DrawerItemData(stringResource(Res.string.committee), Icons.Default.People, hasBadge = true),
-        DrawerItemData(stringResource(Res.string.user), Icons.Default.Person, hasBadge = true),
-        DrawerItemData(stringResource(Res.string.area), Icons.Default.LocationOn),
-        DrawerItemData(stringResource(Res.string.customer), Icons.Default.Group, hasBadge = true),
-        DrawerItemData(stringResource(Res.string.loan), Icons.Default.AccountBalanceWallet, hasBadge = true),
-        DrawerItemData(stringResource(Res.string.accounts), Icons.Default.AccountBalance, hasBadge = true),
-        DrawerItemData(stringResource(Res.string.welfare), Icons.Default.VolunteerActivism, hasBadge = true),
-        DrawerItemData(stringResource(Res.string.online_payment), Icons.Default.Payment, hasBadge = true),
-        DrawerItemData(stringResource(Res.string.banking), Icons.Default.Bungalow),
-        DrawerItemData(stringResource(Res.string.income_expense), Icons.Default.BarChart),
-        DrawerItemData(stringResource(Res.string.employee_salary), Icons.Default.Payments),
-        DrawerItemData(stringResource(Res.string.reports), Icons.Default.Assessment, hasBadge = true),
-        DrawerItemData(stringResource(Res.string.profit_distribution), Icons.Default.PieChart),
-        DrawerItemData(stringResource(Res.string.transactions), Icons.Default.History),
-        DrawerItemData(stringResource(Res.string.messages), Icons.AutoMirrored.Filled.Message, hasBadge = true),
-        DrawerItemData(stringResource(Res.string.notice), Icons.Default.HomeWork),
-        DrawerItemData("ওয়েব পোর্টাল", Icons.Default.Public),
-        DrawerItemData("divider", Icons.Default.History, isDivider = true),
-        DrawerItemData(stringResource(Res.string.recovery), Icons.Default.DeleteSweep),
-        DrawerItemData(stringResource(Res.string.factory_reset), Icons.Default.Sync),
-        DrawerItemData(stringResource(Res.string.settings), Icons.Default.Tune, hasBadge = true),
-        DrawerItemData(stringResource(Res.string.packages), Icons.Default.ShoppingCart, hasBadge = true),
-        DrawerItemData(stringResource(Res.string.agreement), Icons.Default.AttachFile, hasBadge = true),
-        DrawerItemData("divider2", Icons.Default.History, isDivider = true),
-        DrawerItemData(stringResource(Res.string.logout), Icons.Default.PowerSettingsNew)
-    )
+        <!-- Center Toggling Title -->
+        <div class="text-center flex-1 mx-2">
+            <h1 id="top-title" class="text-xl md:text-2xl font-extrabold text-white transition-all duration-700">চরকাজল সমাজ কল্যাণ সংগঠন</h1>
+        </div>
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(
-                Brush.verticalGradient(
-                    colors = listOf(
-                        Color(0xFF0369A1), // Deep Sky Blue
-                        Color(0xFF0284C7), // Deep Ocean Blue
-                        Color(0xFF075985), // Dark Midnight Blue
-                        Color(0xFF0C4A6E)  // Rich Dark Navy Blue
-                    )
-                )
-            )
-            .border(
-                width = 1.5.dp,
-                brush = Brush.linearGradient(
-                    colors = listOf(
-                        Color.White.copy(alpha = 0.9f),
-                        Color.White.copy(alpha = 0.3f),
-                        Color.White.copy(alpha = 0.7f)
-                    )
-                ),
-                shape = RoundedCornerShape(topEnd = 32.dp, bottomEnd = 0.dp)
-            )
-    ) {
-        // Glass Profile Card Header
-        Surface(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            shape = RoundedCornerShape(24.dp),
-            color = Color.White.copy(alpha = 0.22f),
-            border = BorderStroke(1.dp, Color.White.copy(alpha = 0.5f))
-        ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-            ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Box(
-                        modifier = Modifier
-                            .size(64.dp)
-                            .background(Color.White.copy(alpha = 0.2f), CircleShape)
-                            .border(2.dp, Color.White.copy(alpha = 0.6f), CircleShape)
-                            .padding(2.dp)
-                            .then(
-                                if (userRole == UserRole.ADMIN) Modifier.clickable { onPhotoClick() } else Modifier
-                            ),
-                        contentAlignment = Alignment.BottomEnd
-                    ) {
-                        if (userRole == UserRole.ADMIN) {
-                            if (adminBitmap != null) {
-                                Image(
-                                    bitmap = adminBitmap,
-                                    contentDescription = stringResource(Res.string.admin_photo_desc),
-                                    modifier = Modifier.fillMaxSize().clip(CircleShape),
-                                    contentScale = ContentScale.Crop
-                                )
-                            } else {
-                                Image(
-                                    painter = painterResource(Res.drawable.admin_profile),
-                                    contentDescription = null,
-                                    modifier = Modifier.fillMaxSize().clip(CircleShape),
-                                    contentScale = ContentScale.Crop
-                                )
-                            }
-                            
-                            Box(
-                                modifier = Modifier
-                                    .size(24.dp)
-                                    .background(Color.White, CircleShape)
-                                    .border(1.dp, Color(0xFF0EA5E9), CircleShape)
-                                    .padding(4.dp),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Default.CameraAlt,
-                                    contentDescription = stringResource(Res.string.change_photo_desc),
-                                    tint = Color(0xFF0EA5E9),
-                                    modifier = Modifier.size(12.dp)
-                                )
-                            }
-                        } else {
-                            // Member Avatar (No Admin Photo, No Camera Badge)
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .clip(CircleShape)
-                                    .background(Color(0xFF0284C7)),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Default.Person,
-                                    contentDescription = "Member",
-                                    tint = Color.White,
-                                    modifier = Modifier.size(38.dp)
-                                )
-                            }
-                        }
-                    }
-                    Spacer(modifier = Modifier.width(14.dp))
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = if (userRole == UserRole.ADMIN) stringResource(Res.string.admin) else "সাধারণ সদস্য",
-                            color = Color.White,
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.ExtraBold
-                        )
-                        Text(
-                            text = if (OrgRepository.orgName.value.isBlank()) stringResource(Res.string.org_name) else OrgRepository.orgName.value,
-                            color = Color(0xFFFDE047),
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.Bold,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
-                        )
-                    }
-                }
+        <!-- Logo -->
+        <div class="w-11 h-11 rounded-full overflow-hidden border-2 border-white/60 shadow flex items-center justify-center bg-white/10">
+            <img src="https://via.placeholder.com/40/0284C7/FFFFFF?text=Logo" alt="Logo" class="w-full h-full object-cover">
+        </div>
+    </header>
+
+    <!-- Drawer Overlay -->
+    <div id="drawer-overlay" onclick="toggleDrawer()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden transition-opacity"></div>
+
+    <!-- Side Navigation Drawer -->
+    <aside id="side-drawer" class="fixed inset-y-0 left-0 w-72 glass-drawer z-50 transform -translate-x-full transition-transform duration-300 flex flex-col p-4 overflow-y-auto">
+        <!-- Profile Header -->
+        <div class="glass-card p-4 mb-4 flex items-center gap-3">
+            <div id="drawer-avatar-container" class="relative w-16 h-16 rounded-full border-2 border-white/60 overflow-hidden bg-sky-800">
+                <img id="drawer-avatar" src="https://via.placeholder.com/60/0284C7/FFFFFF?text=Admin" alt="Profile" class="w-full h-full object-cover">
+            </div>
+            <div>
+                <h2 id="drawer-user-role" class="text-white font-extrabold text-lg">এডমিন</h2>
+                <p class="text-yellow-300 font-bold text-xs">চরকাজল সমাজ কল্যাণ সংগঠন</p>
+            </div>
+        </div>
+
+        <!-- Drawer Navigation Items -->
+        <nav class="space-y-2 flex-1">
+            <button onclick="navTo('home')" class="w-full glass-pill p-3 text-left font-extrabold text-yellow-300 flex items-center gap-3"><i class="fas fa-chart-line"></i> ড্যাশবোর্ড</button>
+            <button onclick="navTo('user-list')" class="w-full glass-pill p-3 text-left font-bold text-white flex items-center gap-3"><i class="fas fa-users-cog"></i> ইউজার তালিকা (ERP)</button>
+            <button onclick="navTo('customer-list')" class="w-full glass-pill p-3 text-left font-bold text-white flex items-center gap-3"><i class="fas fa-users"></i> গ্রাহক তালিকা</button>
+            <button onclick="navTo('add-customer')" class="w-full glass-pill p-3 text-left font-bold text-white flex items-center gap-3"><i class="fas fa-user-plus"></i> নতুন গ্রাহক যোগ</button>
+            <button onclick="navTo('notice')" class="w-full glass-pill p-3 text-left font-bold text-white flex items-center gap-3"><i class="fas fa-bullhorn"></i> নোটিশ বোর্ড</button>
+
+            <!-- Online Payment Menu -->
+            <div>
+                <button onclick="toggleSubMenu('payment-sub')" class="w-full glass-pill p-3 text-left font-bold text-white flex items-center justify-between">
+                    <span class="flex items-center gap-3"><i class="fas fa-credit-card"></i> অনলাইন পেমেন্ট</span>
+                    <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div id="payment-sub" class="hidden pl-6 mt-2 space-y-1">
+                    <button onclick="openPayment('বিকাশ (bKash)', '#E2136E')" class="w-full p-2 glass-pill text-left text-xs font-bold text-yellow-200 flex items-center gap-2"><i class="fas fa-mobile-alt text-pink-400"></i> বিকাশ (bKash)</button>
+                    <button onclick="openPayment('নগদ (Nagad)', '#EC1C24')" class="w-full p-2 glass-pill text-left text-xs font-bold text-yellow-200 flex items-center gap-2"><i class="fas fa-fire text-red-400"></i> নগদ (Nagad)</button>
+                    <button onclick="openPayment('রকেট (Rocket)', '#8C3494')" class="w-full p-2 glass-pill text-left text-xs font-bold text-yellow-200 flex items-center gap-2"><i class="fas fa-paper-plane text-purple-400"></i> রকেট (Rocket)</button>
+                    <button onclick="openPayment('উপায় (Upay)', '#0055A5')" class="w-full p-2 glass-pill text-left text-xs font-bold text-yellow-200 flex items-center gap-2"><i class="fas fa-smile text-blue-400"></i> উপায় (Upay)</button>
+                </div>
+            </div>
+
+            <button onclick="navTo('settings')" class="w-full glass-pill p-3 text-left font-bold text-white flex items-center gap-3"><i class="fas fa-cog"></i> সেটিংস</button>
+            <button onclick="navTo('profile')" class="w-full glass-pill p-3 text-left font-bold text-white flex items-center gap-3"><i class="fas fa-user-circle"></i> প্রোফাইল</button>
+        </nav>
+    </aside>
+
+    <!-- Main Dynamic Section View -->
+    <main class="flex-1 overflow-y-auto p-4 md:p-6 pb-24">
+
+        <!-- Marquee Ticker -->
+        <div id="ticker-container" class="ticker-bar mb-4">
+            <marquee scrollamount="7" class="text-xs md:text-sm font-bold text-white">
+                চরকাজল সমাজ কল্যাণ সংগঠনের পক্ষ থেকে আপনাকে স্বাগতম। আমাদের সংগঠনের সকল কার্যক্রম এখন অ্যাপ এবং ওয়েব পোর্টালেই পরিচালনা করা হবে। অনলাইন পেমেন্ট হেল্পলাইন নম্বর: 01855110013
+            </marquee>
+        </div>
+
+        <!-- 1. Home Section -->
+        <section id="sec-home" class="space-y-6">
+            <!-- Digital Clock Widget -->
+            <div class="glass-card p-4 text-center">
+                <p id="clock-time" class="text-3xl font-black text-white">10:58:44 PM</p>
+                <p id="clock-date" class="text-xs font-bold text-yellow-300 mt-1">16 October, 2026</p>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="glass-card p-4 text-center">
+                    <div class="w-11 h-11 rounded-full bg-sky-400/30 border border-sky-300 flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-users text-xl text-sky-200"></i>
+                    </div>
+                    <p class="text-xs text-white/80 font-bold">মোট সদস্য</p>
+                    <p id="stat-count" class="text-xl font-black text-yellow-300 mt-1">৮ জন</p>
+                </div>
+
+                <div class="glass-card p-4 text-center">
+                    <div class="w-11 h-11 rounded-full bg-emerald-400/30 border border-emerald-300 flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-wallet text-xl text-emerald-300"></i>
+                    </div>
+                    <p class="text-xs text-white/80 font-bold">নগদ ব্যালেন্স</p>
+                    <p id="stat-balance" class="text-xl font-black text-emerald-300 mt-1">৩০০.০ ৳</p>
+                </div>
+            </div>
+
+            <!-- Circular Quick Service Glass Buttons -->
+            <div class="glass-card p-5">
+                <h3 class="text-center font-extrabold text-sm text-yellow-300 mb-4">দ্রুত সেবা প্যানেল</h3>
+                <div class="grid grid-cols-3 gap-4 text-center">
+                    <div onclick="navTo('user-list')" class="flex flex-col items-center cursor-pointer hover:scale-105 transition">
+                        <div class="w-16 h-16 rounded-full glass-card flex items-center justify-center mb-1">
+                            <i class="fas fa-users-cog text-xl text-sky-300"></i>
+                        </div>
+                        <span class="text-[11px] font-bold text-white">ইউজার প্যানেল</span>
+                    </div>
+
+                    <div onclick="navTo('customer-list')" class="flex flex-col items-center cursor-pointer hover:scale-105 transition">
+                        <div class="w-16 h-16 rounded-full glass-card flex items-center justify-center mb-1">
+                            <i class="fas fa-users text-xl text-yellow-300"></i>
+                        </div>
+                        <span class="text-[11px] font-bold text-white">গ্রাহক তালিকা</span>
+                    </div>
+
+                    <div onclick="navTo('notice')" class="flex flex-col items-center cursor-pointer hover:scale-105 transition">
+                        <div class="w-16 h-16 rounded-full glass-card flex items-center justify-center mb-1">
+                            <i class="fas fa-bullhorn text-xl text-emerald-300"></i>
+                        </div>
+                        <span class="text-[11px] font-bold text-white">নোটিশ বোর্ড</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Online Payment Gateways Banner -->
+            <div class="glass-card p-5">
+                <h3 class="text-center font-extrabold text-sm text-yellow-300 mb-4">অনলাইন পেমেন্ট মেথড</h3>
+                <div class="grid grid-cols-4 gap-3 text-center">
+                    <div onclick="openPayment('বিকাশ (bKash)', '#E2136E')" class="flex flex-col items-center cursor-pointer hover:scale-105 transition">
+                        <div class="w-14 h-14 rounded-full bg-pink-600/30 border-2 border-pink-400 flex items-center justify-center mb-1 shadow">
+                            <i class="fas fa-mobile-alt text-lg text-pink-300"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-white">বিকাশ</span>
+                    </div>
+
+                    <div onclick="openPayment('নগদ (Nagad)', '#EC1C24')" class="flex flex-col items-center cursor-pointer hover:scale-105 transition">
+                        <div class="w-14 h-14 rounded-full bg-red-600/30 border-2 border-red-400 flex items-center justify-center mb-1 shadow">
+                            <i class="fas fa-fire text-lg text-red-300"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-white">নগদ</span>
+                    </div>
+
+                    <div onclick="openPayment('রকেট (Rocket)', '#8C3494')" class="flex flex-col items-center cursor-pointer hover:scale-105 transition">
+                        <div class="w-14 h-14 rounded-full bg-purple-600/30 border-2 border-purple-400 flex items-center justify-center mb-1 shadow">
+                            <i class="fas fa-paper-plane text-lg text-purple-300"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-white">রকেট</span>
+                    </div>
+
+                    <div onclick="openPayment('উপায় (Upay)', '#0055A5')" class="flex flex-col items-center cursor-pointer hover:scale-105 transition">
+                        <div class="w-14 h-14 rounded-full bg-blue-600/30 border-2 border-blue-400 flex items-center justify-center mb-1 shadow">
+                            <i class="fas fa-smile text-lg text-blue-300"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-white">উপায়</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ERP User List Section -->
+        <section id="sec-user-list" class="hidden space-y-4">
+            <div class="glass-card p-4 flex justify-between items-center bg-sky-800/80">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-users-cog text-xl text-yellow-300"></i>
+                    <h2 class="text-lg font-extrabold text-white">ইউজার তালিকা (CharkajolBD ERP)</h2>
+                </div>
+                <span class="text-xs font-extrabold text-yellow-300">মোট ইউজার: ৮ জন</span>
+            </div>
+
+            <div id="erp-user-container" class="space-y-3">
+                <!-- ERP Users injected via JS -->
+            </div>
+        </section>
+
+        <!-- 3. Customer List Section -->
+        <section id="sec-customer-list" class="hidden space-y-4">
+            <div class="flex justify-between items-center mb-2">
+                <h2 class="text-xl font-extrabold text-yellow-300">গ্রাহক তালিকা</h2>
+                <input id="search-input" onkeyup="filterCustomers()" type="text" placeholder="খুঁজুন..." class="px-4 py-2 text-xs bg-white/20 border border-white/40 rounded-full text-white placeholder-white/70 outline-none">
+            </div>
+
+            <div id="customer-container" class="space-y-3">
+                <!-- Dynamic Customers Injected Here -->
+            </div>
+        </section>
+
+        <!-- 4. Add Customer Section -->
+        <section id="sec-add-customer" class="hidden">
+            <div class="glass-card p-6 max-w-lg mx-auto bg-sky-900/60">
+                <h2 class="text-xl font-black text-yellow-300 mb-4 text-center">নতুন গ্রাহক যোগ করুন</h2>
+                <form onsubmit="saveCustomer(event)" class="space-y-3 text-xs">
+                    <div>
+                        <label class="block text-white/80 font-bold mb-1">গ্রাহকের নাম</label>
+                        <input id="c-name" required type="text" placeholder="পূর্ণ নাম" class="w-full p-3 bg-white/10 border border-white/30 rounded-xl text-white outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-white/80 font-bold mb-1">মোবাইল নম্বর</label>
+                        <input id="c-phone" required type="text" placeholder="017XXXXXXXX" class="w-full p-3 bg-white/10 border border-white/30 rounded-xl text-white outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-white/80 font-bold mb-1">ঠিকানা</label>
+                        <input id="c-address" required type="text" placeholder="ঠিকানা" class="w-full p-3 bg-white/10 border border-white/30 rounded-xl text-white outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-white/80 font-bold mb-1">প্রাথমিক জমা ব্যালেন্স (৳)</label>
+                        <input id="c-balance" type="number" placeholder="500" class="w-full p-3 bg-white/10 border border-white/30 rounded-xl text-white outline-none">
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-sm rounded-xl shadow-lg mt-4">গ্রাহক তথ্য সেভ করুন</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 5. Notice Board Section -->
+        <section id="sec-notice" class="hidden space-y-4">
+            <h2 class="text-xl font-extrabold text-yellow-300 text-center">নোটিশ বোর্ড</h2>
+            <div class="glass-card p-5 space-y-2">
+                <h3 class="font-extrabold text-lg text-white">সাধারণ সভা</h3>
+                <p class="text-xs text-white/80">আগামী শুক্রবার বিকেল ৪টায় সংগঠনের কার্যালয়ে সাধারণ সভা অনুষ্ঠিত হবে। সকল সদস্যের উপস্থিতি কাম্য।</p>
+                <p class="text-[10px] text-yellow-300 font-bold text-right mt-2">১৮ আগস্ট, ২০২৬</p>
+            </div>
+        </section>
+
+        <!-- 6. Settings Section -->
+        <section id="sec-settings" class="hidden">
+            <div class="glass-card p-6 max-w-md mx-auto text-center space-y-4">
+                <h2 class="text-xl font-extrabold text-yellow-300">অ্যাপ সেটিংস</h2>
+                <div class="p-4 bg-white/10 rounded-xl text-left text-xs space-y-2">
+                    <p class="font-bold text-white">অ্যাপ নাম: Charkajol BD App & Web Portal</p>
+                    <p class="text-white/80">ভার্সন: v2.4.0 (Live Sync)</p>
+                    <p class="text-white/80">পোর্টাল লিঙ্ক: https://sites.google.com/view/charkajolbd</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Profile Section -->
+        <section id="sec-profile" class="hidden">
+            <div class="glass-card p-6 max-w-md mx-auto text-center space-y-4">
+                <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-yellow-300 mx-auto shadow-lg bg-sky-900">
+                    <img id="profile-img" src="https://via.placeholder.com/100/0284C7/FFFFFF?text=Admin" alt="Profile" class="w-full h-full object-cover">
+                </div>
+                <h2 id="profile-role-title" class="text-2xl font-black text-white">এডমিন প্রোফাইল</h2>
+                <p class="text-yellow-300 font-bold text-xs">চরকাজল সমাজ কল্যাণ সংগঠন</p>
+
+                <div class="p-4 bg-white/10 rounded-xl text-left text-xs space-y-2">
+                    <div class="flex justify-between"><span class="text-sky-300 font-bold">পদবী:</span><span class="font-bold text-white">অ্যাডমিন</span></div>
+                    <div class="flex justify-between"><span class="text-sky-300 font-bold">মোবাইল:</span><span class="font-bold text-white">01855110013</span></div>
+                    <div class="flex justify-between"><span class="text-sky-300 font-bold">ঠিকানা:</span><span class="font-bold text-white">চরকাজল, গলাচিপা, পটুয়াখালী</span></div>
+                </div>
+
+                <button onclick="toggleRole()" class="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-xs rounded-xl shadow">
+                    Switch Role (Admin <-> Member)
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="fixed bottom-3 left-4 right-4 h-16 bottom-nav z-40 flex items-center justify-around px-2 shadow-2xl">
+        <button id="nav-btn-admin" onclick="navTo('admin')" class="flex flex-col items-center text-white/70 hover:text-white">
+            <i class="fas fa-user-shield text-lg"></i>
+            <span class="text-[10px] font-bold">Admin</span>
+        </button>
+        <button onclick="navTo('user-list')" class="flex flex-col items-center text-white/70 hover:text-white">
+            <i class="fas fa-users text-lg"></i>
+            <span class="text-[10px] font-bold">User</span>
+        </button>
+        <button onclick="navTo('home')" class="flex flex-col items-center text-yellow-300 font-bold">
+            <i class="fas fa-home text-lg"></i>
+            <span class="text-[10px] font-extrabold">Home</span>
+        </button>
+        <button onclick="navTo('settings')" class="flex flex-col items-center text-white/70 hover:text-white">
+            <i class="fas fa-cog text-lg"></i>
+            <span class="text-[10px] font-bold">Settings</span>
+        </button>
+        <button onclick="navTo('profile')" class="flex flex-col items-center text-white/70 hover:text-white">
+            <i class="fas fa-user-circle text-lg"></i>
+            <span class="text-[10px] font-bold">Profile</span>
+        </button>
+    </nav>
+
+    <!-- Payment Account Modal -->
+    <div id="payment-modal" class="fixed inset-0 bg-black/70 backdrop-blur-md hidden flex items-center justify-center p-4 z-50">
+        <div class="glass-card p-6 max-w-sm w-full bg-sky-950/90 text-center shadow-2xl">
+            <h3 id="payment-title" class="text-xl font-extrabold text-yellow-300 mb-3">অনলাইন পেমেন্ট</h3>
+            <div class="p-4 bg-white/10 rounded-2xl mb-4 border border-white/20">
+                <p class="text-xs text-white/80 font-bold">সংগঠনের অফিসিয়াল মার্চেন্ট / পার্সোনাল নম্বর:</p>
+                <p class="text-2xl font-black text-white mt-1">01855110013</p>
+                <span class="inline-block mt-2 px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-xs font-bold border border-emerald-400">পার্সোনাল অ্যাকাউন্ট</span>
+            </div>
+            <button onclick="closePayment()" class="w-full py-3 bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-sm rounded-xl shadow">বন্ধ করুন</button>
+        </div>
+    </div>
+
+    <!-- JavaScript Application State & Logic -->
+    <script>
+        // ERP Users State
+        let erpUsers = [
+            { id: 1, name: "মোঃ রফিকুল ইসলাম", pos: "সভাপতি", phone: "০১৭১২৩৪৫৬৭৮", addr: "চর কাজল, পলাশবাড়ি", status: "সক্রিয়" },
+            { id: 2, name: "মোঃ সোহেল রানা", pos: "সাধারণ সম্পাদক", phone: "০১৮৯৮৭৬৫৪৩২", addr: "চর কাজল, যশোর", status: "সক্রিয়" },
+            { id: 3, name: "আব্দুল কাদের", pos: "সাংগঠনিক সম্পাদক", phone: "০১৬৭৮৮৮৪৪৪৪", addr: "চর কাজল, গলাচিপা", status: "সক্রিয়" },
+            { id: 4, name: "মোঃ নাজমুল হক", pos: "কোষাধ্যক্ষ", phone: "০১৯৯৯৮৮৭৯৬৫", addr: "চর কাজল, খুলনা", status: "নিষ্ক্রিয়" },
+            { id: 5, name: "মাহফুজুর রহমান", pos: "দপ্তর সম্পাদক", phone: "০১৭৬৬৬৬৬৬৬৬", addr: "চর কাজল, বরিশাল", status: "সক্রিয়" },
+            { id: 6, name: "রবিউল করিম", pos: "প্রচার সম্পাদক", phone: "০১৮৮৮৮৮৮৮৮৮", addr: "চর কাজল, পটুয়াখালী", status: "সক্রিয়" },
+            { id: 7, name: "নাসরিন আক্তার", pos: "মহিলা বিষয়ক সম্পাদক", phone: "০১৭৭৭৭৭৭৭৭৭", addr: "চর কাজল, ভোলা", status: "সক্রিয়" },
+            { id: 8, name: "শফিকুল ইসলাম", pos: "সদস্য", phone: "০১৯১১৯৯৯৯৯৯", addr: "চর কাজল, লালমোহন", status: "সক্রিয়" }
+        ];
+
+        // Default Customers List State
+        let customers = [
+            { id: 1001, name: "আব্দুর রহমান", phone: "01711223344", address: "চরকাজল বাজার", balance: 500 },
+            { id: 1002, name: "মোসাম্মৎ রহিমা খাতুন", phone: "01822334455", address: "চরকাজল পটুয়াখালী", balance: 1200 }
+        ];
+
+        let currentRole = "ADMIN"; // "ADMIN" or "MEMBER"
+
+        // 10-Second Header Title Toggle
+        const topTitles = ["চরকাজল সমাজ কল্যাণ সংগঠন", "সেবাই আমাদের লক্ষ্য"];
+        let titleIdx = 0;
+        setInterval(() => {
+            titleIdx = (titleIdx + 1) % topTitles.length;
+            const elem = document.getElementById("top-title");
+            elem.style.opacity = 0;
+            setTimeout(() => {
+                elem.innerText = topTitles[titleIdx];
+                elem.style.color = titleIdx === 1 ? "#FDE047" : "#FFFFFF";
+                elem.style.opacity = 1;
+            }, 300);
+        }, 10000);
+
+        // Clock Widget Live Timer
+        setInterval(() => {
+            const now = new Date();
+            document.getElementById("clock-time").innerText = now.toLocaleTimeString();
+            document.getElementById("clock-date").innerText = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+        }, 1000);
+
+        function toggleDrawer() {
+            const drawer = document.getElementById("side-drawer");
+            const overlay = document.getElementById("drawer-overlay");
+            drawer.classList.toggle("-translate-x-full");
+            overlay.classList.toggle("hidden");
+        }
+
+        function toggleSubMenu(id) {
+            document.getElementById(id).classList.toggle("hidden");
+        }
+
+        function navTo(section) {
+            document.querySelectorAll("main > section").forEach(s => s.classList.add("hidden"));
+            
+            if (section === 'home') document.getElementById("sec-home").classList.remove("hidden");
+            else if (section === 'user-list') { renderErpUsers(); document.getElementById("sec-user-list").classList.remove("hidden"); }
+            else if (section === 'customer-list') { renderCustomers(); document.getElementById("sec-customer-list").classList.remove("hidden"); }
+            else if (section === 'add-customer') document.getElementById("sec-add-customer").classList.remove("hidden");
+            else if (section === 'notice') document.getElementById("sec-notice").classList.remove("hidden");
+            else if (section === 'settings') document.getElementById("sec-settings").classList.remove("hidden");
+            else if (section === 'profile') document.getElementById("sec-profile").classList.remove("hidden");
+            else if (section === 'admin') {
+                if (currentRole === 'ADMIN') navTo('home');
+                else alert("অ্যাক্সেস অনুমোদিত নয়! এই ফিচারটি শুধুমাত্র এডমিনদের জন্য।");
+            }
+
+            const drawer = document.getElementById("side-drawer");
+            if (!drawer.classList.contains("-translate-x-full")) toggleDrawer();
+        }
+
+        function renderErpUsers() {
+            const container = document.getElementById("erp-user-container");
+            container.innerHTML = "";
+            erpUsers.forEach(u => {
+                const statusColor = u.status === 'সক্রিয়' ? 'bg-emerald-500' : 'bg-rose-500';
+                container.innerHTML += `
+                    <div class="glass-card p-4 text-xs space-y-2">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center gap-3">
+                                <span class="font-bold text-white/70">\${u.id}.</span>
+                                <div class="w-10 h-10 rounded-full bg-white/20 border border-white/40 flex items-center justify-center font-extrabold text-yellow-300">
+                                    \${u.name.charAt(0)}
+                                </div>
+                                <div>
+                                    <h4 class="font-extrabold text-sm text-white">\${u.name}</h4>
+                                    <span class="inline-block px-2 py-0.5 bg-sky-500/30 text-sky-200 border border-sky-400/40 rounded text-[10px] font-bold">\${u.pos}</span>
+                                </div>
+                            </div>
+                            <span class="\${statusColor} text-white px-2 py-1 rounded-full text-[10px] font-extrabold">\${u.status}</span>
+                        </div>
+                        <div class="pt-2 border-t border-white/20 flex justify-between items-center text-[11px]">
+                            <div>
+                                <p class="text-white/90">মোবাইল: \${u.phone}</p>
+                                <p class="text-white/70">ঠিকানা: \${u.addr}</p>
+                            </div>
+                            <button onclick="alert('ইউজার প্রোফাইল: ' + '\${u.name}')" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-500 text-white font-bold rounded-lg shadow">ভিউ</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function renderCustomers() {
+            const container = document.getElementById("customer-container");
+            container.innerHTML = "";
+            customers.forEach(c => {
+                container.innerHTML += `
+                    <div class="glass-card p-4 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full bg-white/20 border border-white/40 flex items-center justify-center font-bold text-lg text-yellow-300">
+                                \${c.name.charAt(0)}
+                            </div>
+                            <div>
+                                <h4 class="font-extrabold text-base text-white">\${c.name}</h4>
+                                <p class="text-[10px] font-bold text-sky-200">A/C: \${c.id} | \${c.phone}</p>
+                                <p class="text-[10px] text-white/70">\${c.address}</p>
+                            </div>
+                        </div>
+                        <span class="font-black text-emerald-300 text-base">\${c.balance} ৳</span>
+                    </div>
+                `;
+            });
+            document.getElementById("stat-count").innerText = customers.length + " জন";
+        }
+
+        function filterCustomers() {
+            const q = document.getElementById("search-input").value.toLowerCase();
+            document.querySelectorAll("#customer-container > div").forEach(card => {
+                card.style.display = card.innerText.toLowerCase().includes(q) ? "flex" : "none";
+            });
+        }
+
+        function saveCustomer(e) {
+            e.preventDefault();
+            const name = document.getElementById("c-name").value;
+            const phone = document.getElementById("c-phone").value;
+            const address = document.getElementById("c-address").value;
+            const balance = parseFloat(document.getElementById("c-balance").value) || 0;
+
+            const newId = 1000 + customers.length + 1;
+            customers.unshift({ id: newId, name, phone, address, balance });
+            
+            alert("গ্রাহক তথ্য সফলভাবে যোগ করা হয়েছে!");
+            document.getElementById("c-name").value = "";
+            document.getElementById("c-phone").value = "";
+            document.getElementById("c-address").value = "";
+            document.getElementById("c-balance").value = "";
+
+            navTo('customer-list');
+        }
+
+        function openPayment(method) {
+            document.getElementById("payment-title").innerText = method;
+            document.getElementById("payment-modal").classList.remove("hidden");
+        }
+
+        function closePayment() {
+            document.getElementById("payment-modal").classList.add("hidden");
+        }
+
+        function toggleRole() {
+            currentRole = currentRole === 'ADMIN' ? 'MEMBER' : 'ADMIN';
+            
+            const roleTitle = document.getElementById("profile-role-title");
+            const drawerRole = document.getElementById("drawer-user-role");
+            const adminBtn = document.getElementById("nav-btn-admin");
+
+            if (currentRole === 'MEMBER') {
+                roleTitle.innerText = "সাধারণ সদস্য প্রোফাইল";
+                drawerRole.innerText = "সাধারণ সদস্য";
+                adminBtn.classList.add("hidden");
+            } else {
+                roleTitle.innerText = "এডমিন প্রোফাইল";
+                drawerRole.innerText = "এডমিন";
+                adminBtn.classList.remove("hidden");
             }
         }
 
-        var isCommitteeExpanded by remember { mutableStateOf(false) }
-        var isUserExpanded by remember { mutableStateOf(false) }
-        var isCustomerExpanded by remember { mutableStateOf(false) }
-        var isOnlinePaymentExpanded by remember { mutableStateOf(false) }
-
-        val committeeLabel = stringResource(Res.string.committee)
-        val userLabel = stringResource(Res.string.user)
-        val customerLabel = stringResource(Res.string.customer)
-        val dashboardLabel = stringResource(Res.string.dashboard)
-        val onlinePaymentLabel = stringResource(Res.string.online_payment)
-        val noticeLabel = stringResource(Res.string.notice)
-        val messagesLabel = stringResource(Res.string.messages)
-        val settingsLabel = stringResource(Res.string.settings)
-        val logoutLabel = stringResource(Res.string.logout)
-
-        val memberAllowedTitles = setOf(
-            dashboardLabel,
-            onlinePaymentLabel,
-            noticeLabel,
-            messagesLabel,
-            settingsLabel,
-            logoutLabel
-        )
-
-        val visibleMenuItems = if (userRole == UserRole.ADMIN) {
-            menuItems
-        } else {
-            menuItems.filter { it.title in memberAllowedTitles }
-        }
-
-        LazyColumn(
-            modifier = Modifier.weight(1f),
-            contentPadding = PaddingValues(vertical = 12.dp)
-        ) {
-            items(visibleMenuItems) { item ->
-                when (item.title) {
-                    committeeLabel -> {
-                        DrawerItemView(
-                            item = item,
-                            isExpanded = isCommitteeExpanded,
-                            onItemClick = { isCommitteeExpanded = !isCommitteeExpanded }
-                        )
-                        if (isCommitteeExpanded) {
-                            SubDrawerItemView(stringResource(Res.string.add_committee), Icons.Default.GroupAdd, onItemClick)
-                            SubDrawerItemView(stringResource(Res.string.committee_list), Icons.Default.Groups, onItemClick)
-                        }
-                    }
-                    userLabel -> {
-                        DrawerItemView(
-                            item = item,
-                            isExpanded = isUserExpanded,
-                            onItemClick = { isUserExpanded = !isUserExpanded }
-                        )
-                        if (isUserExpanded) {
-                            SubDrawerItemView(stringResource(Res.string.add_user), Icons.Default.PersonAdd, onItemClick)
-                            SubDrawerItemView(stringResource(Res.string.user_list), Icons.Default.FormatListBulleted, onItemClick)
-                        }
-                    }
-                    customerLabel -> {
-                        DrawerItemView(
-                            item = item,
-                            isExpanded = isCustomerExpanded,
-                            onItemClick = { isCustomerExpanded = !isCustomerExpanded }
-                        )
-                        if (isCustomerExpanded) {
-                            SubDrawerItemView(stringResource(Res.string.add), Icons.Default.PersonAdd, onItemClick)
-                            SubDrawerItemView(stringResource(Res.string.customer_list), Icons.Default.Groups, onItemClick)
-                            SubDrawerItemView(stringResource(Res.string.customer_ledger), Icons.Default.GridView, onItemClick)
-                        }
-                    }
-                    onlinePaymentLabel -> {
-                        DrawerItemView(
-                            item = item,
-                            isExpanded = isOnlinePaymentExpanded,
-                            onItemClick = { isOnlinePaymentExpanded = !isOnlinePaymentExpanded }
-                        )
-                        if (isOnlinePaymentExpanded) {
-                            SubDrawerItemDrawableView(stringResource(Res.string.bkash), Res.drawable.ic_bkash, onItemClick)
-                            SubDrawerItemDrawableView(stringResource(Res.string.nagad), Res.drawable.ic_nagad, onItemClick)
-                            SubDrawerItemDrawableView(stringResource(Res.string.rocket), Res.drawable.ic_rocket, onItemClick)
-                            SubDrawerItemDrawableView(stringResource(Res.string.upay), Res.drawable.ic_upay, onItemClick)
-                        }
-                    }
-                    else -> {
-                        DrawerItemView(item = item, onItemClick = onItemClick)
-                    }
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun SubDrawerItemDrawableView(title: String, drawable: org.jetbrains.compose.resources.DrawableResource, onClick: (String) -> Unit) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 44.dp, end = 16.dp, top = 2.dp, bottom = 2.dp)
-            .clip(RoundedCornerShape(14.dp))
-            .background(Color.White.copy(alpha = 0.15f))
-            .border(0.8.dp, Color.White.copy(alpha = 0.4f), RoundedCornerShape(14.dp))
-            .clickable { onClick(title) }
-            .padding(horizontal = 14.dp, vertical = 10.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Icon(
-            painter = painterResource(drawable),
-            contentDescription = null,
-            tint = Color.Unspecified,
-            modifier = Modifier.size(22.dp)
-        )
-        Spacer(modifier = Modifier.width(10.dp))
-        Text(
-            text = title,
-            color = Color(0xFFFEF3C7),
-            fontSize = 16.sp,
-            fontWeight = FontWeight.ExtraBold
-        )
-    }
-}
-
-@Composable
-fun SubDrawerItemView(title: String, icon: ImageVector, onClick: (String) -> Unit) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 44.dp, end = 16.dp, top = 2.dp, bottom = 2.dp)
-            .clip(RoundedCornerShape(14.dp))
-            .background(Color.White.copy(alpha = 0.15f))
-            .border(0.8.dp, Color.White.copy(alpha = 0.4f), RoundedCornerShape(14.dp))
-            .clickable { onClick(title) }
-            .padding(horizontal = 14.dp, vertical = 10.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = null,
-            tint = Color(0xFF7DD3FC),
-            modifier = Modifier.size(20.dp)
-        )
-        Spacer(modifier = Modifier.width(10.dp))
-        Text(
-            text = title,
-            color = Color(0xFFFEF3C7),
-            fontSize = 16.sp,
-            fontWeight = FontWeight.ExtraBold
-        )
-    }
-}
-
-@Composable
-fun DrawerItemView(
-    item: DrawerItemData,
-    isExpanded: Boolean = false,
-    onItemClick: (String) -> Unit
-) {
-
-    if (item.isDivider) {
-        HorizontalDivider(
-            modifier = Modifier.padding(horizontal = 24.dp, vertical = 10.dp),
-            color = Color.White.copy(alpha = 0.25f),
-            thickness = 1.dp
-        )
-        return
-    }
-
-    val isHeader = item.isHeader
-    val logoutStr = stringResource(Res.string.logout)
-    val isLogout = item.title == logoutStr
-
-    val backgroundColor = when {
-        isLogout -> Color(0xFFEF4444).copy(alpha = 0.22f)
-        isHeader -> Color.White.copy(alpha = 0.28f)
-        isExpanded -> Color.White.copy(alpha = 0.20f)
-        else -> Color.White.copy(alpha = 0.08f)
-    }
-    val borderColor = when {
-        isLogout -> Color(0xFFF87171).copy(alpha = 0.5f)
-        isHeader -> Color.White.copy(alpha = 0.6f)
-        isExpanded -> Color.White.copy(alpha = 0.45f)
-        else -> Color.White.copy(alpha = 0.22f)
-    }
-    val textColor = when {
-        isLogout -> Color(0xFFFECACA)
-        isHeader -> Color(0xFFFEF08A)
-        isExpanded -> Color.White
-        else -> Color.White
-    }
-    val iconColor = when {
-        isLogout -> Color(0xFFF87171)
-        isHeader -> Color(0xFFFDE047)
-        isExpanded -> Color(0xFFBAE6FD)
-        else -> Color(0xFFE0F2FE)
-    }
-
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 3.dp)
-            .clip(RoundedCornerShape(16.dp))
-            .background(backgroundColor)
-            .border(
-                width = 1.dp,
-                color = borderColor,
-                shape = RoundedCornerShape(16.dp)
-            )
-            .clickable { onItemClick(item.title) }
-            .padding(horizontal = 16.dp, vertical = 12.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Icon(
-            imageVector = item.icon,
-            contentDescription = null,
-            tint = iconColor,
-            modifier = Modifier.size(24.dp)
-        )
-        Spacer(modifier = Modifier.width(14.dp))
-        Text(
-            text = item.title,
-            color = textColor,
-            fontSize = 18.sp,
-            fontWeight = FontWeight.ExtraBold,
-            modifier = Modifier.weight(1f)
-        )
-        if (item.hasBadge) {
-            Icon(
-                imageVector = if (isExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                contentDescription = null,
-                tint = if (isExpanded) Color(0xFFFDE047) else Color.White.copy(alpha = 0.8f),
-                modifier = Modifier.size(20.dp)
-            )
-        }
-    }
-}
-
-data class DrawerItemData(
-    val title: String,
-    val icon: ImageVector,
-    val isHeader: Boolean = false,
-    val hasBadge: Boolean = false,
-    val isDivider: Boolean = false
-)
+        // Initialize App
+        renderCustomers();
+    </script>
+</body>
+</html>
