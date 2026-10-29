@@ -2,111 +2,279 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>চর কাজল সমাজ কল্যাণ সংগঠন | ERP Liquid Glass</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CharkajolBD ERP | Login</title>
+
 <style>
-:root{--navy:#15345b;--blue:#246bce;--teal:#13a89e;--orange:#f59e0b;--bg:#f2f6fc;--ink:#203047;--muted:#64748b;--white:#fff;--red:#d9364f;--line:#e2e8f0}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,"Noto Sans Bengali",Arial,sans-serif;background:var(--bg);color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:10px 13px;font-weight:700}.primary{background:var(--blue);color:#fff}.success{background:#0e9f6e;color:white}.warning{background:#f59e0b;color:#222}.danger{background:var(--red);color:#fff}.soft{background:#eaf2ff;color:#174b92}.hidden{display:none!important}
-.login-wrap{position:relative;isolation:isolate;overflow:hidden;min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(ellipse at 15% 18%,#7ef6dc66,transparent 35%),radial-gradient(ellipse at 88% 80%,#7cb8ff77,transparent 38%),linear-gradient(135deg,#082743,#087f91 55%,#153b70)}.login-wrap:before,.login-wrap:after{content:"";position:absolute;z-index:-1;border-radius:50%;filter:blur(2px);pointer-events:none}.login-wrap:before{width:300px;height:300px;left:-90px;bottom:-100px;background:#52f3c777;box-shadow:0 0 80px #52f3c744}.login-wrap:after{width:360px;height:360px;right:-120px;top:-120px;background:#9ccaff77;box-shadow:0 0 100px #9ccaff55}.login-card{position:relative;background:linear-gradient(145deg,#ffffff55,#ffffff20);border:1px solid #ffffffa6;border-radius:28px;padding:30px;max-width:430px;width:100%;box-shadow:0 25px 70px #061b3c55,inset 0 1px 0 #ffffff99;backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%)}.brandmark{width:78px;height:78px;border-radius:25px;background:linear-gradient(135deg,#ffffff77,#ffffff22);border:1px solid #ffffffbb;color:white;display:grid;place-items:center;font-size:27px;font-weight:900;margin:0 auto 12px;box-shadow:0 10px 30px #062d4b33,inset 0 1px 0 #ffffffaa}.login-card h1{text-align:center;font-size:22px;line-height:1.5;margin:8px 0;color:#07552d}.login-card p{text-align:center;color:#075a7a;margin-top:0}.login-card .field{display:flex;flex-direction:column;gap:6px;margin-bottom:13px}.login-card .field label{font-weight:700;font-size:14px;color:#123d50}.login-card .field input,.login-card .field select,.login-card .field textarea{width:100%;padding:13px 12px;border:1px solid #ffffffc9;border-radius:13px;background:#ffffff8c;color:#17384c;min-width:0;outline:none}.login-card .field input:focus{border-color:#00bcd4;box-shadow:0 0 0 3px #00bcd433}.login-card .field textarea{min-height:76px}.login-card .primary{width:100%;padding:13px;background:linear-gradient(110deg,#06bce7,#00a89c);border-radius:14px;box-shadow:0 8px 22px #007eaa44}.login-card .hint{font-size:12px;color:#164d60;text-align:center;margin-top:12px}@supports not (backdrop-filter:blur(1px)){.login-card{background:#e9faffee}}
-.app{min-height:100vh}.topbar{background:linear-gradient(100deg,#15345b,#246bce);color:white;padding:15px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.brand{display:flex;align-items:center;gap:12px}.brand .brandmark{margin:0;width:48px;height:48px;border-radius:15px;flex-shrink:0}.brand h1{font-size:18px;margin:0}.brand small{opacity:.85}.layout{display:grid;grid-template-columns:245px minmax(0,1fr);min-height:calc(100vh - 78px)}aside{background:#fff;padding:16px 12px;border-right:1px solid var(--line)}.navbtn{display:block;text-align:left;width:100%;background:transparent;color:#334155;margin:4px 0;padding:12px;border-radius:11px}.navbtn.active,.navbtn:hover{background:#eaf2ff;color:#174b92}.navgroup{font-size:11px;color:#94a3b8;font-weight:800;letter-spacing:.08em;padding:16px 12px 5px}main{padding:22px;min-width:0}.pagehead{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}.pagehead h2{margin:0;font-size:23px}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.stat,.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:17px;box-shadow:0 4px 16px #102c4a08}.stat .label{color:var(--muted);font-size:13px}.stat .number{font-size:27px;font-weight:850;margin-top:7px}.panel{margin-bottom:16px}.panel h3{margin:0 0 14px}.formgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 14px}.span2{grid-column:span 2}.span3{grid-column:1/-1}.actions{display:flex;gap:7px;flex-wrap:wrap}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:650px;background:white}th,td{padding:11px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle;font-size:14px}th{background:#f7faff;color:#334155;white-space:nowrap}.search{max-width:360px;width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px}.pill{display:inline-block;background:#e5f7f4;color:#087f75;border-radius:99px;padding:4px 9px;font-size:12px;font-weight:800}.avatar{width:44px;height:44px;object-fit:cover;border-radius:12px;background:#e2e8f0}.bloodgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.bloodcard{background:white;border:1px solid var(--line);border-radius:15px;padding:17px;text-align:center}.bloodcard strong{font-size:27px;color:#d9364f;display:block}.bloodcard span{color:var(--muted);font-size:13px}.preview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.preview img{width:100%;max-height:160px;object-fit:contain;border:1px solid var(--line);border-radius:10px}.notice{padding:12px 14px;border-radius:12px;background:#fff7df;color:#795300;margin-bottom:15px;font-size:13px}.receipt{max-width:850px;margin:auto;border:2px solid #15345b;padding:24px;background:white;color:#111}.receipthead{text-align:center;border-bottom:2px solid #15345b;padding-bottom:14px;margin-bottom:15px}.receipthead h2{margin:0 0 5px}.receiptmeta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.receipt table{min-width:0}.signatures{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:55px}.signatures div{text-align:center;border-top:1px solid #555;padding-top:8px;font-size:12px}.detailgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.detail{background:#f8fafc;padding:11px;border-radius:10px}.detail small{display:block;color:var(--muted)}.detail strong{overflow-wrap:anywhere}.footer{text-align:center;color:var(--muted);padding:20px;font-size:12px}
-@media(max-width:950px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.layout{grid-template-columns:1fr}aside{display:flex;overflow:auto;gap:5px;border-right:0;border-bottom:1px solid var(--line);padding:8px}.navgroup{display:none}.navbtn{white-space:nowrap;width:auto;flex-shrink:0;margin:0;padding:10px}.formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.bloodgrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media(max-width:600px){main{padding:13px}.topbar{padding:12px}.brand h1{font-size:15px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.stat{padding:12px}.stat .number{font-size:22px}.formgrid,.detailgrid{grid-template-columns:1fr}.span2,.span3{grid-column:auto}.bloodgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.signatures{grid-template-columns:repeat(2,1fr)}.receipt{padding:12px}.pagehead h2{font-size:20px}}
-@media print{body{background:white!important}.no-print,.topbar,aside,.pagehead,.footer{display:none!important}.app,.layout,main{display:block!important;padding:0!important;margin:0!important;min-height:0!important}.receipt{border:1px solid #111!important;max-width:none!important;margin:0!important;padding:15mm!important;box-shadow:none!important}.receipt table{width:100%!important}.receipt th,.receipt td{border:1px solid #888!important;background:white!important}.signatures{break-inside:avoid}.print-member{padding:10mm}.print-member h2{text-align:center}}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, "Noto Sans Bengali", sans-serif;
+  min-height: 100vh;
+  color: #123d50;
+}
+
+/* Background */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  background:
+    linear-gradient(120deg, rgba(0,80,120,.20),
+    rgba(0,180,190,.12)),
+    url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2000&q=85")
+    center/cover no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Liquid Glass Card */
+.glass-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 32px;
+  text-align: center;
+  border-radius: 30px;
+  background: rgba(255,255,255,.38);
+  border: 1px solid rgba(255,255,255,.75);
+  box-shadow:
+    0 20px 60px rgba(0,40,70,.25),
+    inset 0 1px 2px rgba(255,255,255,.8);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+}
+
+.logo {
+  width: 112px;
+  height: 112px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: white;
+  border: 4px solid rgba(255,255,255,.9);
+  box-shadow: 0 8px 25px #003b4525;
+  margin-bottom: 14px;
+}
+
+h1 {
+  color: #075b28;
+  font-size: 25px;
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+
+h2 {
+  color: #0875c9;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.tagline {
+  color: #075c82;
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+
+.field {
+  position: relative;
+  margin: 14px 0;
+}
+
+.field input {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid rgba(255,255,255,.95);
+  border-radius: 17px;
+  background: rgba(255,255,255,.62);
+  color: #123d50;
+  font-size: 16px;
+  outline: none;
+  box-shadow: inset 0 2px 8px #ffffff55;
+}
+
+.field input:focus {
+  border-color: #00bcd4;
+  box-shadow: 0 0 0 3px #00bcd433;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 15px;
+  margin-top: 8px;
+  border: 0;
+  border-radius: 16px;
+  color: white;
+  font-size: 19px;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(110deg,#04bce7,#00a89c,#078b91);
+  box-shadow: 0 8px 22px #009cba55;
+  transition: .25s;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+
+.divider {
+  margin: 23px 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #125b73;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: #1686a2;
+}
+
+.panels {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 12px;
+}
+
+.panel {
+  padding: 17px 8px;
+  border-radius: 17px;
+  background: rgba(255,255,255,.55);
+  border: 1px solid #ffffffb0;
+  color: #08638b;
+  font-weight: bold;
+}
+
+.panel span {
+  display: block;
+  font-size: 25px;
+  margin-bottom: 7px;
+}
+
+.error {
+  display: none;
+  color: #9c1725;
+  background: #ffffffa8;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 12px;
+}
+
+.footer {
+  margin-top: 22px;
+  color: #164d60;
+  font-size: 12px;
+}
+
+@media(max-width:500px) {
+  .login-page { padding: 14px; }
+  .glass-card { padding: 23px 18px; }
+  h1 { font-size: 21px; }
+  h2 { font-size: 23px; }
+  .logo { width: 95px; height: 95px; }
+}
 </style>
 </head>
+
 <body>
-<div id="loginScreen" class="login-wrap">
-  <div class="login-card">
-    <div class="brandmark">চক</div>
+
+<div class="login-page">
+  <main class="glass-card">
+
+    <!-- সংগঠনের লোগো -->
+    <img
+      class="logo"
+      src="logo.png"
+      alt="চর কাজল সমাজ কল্যাণ সংগঠনের লোগো"
+    >
+
     <h1>চর কাজল সমাজ কল্যাণ সংগঠন</h1>
-    <p>ERP ব্যবস্থাপনা প্যানেল</p>
-    <div class="field"><label>ইউজার নাম</label><input id="loginUser" value="admin" autocomplete="username"></div>
-    <div class="field"><label>পাসওয়ার্ড</label><input id="loginPass" type="password" value="demo123" autocomplete="current-password"></div>
-    <button class="primary" onclick="login()">লগইন করুন</button>
-    <div class="hint">ডেমো লগইন: admin / demo123</div>
-    <div id="loginError" class="hint" style="color:#d9364f"></div>
-  </div>
+    <h2>CharkajolBD ERP</h2>
+
+    <p class="tagline">“মানবতার সেবায়, ঐক্যের শক্তি”</p>
+
+    <form id="loginForm">
+      <div class="field">
+        <input
+          id="username"
+          type="text"
+          placeholder="ইউজারনেম / মোবাইল নম্বর"
+          autocomplete="username"
+          required
+        >
+      </div>
+
+      <div class="field">
+        <input
+          id="password"
+          type="password"
+          placeholder="পাসওয়ার্ড"
+          autocomplete="current-password"
+          required
+        >
+      </div>
+
+      <button class="login-btn" type="submit">
+        ⇥ লগইন করুন
+      </button>
+
+      <p id="error" class="error">
+        ইউজার আইডি অথবা পাসওয়ার্ড সঠিক নয়।
+      </p>
+    </form>
+
+    <div class="divider">অথবা</div>
+
+    <div class="panels">
+      <div class="panel">
+        <span>🛡️</span>
+        Admin Panel
+      </div>
+
+      <div class="panel">
+        <span>👤</span>
+        User Panel
+      </div>
+
+      <div class="panel">
+        <span>👥</span>
+        Committee List
+      </div>
+
+      <div class="panel">
+        <span>➕</span>
+        Member Add
+      </div>
+    </div>
+
+    <p class="footer">
+      CharkajolBD ERP · চর কাজল সমাজ কল্যাণ সংগঠন
+    </p>
+
+  </main>
 </div>
-<div id="app" class="app hidden">
-<header class="topbar">
-  <div class="brand"><div class="brandmark">চক</div><div><h1>চর কাজল সমাজ কল্যাণ সংগঠন</h1><small>ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</small></div></div>
-  <div class="actions"><span>এডমিন: শাকিল মাহমুদ</span><button class="soft" onclick="logout()">লগআউট</button></div>
-</header>
-<div class="layout">
-<aside>
-<div class="navgroup">মূল মেনু</div>
-<button class="navbtn active" data-page="dashboard" onclick="go('dashboard',this)">🏠 ড্যাশবোর্ড</button>
-<button class="navbtn" data-page="memberAdd" onclick="go('memberAdd',this)">➕ সদস্য এড</button>
-<button class="navbtn" data-page="members" onclick="go('members',this)">👥 সদস্য তালিকা</button>
-<button class="navbtn" data-page="committee" onclick="go('committee',this)">🧑‍🤝‍🧑 কমিটির তালিকা</button>
-<button class="navbtn" data-page="blood" onclick="go('blood',this)">🩸 ব্লাড গ্রুপ</button>
-<div class="navgroup">ফান্ড ও হিসাব</div>
-<button class="navbtn" data-page="fundAdd" onclick="go('fundAdd',this)">💰 ফান্ড জমা</button>
-<button class="navbtn" data-page="funds" onclick="go('funds',this)">🧾 ফান্ড হিসাব / রসিদ</button>
-<div class="navgroup">ব্যবস্থাপনা</div>
-<button class="navbtn" data-page="admin" onclick="go('admin',this)">⚙️ এডমিন প্যানেল</button>
-<button class="navbtn" data-page="user" onclick="go('user',this)">👤 ইউজার প্যানেল</button>
-<button class="navbtn" data-page="islamic" onclick="go('islamic',this)">☪️ ইসলামিক জ্ঞান</button>
-</aside>
-<main>
-<div id="content"></div>
-<div class="footer">চর কাজল সমাজ কল্যাণ সংগঠন · ERP ডেমো সংস্করণ</div>
-</main>
-</div>
-</div>
+
 <script>
-const KEY='charkajolbd_erp_v1';
-let db={members:[],funds:[],committee:[],nextMember:1,nextReceipt:1};
-let currentPage='dashboard', editingId=null;
-function loadDB(){try{const saved=localStorage.getItem(KEY);if(saved){const d=JSON.parse(saved);db={...db,...d};}}catch(e){console.warn(e)}}
-function saveDB(){localStorage.setItem(KEY,JSON.stringify(db))}
-function login(){if(document.getElementById('loginUser').value.trim()==='admin'&&document.getElementById('loginPass').value==='demo123'){document.getElementById('loginScreen').classList.add('hidden');document.getElementById('app').classList.remove('hidden');loadDB();render('dashboard')}else document.getElementById('loginError').textContent='ইউজার নাম বা পাসওয়ার্ড সঠিক নয়।'}
-function logout(){document.getElementById('app').classList.add('hidden');document.getElementById('loginScreen').classList.remove('hidden')}
-function go(page,btn){currentPage=page;document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.page===page));render(page)}
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function money(n){return '৳ '+Number(n||0).toLocaleString('en-BD')}
-function totalFund(){return db.funds.reduce((s,f)=>s+Number(f.amount||0),0)}
-function photoSrc(data){return data||''}
-function render(page){currentPage=page;const c=document.getElementById('content');const pages={dashboard:dashboardPage,memberAdd:memberFormPage,members:membersPage,committee:committeePage,blood:bloodPage,fundAdd:fundFormPage,funds:fundsPage,admin:adminPage,user:userPage,islamic:islamicPage};c.innerHTML=(pages[page]||dashboardPage)();if(page==='memberAdd'&&editingId)fillMemberForm(editingId);if(page==='fundAdd')populateMemberSelect();if(page==='members')filterMembers();if(page==='funds')filterFunds()}
-function dashboardPage(){return `<div class="pagehead"><h2>ড্যাশবোর্ড</h2><span class="pill">সিস্টেম চালু</span></div><div class="grid"><div class="stat"><div class="label">মোট সদস্য</div><div class="number">${db.members.length}</div></div><div class="stat"><div class="label">মোট ফান্ড জমা</div><div class="number">${money(totalFund())}</div></div><div class="stat"><div class="label">ফান্ড রসিদ</div><div class="number">${db.funds.length}</div></div><div class="stat"><div class="label">রক্তদাতা তালিকা</div><div class="number">${db.members.filter(m=>m.blood).length}</div></div></div><div class="panel" style="margin-top:16px"><h3>দ্রুত কাজ</h3><div class="actions"><button class="primary" onclick="go('memberAdd')">+ নতুন সদস্য</button><button class="success" onclick="go('fundAdd')">+ ফান্ড জমা</button><button class="soft" onclick="go('blood')">রক্তদাতা খুঁজুন</button></div></div><div class="notice">গুরুত্বপূর্ণ: এই ফাইলটি ডেমো সংস্করণ। তথ্য এই ব্রাউজারের Local Storage-এ থাকে; অন্য ফোন/কম্পিউটারে নিজে থেকে যাবে না।</div><div class="panel"><h3>সর্বশেষ সদস্য</h3>${memberTable(db.members.slice(-5).reverse())}</div>`}
-function memberFormPage(){editingId=editingId||null;return `<div class="pagehead"><h2>${editingId?'সদস্য তথ্য এডিট':'নতুন সদস্য যোগ করুন'}</h2><button class="soft" onclick="go('members')">সদস্য তালিকা</button></div><form id="memberForm" class="panel" onsubmit="saveMember(event)"><div class="formgrid">
-<div class="field"><label>সদস্যের নাম *</label><input name="name" required></div><div class="field"><label>মোবাইল নম্বর *</label><input name="phone" required inputmode="tel"></div><div class="field"><label>রক্তের গ্রুপ</label><select name="blood"><option value="">নির্বাচন করুন</option>${bloodOptions()}</select></div>
-<div class="field"><label>সদস্য আইডি</label><input name="id" readonly placeholder="অটো তৈরি হবে"></div><div class="field"><label>জন্ম তারিখ</label><input name="dob" type="date"></div><div class="field"><label>জাতীয়তা</label><input name="nationality" value="বাংলাদেশি"></div>
-<div class="field span2"><label>ঠিকানা</label><input name="address"></div><div class="field"><label>পিতার নাম</label><input name="father"></div><div class="field"><label>মাতার নাম</label><input name="mother"></div>
-<div class="field"><label>সদস্যের NID নম্বর</label><input name="nid"></div><div class="field"><label>সদস্যের ছবি</label><input name="photo" type="file" accept="image/*" onchange="fileToData(this,'memberPhotoPreview')"><img id="memberPhotoPreview" class="avatar hidden" alt="সদস্যের ছবি"></div><div class="field"><label>NID সামনের ছবি</label><input name="nidFront" type="file" accept="image/*" onchange="fileToData(this,'nidFrontPreview')"><img id="nidFrontPreview" class="avatar hidden" alt="NID সামনে"></div>
-<div class="field"><label>NID পেছনের ছবি</label><input name="nidBack" type="file" accept="image/*" onchange="fileToData(this,'nidBackPreview')"><img id="nidBackPreview" class="avatar hidden" alt="NID পেছনে"></div><div class="field"><label>নমিনির নাম</label><input name="nominee"></div><div class="field"><label>নমিনির মোবাইল</label><input name="nomineePhone"></div>
-<div class="field"><label>নমিনির NID নম্বর</label><input name="nomineeNid"></div><div class="field"><label>নমিনির ছবি</label><input name="nomineePhoto" type="file" accept="image/*" onchange="fileToData(this,'nomineePhotoPreview')"><img id="nomineePhotoPreview" class="avatar hidden" alt="নমিনির ছবি"></div><div class="field"><label>নমিনির NID সামনের ছবি</label><input name="nomineeNidFront" type="file" accept="image/*" onchange="fileToData(this,'nomineeNidFrontPreview')"><img id="nomineeNidFrontPreview" class="avatar hidden" alt="নমিনির NID সামনে"></div>
-<div class="field"><label>নমিনির NID পেছনের ছবি</label><input name="nomineeNidBack" type="file" accept="image/*" onchange="fileToData(this,'nomineeNidBackPreview')"><img id="nomineeNidBackPreview" class="avatar hidden" alt="নমিনির NID পেছনে"></div>
-</div><div class="actions"><button class="primary" type="submit">তথ্য সংরক্ষণ করুন</button><button class="soft" type="button" onclick="resetMemberForm()">ফর্ম পরিষ্কার</button></div></form>`}
-function bloodOptions(){return ['A+','A−','B+','B−','AB+','AB−','O+','O−'].map(x=>`<option>${x}</option>`).join('')}
-function fileToData(input,target){const file=input.files&&input.files[0];if(!file)return;if(file.size>1500000){alert('ছবিটি ১.৫ MB-এর মধ্যে দিন।');input.value='';return}const r=new FileReader();r.onload=()=>{input.dataset.data=r.result;const im=document.getElementById(target);if(im){im.src=r.result;im.classList.remove('hidden')}};r.readAsDataURL(file)}
-function saveMember(e){e.preventDefault();const f=e.target,old=db.members.find(m=>m.id===editingId);const get=n=>f.elements[n]?.value?.trim()||'';const getFile=n=>f.elements[n]?.dataset?.data||old?.[n]||'';const m={id:old?old.id:(`0010-${String(db.nextMember++).padStart(3,'0')}`),name:get('name'),phone:get('phone'),blood:get('blood'),dob:get('dob'),nationality:get('nationality'),address:get('address'),father:get('father'),mother:get('mother'),nid:get('nid'),photo:getFile('photo'),nidFront:getFile('nidFront'),nidBack:getFile('nidBack'),nominee:get('nominee'),nomineePhone:get('nomineePhone'),nomineeNid:get('nomineeNid'),nomineePhoto:getFile('nomineePhoto'),nomineeNidFront:getFile('nomineeNidFront'),nomineeNidBack:getFile('nomineeNidBack'),created:old?.created||new Date().toISOString()};if(old)db.members=db.members.map(x=>x.id===old.id?m:x);else db.members.push(m);saveDB();editingId=null;alert('সদস্যের তথ্য সংরক্ষণ হয়েছে। আইডি: '+m.id);go('members')}
-function resetMemberForm(){editingId=null;render('memberAdd')}
-function fillMemberForm(id){const m=db.members.find(x=>x.id===id);if(!m)return;const f=document.getElementById('memberForm');Object.keys(m).forEach(k=>{if(f.elements[k]&&typeof m[k]==='string'&&!['photo','nidFront','nidBack','nomineePhoto','nomineeNidFront','nomineeNidBack'].includes(k))f.elements[k].value=m[k]});f.elements.id.value=m.id;['photo','nidFront','nidBack','nomineePhoto','nomineeNidFront','nomineeNidBack'].forEach(k=>{if(m[k]){const im=document.getElementById(k+'Preview');if(im){im.src=m[k];im.classList.remove('hidden')}}})}
-function memberTable(list){if(!list.length)return '<p class="muted">এখনও কোনো সদস্য যোগ করা হয়নি।</p>';return `<div class="tablewrap"><table><thead><tr><th>ছবি</th><th>আইডি</th><th>নাম</th><th>মোবাইল</th><th>রক্তের গ্রুপ</th><th>কাজ</th></tr></thead><tbody>${list.map(m=>`<tr><td>${m.photo?`<img class="avatar" src="${m.photo}">`:'—'}</td><td>${esc(m.id)}</td><td>${esc(m.name)}</td><td>${esc(m.phone)}</td><td><span class="pill">${esc(m.blood||'নেই')}</span></td><td><div class="actions"><button class="soft" onclick="viewMember('${m.id}')">ভিউ</button><button class="warning" onclick="editMember('${m.id}')">এডিট</button><button class="danger" onclick="deleteMember('${m.id}')">মুছুন</button></div></td></tr>`).join('')}</tbody></table></div>`}
-function membersPage(){return `<div class="pagehead"><h2>সদস্য তালিকা</h2><button class="primary" onclick="editingId=null;go('memberAdd')">+ সদস্য এড</button></div><div class="panel"><input id="memberSearch" class="search" placeholder="নাম, আইডি বা মোবাইল দিয়ে খুঁজুন" oninput="filterMembers()"><div id="memberTable" style="margin-top:14px">${memberTable(db.members)}</div></div>`}
-function filterMembers(){const el=document.getElementById('memberTable');if(!el)return;const q=(document.getElementById('memberSearch')?.value||'').toLowerCase();el.innerHTML=memberTable(db.members.filter(m=>[m.name,m.id,m.phone,m.blood].some(v=>String(v||'').toLowerCase().includes(q))))}
-function editMember(id){editingId=id;go('memberAdd')}
-function deleteMember(id){if(confirm('এই সদস্যের তথ্য মুছে ফেলবেন?')){db.members=db.members.filter(m=>m.id!==id);saveDB();render('members')}}
-function viewMember(id){const m=db.members.find(x=>x.id===id);if(!m)return;const fields=[['সদস্য আইডি',m.id],['নাম',m.name],['মোবাইল',m.phone],['রক্তের গ্রুপ',m.blood],['ঠিকানা',m.address],['জন্ম তারিখ',m.dob],['জাতীয়তা',m.nationality],['পিতার নাম',m.father],['মাতার নাম',m.mother],['NID নম্বর',m.nid],['নমিনির নাম',m.nominee],['নমিনির মোবাইল',m.nomineePhone],['নমিনির NID',m.nomineeNid]];document.getElementById('content').innerHTML=`<div class="pagehead no-print"><h2>সদস্যের সম্পূর্ণ তথ্য</h2><div class="actions"><button class="primary" onclick="window.print()">প্রিন্ট</button><button class="soft" onclick="go('members')">ফিরে যান</button></div></div><div class="panel print-member"><h2>চর কাজল সমাজ কল্যাণ সংগঠন</h2><p style="text-align:center">সদস্যের তথ্যপত্র</p>${m.photo?`<img src="${m.photo}" style="width:110px;height:120px;object-fit:cover;border-radius:12px">`:''}<div class="detailgrid" style="margin-top:15px">${fields.map(([a,b])=>`<div class="detail"><small>${a}</small><strong>${esc(b||'—')}</strong></div>`).join('')}</div><h3 style="margin-top:20px">সংযুক্ত ছবি</h3><div class="preview">${[['সদস্যের NID সামনে',m.nidFront],['সদস্যের NID পেছনে',m.nidBack],['নমিনির ছবি',m.nomineePhoto],['নমিনির NID সামনে',m.nomineeNidFront],['নমিনির NID পেছনে',m.nomineeNidBack]].map(([label,src])=>src?`<div><b>${label}</b><img src="${src}"></div>`:'').join('')||'কোনো ছবি যোগ করা হয়নি'}</div></div>`}
-function bloodPage(){const groups=['A+','A−','B+','B−','AB+','AB−','O+','O−'];return `<div class="pagehead"><h2>ব্লাড গ্রুপ / রক্তদাতা</h2><span class="muted">গ্রুপে চাপ দিন</span></div><div class="bloodgrid">${groups.map(g=>`<button class="bloodcard" onclick="showBlood('${g}')"><strong>${g}</strong><span>${db.members.filter(m=>m.blood===g).length} জন সদস্য</span></button>`).join('')}</div><div id="bloodResults" class="panel" style="margin-top:16px"><h3>রক্তের গ্রুপ নির্বাচন করুন</h3><p class="muted">সদস্যের নাম, ফোন ও ঠিকানা দেখতে উপরের গ্রুপে চাপ দিন।</p></div>`}
-function showBlood(g){const el=document.getElementById('bloodResults');if(!el)return;const ms=db.members.filter(m=>m.blood===g);el.innerHTML=`<h3>${g} রক্তের গ্রুপ — ${ms.length} জন</h3>${ms.length?`<div class="tablewrap"><table><thead><tr><th>ছবি</th><th>আইডি</th><th>নাম</th><th>মোবাইল</th><th>ঠিকানা</th><th>যোগাযোগ</th></tr></thead><tbody>${ms.map(m=>`<tr><td>${m.photo?`<img class="avatar" src="${m.photo}">`:'—'}</td><td>${esc(m.id)}</td><td>${esc(m.name)}</td><td>${esc(m.phone)}</td><td>${esc(m.address||'—')}</td><td><div class="actions"><a href="tel:${esc(m.phone)}"><button class="success">কল</button></a><a target="_blank" rel="noopener" href="https://wa.me/${String(m.phone).replace(/\\D/g,'')}"><button class="primary">WhatsApp</button></a></div></td></tr>`).join('')}</tbody></table></div>`:'<p class="muted">এই গ্রুপে এখনো সদস্য নেই।</p>'}`}
-function fundFormPage(){return `<div class="pagehead"><h2>ফান্ড জমা</h2></div><form class="panel" onsubmit="saveFund(event)"><div class="formgrid"><div class="field span2"><label>সদস্য নির্বাচন করুন</label><select name="memberId" id="fundMember"><option value="">সদস্য নির্বাচন (ঐচ্ছিক)</option></select></div><div class="field"><label>জমার ধরন *</label><select name="type" required><option>ফান্ড জমা</option><option>বিশেষ সহায়তা</option><option>অন্যান্য</option></select></div><div class="field"><label>টাকার পরিমাণ *</label><input name="amount" type="number" min="1" required></div><div class="field"><label>জমার তারিখ *</label><input name="date" type="date" value="${new Date().toISOString().slice(0,10)}" required></div><div class="field"><label>অনুমোদনকারী ১</label><input name="sign1" placeholder="নাম / পদবি"></div><div class="field"><label>অনুমোদনকারী ২</label><input name="sign2" placeholder="নাম / পদবি"></div><div class="field"><label>অনুমোদনকারী ৩</label><input name="sign3" placeholder="নাম / পদবি"></div><div class="field"><label>অনুমোদনকারী ৪</label><input name="sign4" placeholder="নাম / পদবি"></div><div class="field span3"><label>মন্তব্য</label><textarea name="note"></textarea></div></div><button class="primary" type="submit">ফান্ড জমা সংরক্ষণ ও রসিদ তৈরি</button></form>`}
-function populateMemberSelect(){const s=document.getElementById('fundMember');if(!s)return;s.innerHTML='<option value="">সদস্য নির্বাচন (ঐচ্ছিক)</option>'+db.members.map(m=>`<option value="${esc(m.id)}">${esc(m.id)} — ${esc(m.name)}</option>`).join('')}
-function saveFund(e){e.preventDefault();const f=e.target,member=db.members.find(m=>m.id===f.elements.memberId.value);const item={receipt:'F-'+String(db.nextReceipt++).padStart(5,'0'),memberId:member?.id||'',name:member?.name||'সাধারণ ফান্ড',phone:member?.phone||'',type:f.elements.type.value,amount:Number(f.elements.amount.value),date:f.elements.date.value,signs:[f.elements.sign1.value,f.elements.sign2.value,f.elements.sign3.value,f.elements.sign4.value],note:f.elements.note.value};db.funds.push(item);saveDB();render('funds');showReceipt(item.receipt)}
-function fundsPage(){return `<div class="pagehead"><h2>ফান্ড হিসাব / রসিদ</h2><button class="primary" onclick="go('fundAdd')">+ ফান্ড জমা</button></div><div class="grid" style="margin-bottom:16px"><div class="stat"><div class="label">মোট জমা</div><div class="number">${money(totalFund())}</div></div><div class="stat"><div class="label">মোট রসিদ</div><div class="number">${db.funds.length}</div></div></div><div class="panel"><input class="search" id="fundSearch" placeholder="রসিদ, সদস্য বা তারিখ দিয়ে খুঁজুন" oninput="filterFunds()"><div class="tablewrap" id="fundTable" style="margin-top:14px"></div></div>`}
-function filterFunds(){const el=document.getElementById('fundTable');if(!el)return;const q=(document.getElementById('fundSearch')?.value||'').toLowerCase();const rows=db.funds.filter(f=>[f.receipt,f.name,f.memberId,f.date].some(v=>String(v||'').toLowerCase().includes(q)));el.innerHTML=rows.length?`<table><thead><tr><th>রসিদ নম্বর</th><th>তারিখ</th><th>সদস্য</th><th>ধরন</th><th>পরিমাণ</th><th>কাজ</th></tr></thead><tbody>${rows.slice().reverse().map(f=>`<tr><td>${esc(f.receipt)}</td><td>${esc(f.date)}</td><td>${esc(f.name)}</td><td>${esc(f.type)}</td><td>${money(f.amount)}</td><td><button class="soft" onclick="showReceipt('${f.receipt}')">রসিদ দেখুন / প্রিন্ট</button></td></tr>`).join('')}</tbody></table>`:'<p class="muted">এখনো কোনো ফান্ড জমা নেই।</p>'}
-function showReceipt(id){const f=db.funds.find(x=>x.receipt===id);if(!f)return;document.getElementById('content').innerHTML=`<div class="pagehead no-print"><h2>ফান্ড জমার রসিদ</h2><div class="actions"><button class="primary" onclick="window.print()">রসিদ প্রিন্ট করুন</button><button class="soft" onclick="go('funds')">ফান্ড তালিকায় ফিরুন</button></div></div><div class="receipt"><div class="receipthead"><div style="font-size:12px">চক</div><h2>চর কাজল সমাজ কল্যাণ সংগঠন</h2><div>ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</div><h3>ফান্ড জমার রসিদ</h3></div><div class="receiptmeta"><b>রসিদ নং: ${esc(f.receipt)}</b><b>তারিখ: ${esc(f.date)}</b></div><table style="margin-top:18px"><tbody><tr><th>সদস্য আইডি</th><td>${esc(f.memberId||'প্রযোজ্য নয়')}</td></tr><tr><th>নাম</th><td>${esc(f.name)}</td></tr><tr><th>মোবাইল</th><td>${esc(f.phone||'—')}</td></tr><tr><th>জমার ধরন</th><td>${esc(f.type)}</td></tr><tr><th>টাকার পরিমাণ</th><td><b>${money(f.amount)}</b></td></tr><tr><th>মন্তব্য</th><td>${esc(f.note||'—')}</td></tr></tbody></table><div style="margin-top:18px"><b>কথায়:</b> ${esc(numberToBanglaWords(f.amount))} টাকা মাত্র</div><div class="signatures">${f.signs.map((s,i)=>`<div>${esc(s||'অনুমোদনকারী '+(i+1))}<br>স্বাক্ষর</div>`).join('')}</div></div>`}
-function numberToBanglaWords(n){return Number(n).toLocaleString('bn-BD')}
-function committeePage(){return `<div class="pagehead"><h2>কমিটির তালিকা</h2></div><div class="panel"><form onsubmit="addCommittee(event)" class="formgrid"><div class="field"><label>নাম</label><input name="name" required></div><div class="field"><label>পদবি</label><input name="role" required></div><div class="field"><label>মোবাইল</label><input name="phone"></div><div class="span3"><button class="primary">কমিটির সদস্য যোগ করুন</button></div></form></div><div class="panel"><div class="tablewrap"><table><thead><tr><th>নাম</th><th>পদবি</th><th>মোবাইল</th><th>কাজ</th></tr></thead><tbody>${`<tr><td>শাকিল মাহমুদ</td><td>এডমিন</td><td>—</td><td><span class="pill">প্রশাসক</span></td></tr>`+db.committee.map((m,i)=>`<tr><td>${esc(m.name)}</td><td>${esc(m.role)}</td><td>${esc(m.phone)}</td><td><button class="danger" onclick="deleteCommittee(${i})">মুছুন</button></td></tr>`).join('')}</tbody></table></div></div>`}
-function addCommittee(e){e.preventDefault();db.committee.push({name:e.target.elements.name.value,role:e.target.elements.role.value,phone:e.target.elements.phone.value});saveDB();render('committee')}
-function deleteCommittee(i){db.committee.splice(i,1);saveDB();render('committee')}
-function adminPage(){return `<div class="pagehead"><h2>এডমিন প্যানেল</h2></div><div class="panel"><h3>প্রশাসকের তথ্য</h3><div class="detailgrid"><div class="detail"><small>নাম</small><strong>শাকিল মাহমুদ</strong></div><div class="detail"><small>পদবি</small><strong>এডমিন</strong></div><div class="detail"><small>সংগঠন</small><strong>চর কাজল সমাজ কল্যাণ সংগঠন</strong></div></div></div><div class="notice">এই ডেমোতে লগইনটি শুধু সামনে থাকা ইন্টারফেসের জন্য। এটি নিরাপদ সার্ভার-ভিত্তিক লগইন নয়। প্রকৃত সদস্যদের NID/ব্যক্তিগত ছবি অনলাইনে প্রকাশের আগে নিরাপদ ডাটাবেজ ও প্রবেশাধিকার ব্যবস্থা দরকার।</div><div class="panel"><h3>ডাটা ব্যাকআপ</h3><p class="muted">বর্তমান ব্রাউজারের তথ্য JSON ফাইলে নামিয়ে রাখতে পারবেন।</p><div class="actions"><button class="primary" onclick="exportData()">ডাটা ব্যাকআপ ডাউনলোড</button><label class="soft" style="padding:10px 13px;border-radius:10px;cursor:pointer">ব্যাকআপ ফিরিয়ে আনুন<input type="file" accept=".json,application/json" style="display:none" onchange="importData(this)"></label></div></div>`}
-function exportData(){const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='charkajolbd-backup.json';a.click();URL.revokeObjectURL(a.href)}
-function importData(input){const file=input.files[0];if(!file)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!d.members||!d.funds)throw new Error();db={...db,...d};saveDB();alert('ব্যাকআপ ফিরিয়ে আনা হয়েছে।');render(currentPage)}catch(e){alert('এই ব্যাকআপ ফাইলটি সঠিক নয়।')}};r.readAsText(file)}
-function userPage(){return `<div class="pagehead"><h2>ইউজার প্যানেল</h2></div><div class="panel"><h3>ব্যবহারকারীর কাজ</h3><p>সদস্য খোঁজা, রক্তদাতার তথ্য দেখা এবং ফান্ডের রসিদ প্রিন্ট করা যায়।</p><div class="actions"><button class="primary" onclick="go('members')">সদস্য তালিকা</button><button class="success" onclick="go('blood')">রক্তদাতা</button><button class="soft" onclick="go('funds')">ফান্ড রসিদ</button></div></div>`}
-function islamicPage(){return `<div class="pagehead"><h2>ইসলামিক জ্ঞান</h2></div><div class="panel"><h3>ভালো কাজের শিক্ষা</h3><p>সততা, আমানতদারি, প্রতিবেশীর হক আদায়, অসহায় মানুষের পাশে দাঁড়ানো এবং পারস্পরিক সহযোগিতা সমাজ গঠনের গুরুত্বপূর্ণ মূল্যবোধ।</p><p class="muted">এই বিভাগটি সাধারণ শিক্ষামূলক তথ্যের জন্য।</p></div>`}
-document.addEventListener('keydown',e=>{if(e.key==='Enter'&& !document.getElementById('loginScreen').classList.contains('hidden'))login()});
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value;
+
+  if (username === "admin" && password === "demo123") {
+    document.getElementById("error").style.display = "none";
+
+    // এটি শুধু ডেমো লগইন।
+    // এখানে আপনার ERP ড্যাশবোর্ডের ঠিকানা বসাতে হবে।
 </script>
+
 </body>
 </html>
