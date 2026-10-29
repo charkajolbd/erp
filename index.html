@@ -274,7 +274,52 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
 
     // এটি শুধু ডেমো লগইন।
     // এখানে আপনার ERP ড্যাশবোর্ডের ঠিকানা বসাতে হবে।
-</script>
+    <script>
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value;
+  const error = document.getElementById("error");
+
+  if (username === "admin" && password === "demo123") {
+    error.style.display = "none";
+
+    alert("লগইন সফল হয়েছে!");
+
+    document.querySelector(".glass-card").innerHTML = `
+      <h1>চর কাজল সমাজ কল্যাণ সংগঠন</h1>
+      <h2>CharkajolBD ERP</h2>
+      <p class="tagline">স্বাগতম, এডমিন!</p>
+
+      <div class="panels">
+        <div class="panel">
+          <span>🛡️</span>
+          Admin Panel
+        </div>
+
+        <div class="panel">
+          <span>👤</span>
+          User Panel
+        </div>
+
+        <div class="panel">
+          <span>👥</span>
+          Committee List
+        </div>
+
+        <div class="panel">
+          <span>➕</span>
+          Member Add
+        </div>
+      </div>
+    `;
+
+  } else {
+    error.style.display = "block";
+    error.textContent = "ইউজার আইডি অথবা পাসওয়ার্ড সঠিক নয়।";
+  }
+});
+</script>
 </body>
-</html>
+</html
