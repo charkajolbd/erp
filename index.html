@@ -274,9 +274,10 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
 
     // এটি শুধু ডেমো লগইন।
     // এখানে আপনার ERP ড্যাশবোর্ডের ঠিকানা বসাতে হবে।
-    window.location.href = "dashboard.html";
   } else {
-    document.getElementById("error").style.display = "block";
+    document.getElementById("loginScreen").classList.add("hidden");
+document.getElementById("app").classList.remove("hidden");
+renderAll();
   }
 });
 </script>
