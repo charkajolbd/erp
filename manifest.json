@@ -1,0 +1,21 @@
+{
+  "name": "Charkajolbd-ERP | চর কাজল সমাজ কল্যাণ সংগঠন",
+  "short_name": "Charkajolbd",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#091e32",
+  "theme_color": "#091e32",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
