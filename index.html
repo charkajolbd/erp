@@ -1,418 +1,285 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>চর কাজল সমাজ কল্যাণ সংগঠন | liquid glass ERP</title>
-<style>
-:root{--navy:#163b72;--blue:#2563eb;--cyan:#06b6d4;--green:#059669;--orange:#f59e0b;--red:#dc2626;--bg:#f3f7ff;--ink:#172554;--muted:#64748b}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;background:var(--bg);color:#172033}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px;background:var(--blue);color:white;font-weight:650}button.secondary{background:#e8efff;color:#1e40af}button.danger{background:#fee2e2;color:#991b1b}button.green{background:var(--green)}button.small{padding:6px 9px;font-size:13px}.hidden{display:none!important}
-.login-wrap{min-height:100vh;display:grid;place-items:center;padding:20px;background:linear-gradient(135deg,#0f2f63,#2563eb 55%,#06b6d4)}.login{background:white;width:min(440px,100%);padding:28px;border-radius:24px;box-shadow:0 25px 70px #0b1b3d55}.logo{width:62px;height:62px;border-radius:20px;background:linear-gradient(135deg,#fbbf24,#f97316);display:grid;place-items:center;color:#fff;font-size:30px;font-weight:900;margin:auto}.login h1{text-align:center;font-size:22px;margin:14px 0 4px;color:var(--navy)}.login p{text-align:center;color:var(--muted);margin:0 0 20px}
-.app{display:grid;grid-template-columns:255px 1fr;min-height:100vh}.sidebar{background:linear-gradient(180deg,#102d59,#174c91);color:white;padding:18px 13px}.brand{display:flex;gap:10px;align-items:center;padding:6px 8px 18px;border-bottom:1px solid #ffffff2b}.brand .logo{width:45px;height:45px;border-radius:14px;font-size:22px;flex-shrink:0}.brand strong{font-size:15px;line-height:1.4}.nav{display:grid;gap:6px;margin-top:18px}.nav button{background:transparent;color:#e5efff;text-align:left;font-weight:550;padding:12px;border-radius:11px}.nav button.active,.nav button:hover{background:#ffffff22;color:white}.side-foot{font-size:12px;color:#c7d9f7;margin:24px 8px}
-main{min-width:0}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:17px 22px;background:white;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:2}.topbar h2{margin:0;font-size:21px;color:var(--navy)}.topbar small{color:var(--muted)}.content{padding:22px;max-width:1500px;margin:auto}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.stat,.panel{background:white;border:1px solid #e5eaf3;border-radius:17px;padding:18px;box-shadow:0 5px 18px #18376a08}.stat .label{font-size:13px;color:var(--muted)}.stat strong{display:block;font-size:27px;margin-top:7px;color:var(--navy)}.stat .emoji{float:right;font-size:25px}.panel{margin-bottom:16px}.panel h3{margin:0 0 15px;color:var(--navy);font-size:17px}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row>*{flex:1}.field{display:grid;gap:6px;margin-bottom:13px;min-width:0}.field label{font-size:13px;font-weight:700;color:#334155}.field input,.field select,.field textarea{width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#172033}.field textarea{min-height:75px}.formgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 13px}.full{grid-column:1/-1}.actions{display:flex;gap:7px;flex-wrap:wrap}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:720px}th,td{text-align:left;padding:11px 10px;border-bottom:1px solid #edf1f7;font-size:14px;vertical-align:middle}th{background:#f8faff;color:#334155;font-size:12px}td img,.person-photo{width:42px;height:42px;object-fit:cover;border-radius:50%;background:#e2e8f0}.pill{display:inline-block;background:#e0f2fe;color:#075985;padding:4px 8px;border-radius:30px;font-size:12px}.muted{color:var(--muted);font-size:13px}.empty{text-align:center;padding:28px;color:var(--muted)}.bloodgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.blood{padding:20px;background:linear-gradient(135deg,#fff,#fff1f2);border:1px solid #fecdd3;border-radius:16px;text-align:center;color:#9f1239}.blood b{font-size:27px;display:block}.blood span{font-size:12px}.notice{padding:12px 14px;background:#fff7ed;color:#9a3412;border-radius:12px;font-size:13px;margin-bottom:15px}.photo-preview{max-width:100px;max-height:100px;border-radius:12px;object-fit:cover;display:block;margin-top:6px}.receipt{max-width:850px;margin:0 auto;border:2px solid #163b72;padding:25px;background:white}.receipt-head{text-align:center;border-bottom:2px solid #163b72;padding-bottom:14px}.signatures{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:65px;text-align:center}.signatures div{border-top:1px solid #334155;padding-top:8px;font-size:12px}.detailgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.detailgrid div{padding:10px;background:#f8fafc;border-radius:9px}.detailgrid b{display:block;font-size:12px;color:var(--muted);margin-bottom:3px}
-@media(max-width:900px){.app{grid-template-columns:1fr}.sidebar{padding:10px}.brand{padding-bottom:10px}.nav{display:flex;overflow:auto;margin-top:10px}.nav button{white-space:nowrap;padding:9px}.side-foot{display:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.topbar{padding:13px 15px}.content{padding:14px}}
-@media(max-width:520px){.grid{grid-template-columns:1fr 1fr;gap:8px}.stat{padding:12px}.stat strong{font-size:22px}.formgrid,.detailgrid{grid-template-columns:1fr}.bloodgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.signatures{grid-template-columns:repeat(2,1fr)}.topbar h2{font-size:17px}}
-@media print{body{background:white}.sidebar,.topbar,.no-print,#appContent{display:none!important}#printArea{display:block!important}.receipt{border:2px solid #000;max-width:none;margin:0;padding:20px}.signatures{break-inside:avoid}}
-</style>
-</head>
-<body>
-<div id="loginScreen" class="login-wrap"><form class="login" id="loginForm"><div class="logo">চা</div><h1>চর কাজল সমাজ কল্যাণ সংগঠন</h1><p>ERP ব্যবস্থাপনা প্যানেল</p><div class="field"><label>ইউজারনেম</label><input id="username" value="admin" autocomplete="username" required></div><div class="field"><label>পাসওয়ার্ড</label><input id="password" type="password" value="demo123" autocomplete="current-password" required></div><button style="width:100%">লগইন করুন</button><p class="muted" style="margin-top:14px">ডেমো: admin / demo123</p></form></div>
-<div id="app" class="app hidden">
-<aside class="sidebar"><div class="brand"><div class="logo">চা</div><strong>চর কাজল সমাজ কল্যাণ সংগঠন<br><small>ERP Management</small></strong></div>
-<div class="nav" id="nav">
-<button class="active" data-page="dashboard">🏠 ড্যাশবোর্ড</button><button data-page="members">👥 সদস্য তালিকা</button><button data-page="add">➕ সদস্য যোগ</button><button data-page="blood">🩸 ব্লাড গ্রুপ</button><button data-page="committee">🧑‍🤝‍🧑 কমিটির তালিকা</button><button data-page="fund">💰 ফান্ড জমা</button><button data-page="receipts">🧾 রসিদ তালিকা</button><button data-page="admin">🛡️ এডমিন প্যানেল</button><button data-page="user">👤 ইউজার প্যানেল</button><button data-page="islamic">🌙 ইসলামিক জ্ঞান</button><button data-page="backup">💾 ডাটা ব্যাকআপ</button>
-</div><div class="side-foot">এডমিন: শাকিল মাহমুদ<br>ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</div></aside>
-<main><header class="topbar"><div><h2 id="pageTitle">ড্যাশবোর্ড</h2><small>শাকিল মাহমুদ · এডমিন</small></div><button class="secondary" id="logout">লগআউট</button></header><div class="content" id="appContent"></div></main></div>
-<div id="printArea" class="hidden"></div>
-<script>
-const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const GROUPS=['A+','A−','B+','B−','AB+','AB−','O+','O−'];
-const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}};
-let members=load('ck_members',[]),funds=load('ck_funds',[]),committee=load('ck_committee',[]),receipts=load('ck_receipts',[]),page='dashboard',editingId=null;
-const save=()=>{localStorage.setItem('ck_members',JSON.stringify(members));localStorage.setItem('ck_funds',JSON.stringify(funds));localStorage.setItem('ck_committee',JSON.stringify(committee));localStorage.setItem('ck_receipts',JSON.stringify(receipts))};
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const nextId=()=>{let n=members.reduce((m,x)=>Math.max(m,Number((x.id||'').split('-').pop())||0),0)+1;return '0010-'+String(n).padStart(3,'0')};
-const money=n=>'৳ '+Number(n||0).toLocaleString('en-US');
-function showPage(p){page=p;$$('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===p));$('#pageTitle').textContent=({'dashboard':'ড্যাশবোর্ড','members':'সদস্য তালিকা','add':'সদস্য যোগ','blood':'ব্লাড গ্রুপ','committee':'কমিটির তালিকা','fund':'ফান্ড জমা','receipts':'রসিদ তালিকা','admin':'এডমিন প্যানেল','user':'ইউজার প্যানেল','islamic':'ইসলামিক জ্ঞান','backup':'ডাটা ব্যাকআপ'})[p]||p;render()}
-function render(){
-const c=$('#appContent');
-if(page==='dashboard'){c.innerHTML=`<div class="grid"><div class="stat"><span class="emoji">👥</span><span class="label">মোট সদস্য</span><strong>${members.length}</strong></div><div class="stat"><span class="emoji">🩸</span><span class="label">ব্লাড গ্রুপ</span><strong>৮টি</strong></div><div class="stat"><span class="emoji">💰</span><span class="label">মোট ফান্ড জমা</span><strong>${money(funds.reduce((a,x)=>a+Number(x.amount||0),0))}</strong></div><div class="stat"><span class="emoji">🧾</span><span class="label">মোট রসিদ</span><strong>${receipts.length}</strong></div></div><div class="panel" style="margin-top:16px"><h3>সংগঠনের পরিচিতি</h3><p><b>চর কাজল সমাজ কল্যাণ সংগঠন</b></p><p class="muted">ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</p><p class="muted">এই সিস্টেমটি প্রাথমিক ডেমো। ডাটা এই ব্রাউজারের মধ্যেই সংরক্ষিত হয়।</p><div class="actions"><button onclick="showPage('add')">＋ সদস্য যোগ করুন</button><button class="secondary" onclick="showPage('fund')">ফান্ড জমা দিন</button><button class="secondary" onclick="showPage('blood')">রক্তদাতা খুঁজুন</button></div></div>`}
-else if(page==='members'){c.innerHTML=`<div class="panel"><div class="row"><div><h3>সদস্য তালিকা</h3><div class="muted">মোট ${members.length} জন সদস্য</div></div><button onclick="showPage('add')">＋ নতুন সদস্য</button></div><div class="field"><input id="memberSearch" placeholder="নাম, আইডি বা ফোন দিয়ে খুঁজুন..." oninput="renderMemberRows()"></div><div class="tablewrap"><table><thead><tr><th>ছবি</th><th>সদস্য আইডি</th><th>নাম</th><th>ফোন</th><th>ব্লাড গ্রুপ</th><th>কাজ</th></tr></thead><tbody id="memberRows"></tbody></table></div></div>`;renderMemberRows()}
-else if(page==='add'){const m=members.find(x=>x.id===editingId)||{};c.innerHTML=`<div class="panel"><h3>${editingId?'সদস্যের তথ্য সম্পাদনা':'নতুন সদস্য যোগ করুন'}</h3><form id="memberForm"><div class="formgrid">
-${field('নাম','name',m.name,true)}${field('মোবাইল নম্বর','phone',m.phone,true)}${field('সদস্য আইডি','id',m.id||nextId(),true,'text',true)}
-${field('ঠিকানা','address',m.address)}${field('পিতার নাম','father',m.father)}${field('মাতার নাম','mother',m.mother)}
-${field('জাতীয়তা','nationality',m.nationality||'বাংলাদেশি')}${field('জন্ম তারিখ','dob',m.dob,false,'date')}${selectField('ব্লাড গ্রুপ','blood',GROUPS,m.blood)}
-${field('জাতীয় পরিচয়পত্র নম্বর','nid',m.nid)}${field('নমিনির নাম','nominee',m.nominee)}${field('নমিনির ফোন','nomineePhone',m.nomineePhone)}
-${field('নমিনির NID নম্বর','nomineeNid',m.nomineeNid)}${fileField('সদস্যের ছবি','photo',m.photo)}${fileField('সদস্যের NID সামনের ছবি','nidFront',m.nidFront)}
-${fileField('সদস্যের NID পেছনের ছবি','nidBack',m.nidBack)}${fileField('নমিনির ছবি','nomineePhoto',m.nomineePhoto)}${fileField('নমিনির NID সামনের ছবি','nomineeNidFront',m.nomineeNidFront)}${fileField('নমিনির NID পেছনের ছবি','nomineeNidBack',m.nomineeNidBack)}
-</div><div class="actions"><button>${editingId?'আপডেট করুন':'সদস্য সংরক্ষণ করুন'}</button><button type="button" class="secondary" onclick="editingId=null;showPage('members')">বাতিল</button></div></form></div>`;$('#memberForm').onsubmit=saveMember}
-else if(page==='blood'){c.innerHTML=`<div class="panel"><h3>ব্লাড গ্রুপ অনুযায়ী সদস্য খুঁজুন</h3><div class="bloodgrid">${GROUPS.map(g=>`<button class="blood" onclick="showBlood('${g}')"><b>${g}</b><span>${members.filter(m=>m.blood===g).length} জন সদস্য</span></button>`).join('')}</div></div><div id="bloodResults"></div>`}
-else if(page==='committee'){c.innerHTML=`<div class="panel"><h3>কমিটির তালিকা</h3><form id="committeeForm"><div class="row"><div class="field"><label>নাম</label><input id="comName" required></div><div class="field"><label>পদবি</label><input id="comRole" required></div><div class="field"><label>মোবাইল</label><input id="comPhone"></div><div style="align-self:center"><button>যোগ করুন</button></div></div></form><div class="tablewrap"><table><thead><tr><th>নাম</th><th>পদবি</th><th>মোবাইল</th><th>কাজ</th></tr></thead><tbody>${committee.map((x,i)=>`<tr><td>${esc(x.name)}</td><td>${esc(x.role)}</td><td>${esc(x.phone)}</td><td><button class="danger small" onclick="deleteCommittee(${i})">মুছুন</button></td></tr>`).join('')||'<tr><td colspan="4" class="empty">এখনো কমিটির তথ্য যোগ করা হয়নি</td></tr>'}</tbody></table></div></div>`;$('#committeeForm').onsubmit=e=>{e.preventDefault();committee.push({name:$('#comName').value,role:$('#comRole').value,phone:$('#comPhone').value});save();render()}}
-else if(page==='fund'){c.innerHTML=`<div class="panel"><h3>ফান্ড জমা এন্ট্রি</h3><form id="fundForm"><div class="formgrid">${selectField('সদস্য','memberId',members.map(m=>m.id+' — '+m.name), '')}${selectField('জমার ধরন','type',['নিয়মিত জমা','বিশেষ ফান্ড','অন্যান্য'],'নিয়মিত জমা')}${field('টাকার পরিমাণ','amount','',true,'number')}${field('জমার তারিখ','date',new Date().toISOString().slice(0,10),true,'date')}${field('অনুমোদনকারী ১','sign1','শাকিল মাহমুদ')}${field('অনুমোদনকারী ২','sign2','')}${field('অনুমোদনকারী ৩','sign3','')}${field('অনুমোদনকারী ৪','sign4','')}${field('নোট','note','')}</div><button>ফান্ড জমা ও রসিদ তৈরি</button></form></div><div class="panel"><h3>সাম্প্রতিক ফান্ড জমা</h3><div class="tablewrap"><table><thead><tr><th>রসিদ</th><th>তারিখ</th><th>সদস্য</th><th>ধরন</th><th>পরিমাণ</th><th>কাজ</th></tr></thead><tbody>${fundRows()}</tbody></table></div></div>`;$('#fundForm').onsubmit=saveFund}
-else if(page==='receipts'){c.innerHTML=`<div class="panel"><h3>ফান্ড জমার রসিদ তালিকা</h3><div class="tablewrap"><table><thead><tr><th>রসিদ নম্বর</th><th>তারিখ</th><th>সদস্য</th><th>পরিমাণ</th><th>কাজ</th></tr></thead><tbody>${fundRows()}</tbody></table></div></div>`}
-else if(page==='admin'){c.innerHTML=`<div class="panel"><h3>এডমিন প্যানেল</h3><p><b>এডমিন:</b> শাকিল মাহমুদ</p><p><b>পদবি:</b> এডমিন</p><p><b>সংগঠন:</b> চর কাজল সমাজ কল্যাণ সংগঠন</p><div class="notice">এটি ডেমো লগইন। বাস্তব নিরাপদ ব্যবহারকারীর অনুমতি ও সার্ভার-ভিত্তিক লগইন এখানে এখনো যুক্ত নেই।</div><button onclick="showPage('backup')">ডাটা ব্যাকআপ ব্যবস্থাপনা</button></div>`}
-else if(page==='user'){c.innerHTML=`<div class="panel"><h3>ইউজার প্যানেল</h3><p>এখানে সদস্য তালিকা দেখা, ব্লাড গ্রুপ অনুযায়ী রক্তদাতা খোঁজা এবং ফান্ড রসিদ দেখা যায়।</p><div class="actions"><button onclick="showPage('members')">সদস্য তালিকা</button><button onclick="showPage('blood')">ব্লাড গ্রুপ</button><button onclick="showPage('receipts')">রসিদ তালিকা</button></div></div>`}
-else if(page==='islamic'){c.innerHTML=`<div class="panel"><h3>ইসলামিক জ্ঞান</h3><div class="notice">এই বিভাগটি সাধারণ শিক্ষামূলক তথ্যের জন্য। ধর্মীয় বিধান বা গুরুত্বপূর্ণ সিদ্ধান্তের ক্ষেত্রে নির্ভরযোগ্য আলেমের পরামর্শ নিন।</div><h3>সততা ও আমানতদারি</h3><p>সততা, ন্যায়, মানুষের উপকার এবং আমানত রক্ষা—সমাজকল্যাণমূলক কাজের গুরুত্বপূর্ণ মূল্যবোধ।</p><h3>প্রতিবেশীর অধিকার</h3><p>প্রতিবেশীর প্রতি সদাচরণ, অসুস্থ বা বিপদগ্রস্ত মানুষের পাশে দাঁড়ানো এবং সামর্থ্য অনুযায়ী সাহায্য করা উত্তম কাজ।</p></div>`}
-else if(page==='backup'){c.innerHTML=`<div class="panel"><h3>ডাটা ব্যাকআপ ও পুনরুদ্ধার</h3><div class="notice">এই ব্যাকআপে এই ব্রাউজারে সংরক্ষিত সদস্য, ফান্ড, রসিদ ও কমিটির তথ্য থাকবে। নিরাপদ স্থানে রাখুন।</div><div class="actions"><button onclick="downloadBackup()">⬇ ব্যাকআপ ডাউনলোড</button><label class="secondary" style="display:inline-block;padding:10px 14px;border-radius:10px;cursor:pointer">ব্যাকআপ আপলোড করে ফিরিয়ে আনুন <input type="file" accept="application/json" onchange="restoreBackup(event)" hidden></label></div></div>`}
-}
-function field(label,name,value='',required=false,type='text',readonly=false){return `<div class="field"><label>${label}${required?' *':''}</label><input name="${name}" id="f_${name}" type="${type}" value="${esc(value)}" ${required?'required':''} ${readonly?'readonly':''}></div>`}
-function selectField(label,name,opts,value=''){return `<div class="field"><label>${label}</label><select name="${name}" id="f_${name}"><option value="">নির্বাচন করুন</option>${opts.map(o=>{let v=o.includes(' — ')?o.split(' — ')[0]:o;return `<option value="${esc(v)}" ${v===value?'selected':''}>${esc(o)}</option>`}).join('')}</select></div>`}
-function fileField(label,name,existing){return `<div class="field"><label>${label}</label><input type="file" accept="image/*" id="f_${name}">${existing?`<img class="photo-preview" src="${existing}" alt="বর্তমান ছবি">`:''}</div>`}
-function renderMemberRows(){let q=($('#memberSearch')?.value||'').toLowerCase();let arr=members.filter(m=>[m.id,m.name,m.phone,m.address].some(v=>String(v||'').toLowerCase().includes(q)));$('#memberRows').innerHTML=arr.map(m=>`<tr><td>${m.photo?`<img src="${m.photo}">`:'👤'}</td><td><span class="pill">${esc(m.id)}</span></td><td>${esc(m.name)}</td><td>${esc(m.phone)}</td><td>${esc(m.blood||'—')}</td><td><div class="actions"><button class="small" onclick="viewMember('${m.id}')">ভিউ</button><button class="secondary small" onclick="editMember('${m.id}')">এডিট</button><button class="danger small" onclick="deleteMember('${m.id}')">মুছুন</button></div></td></tr>`).join('')||'<tr><td colspan="6" class="empty">কোনো সদস্য পাওয়া যায়নি</td></tr>'}
-function saveMember(e){e.preventDefault();let m=members.find(x=>x.id===editingId)||{id:nextId()};let names=['name','phone','id','address','father','mother','nationality','dob','blood','nid','nominee','nomineePhone','nomineeNid'];names.forEach(n=>{let el=$('#f_'+n);if(el)m[n]=el.value});let fileNames=['photo','nidFront','nidBack','nomineePhoto','nomineeNidFront','nomineeNidBack'];let tasks=fileNames.map(n=>new Promise(resolve=>{let el=$('#f_'+n);if(el?.files?.[0]){let r=new FileReader();r.onload=()=>{m[n]=r.result;resolve()};r.readAsDataURL(el.files[0])}else resolve()}));Promise.all(tasks).then(()=>{if(members.some(x=>x.id===m.id&&x!==m)){alert('এই সদস্য আইডি আগে থেকেই আছে।');return}if(!members.includes(m))members.push(m);save();editingId=null;showPage('members');alert('সদস্যের তথ্য সংরক্ষণ হয়েছে')})}
-function editMember(id){editingId=id;showPage('add')}
-function deleteMember(id){if(confirm('এই সদস্যের তথ্য মুছে ফেলবেন?')){members=members.filter(m=>m.id!==id);save();render()}}
-function viewMember(id){let m=members.find(x=>x.id===id);if(!m)return;$('#printArea').innerHTML=`<div class="receipt"><div class="receipt-head"><h2>চর কাজল সমাজ কল্যাণ সংগঠন</h2><p>সদস্যের সম্পূর্ণ তথ্য</p><p>ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</p></div><div style="display:flex;gap:15px;align-items:center;margin:18px 0">${m.photo?`<img src="${m.photo}" style="width:100px;height:100px;object-fit:cover;border-radius:10px">`:''}<div><h2>${esc(m.name)}</h2><p>সদস্য আইডি: ${esc(m.id)}</p></div></div><div class="detailgrid">${[['মোবাইল',m.phone],['ঠিকানা',m.address],['পিতার নাম',m.father],['মাতার নাম',m.mother],['জাতীয়তা',m.nationality],['জন্ম তারিখ',m.dob],['ব্লাড গ্রুপ',m.blood],['NID নম্বর',m.nid],['নমিনির নাম',m.nominee],['নমিনির ফোন',m.nomineePhone],['নমিনির NID',m.nomineeNid]].map(a=>`<div><b>${a[0]}</b>${esc(a[1]||'—')}</div>`).join('')}</div><h3 style="margin-top:20px">সংযুক্ত ছবি</h3><div class="row">${[['সদস্য NID সামনে',m.nidFront],['সদস্য NID পেছনে',m.nidBack],['নমিনির ছবি',m.nomineePhoto],['নমিনি NID সামনে',m.nomineeNidFront],['নমিনি NID পেছনে',m.nomineeNidBack]].filter(a=>a[1]).map(a=>`<div><p>${a[0]}</p><img src="${a[1]}" style="max-width:160px;max-height:130px;object-fit:contain"></div>`).join('')}</div></div>`;$('#printArea').classList.remove('hidden');setTimeout(()=>{window.print();$('#printArea').classList.add('hidden')},150)}
-function showBlood(g){let arr=members.filter(m=>m.blood===g);$('#bloodResults').innerHTML=`<div class="panel"><h3>${g} ব্লাড গ্রুপের সদস্য (${arr.length})</h3>${arr.map(m=>`<div class="row" style="padding:12px 0;border-bottom:1px solid #edf1f7"><div style="display:flex;gap:10px;align-items:center;min-width:230px">${m.photo?`<img class="person-photo" src="${m.photo}">`:'<span class="person-photo" style="display:grid;place-items:center">👤</span>'}<div><b>${esc(m.name)}</b><div class="muted">ID: ${esc(m.id)} · ${esc(m.address||'')}</div><div class="muted">${esc(m.phone||'')}</div></div></div><div class="actions"><a href="tel:${esc(m.phone)}"><button class="green">📞 কল</button></a><a target="_blank" href="https://wa.me/${String(m.phone||'').replace(/\\D/g,'')}"><button>WhatsApp</button></a></div></div>`).join('')||'<div class="empty">এই ব্লাড গ্রুপে এখনো সদস্য যোগ করা হয়নি</div>'}</div>`}
-function saveFund(e){e.preventDefault();let id=$('#f_memberId').value,m=members.find(x=>x.id===id);if(!m){alert('আগে সদস্য যোগ করুন, তারপর সদস্য নির্বাচন করুন।');return}let f={receipt:'CK-'+String(receipts.length+1).padStart(5,'0'),memberId:id,name:m.name,phone:m.phone,type:$('#f_type').value,amount:Number($('#f_amount').value),date:$('#f_date').value,signs:[1,2,3,4].map(i=>$('#f_sign'+i).value).filter(Boolean),note:$('#f_note').value};funds.unshift(f);receipts.unshift(f);save();printReceipt(f);showPage('fund')}
-function fundRows(){return funds.map(f=>`<tr><td>${esc(f.receipt)}</td><td>${esc(f.date)}</td><td>${esc(f.name)}<div class="muted">${esc(f.memberId)}</div></td><td>${esc(f.type)}</td><td>${money(f.amount)}</td><td><button class="small" onclick="printByReceipt('${f.receipt}')">রসিদ প্রিন্ট</button></td></tr>`).join('')||'<tr><td colspan="6" class="empty">এখনো ফান্ড জমা নেই</td></tr>'}
-function printByReceipt(r){let f=funds.find(x=>x.receipt===r);if(f)printReceipt(f)}
-function printReceipt(f){$('#printArea').innerHTML=`<div class="receipt"><div class="receipt-head"><div class="logo" style="margin:auto">চা</div><h2>চর কাজল সমাজ কল্যাণ সংগঠন</h2><p>ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</p><h3>ফান্ড জমার রসিদ</h3></div><p><b>রসিদ নম্বর:</b> ${esc(f.receipt)} <span style="float:right"><b>তারিখ:</b> ${esc(f.date)}</span></p><hr><p><b>সদস্য আইডি:</b> ${esc(f.memberId)}</p><p><b>সদস্যের নাম:</b> ${esc(f.name)}</p><p><b>মোবাইল:</b> ${esc(f.phone)}</p><p><b>জমার ধরন:</b> ${esc(f.type)}</p><h2 style="background:#eef6ff;padding:15px;border-radius:8px">জমার পরিমাণ: ${money(f.amount)}</h2><p><b>নোট:</b> ${esc(f.note||'—')}</p><div class="signatures">${[0,1,2,3].map((i)=>`<div>${esc(f.signs[i]||'অনুমোদনকারী')}<br>অনুমোদনকারীর স্বাক্ষর</div>`).join('')}</div><p style="text-align:center;margin-top:25px;font-size:12px">রসিদটি সংরক্ষণ করুন।</p></div>`;$('#printArea').classList.remove('hidden');setTimeout(()=>{window.print();$('#printArea').classList.add('hidden')},150)}
-function deleteCommittee(i){committee.splice(i,1);save();render()}
-function downloadBackup(){let blob=new Blob([JSON.stringify({members,funds,receipts,committee},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='charkajolbd-backup.json';a.click();URL.revokeObjectURL(a.href)}
-function restoreBackup(e){let file=e.target.files[0];if(!file)return;let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);members=d.members||[];funds=d.funds||[];receipts=d.receipts||[];committee=d.committee||[];save();render();alert('ব্যাকআপ ফিরিয়ে আনা হয়েছে')}catch{alert('ফাইলটি সঠিক ব্যাকআপ নয়')}};r.readAsText(file)}
-$('#loginForm').onsubmit=e=>{e.preventDefault();if($('#username').value==='admin'&&$('#password').value==='demo123'){$('#loginScreen').classList.add('hidden');$('#app').classList.remove('hidden');showPage('dashboard')}else alert('ইউজারনেম বা পাসওয়ার্ড সঠিক নয়')};
-$('#logout').onclick=()=>{if(confirm('লগআউট করবেন?')){$('#app').classList.add('hidden');$('#loginScreen').classList.remove('hidden')}};
-$('#nav').onclick=e=>{let b=e.target.closest('button[data-page]');if(b)showPage(b.dataset.page)};
-</script>
-</body></html>
-<!doctype html>
-<html lang="bn">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>চর কাজল সমাজ কল্যাণ সংগঠন | ERP</title>
-<style>
-:root{--navy:#163b72;--blue:#2563eb;--cyan:#06b6d4;--green:#059669;--orange:#f59e0b;--red:#dc2626;--bg:#f3f7ff;--ink:#172554;--muted:#64748b}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;background:var(--bg);color:#172033}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px;background:var(--blue);color:white;font-weight:650}button.secondary{background:#e8efff;color:#1e40af}button.danger{background:#fee2e2;color:#991b1b}button.green{background:var(--green)}button.small{padding:6px 9px;font-size:13px}.hidden{display:none!important}
-.login-wrap{min-height:100vh;display:grid;place-items:center;padding:20px;background:linear-gradient(135deg,#0f2f63,#2563eb 55%,#06b6d4)}.login{background:white;width:min(440px,100%);padding:28px;border-radius:24px;box-shadow:0 25px 70px #0b1b3d55}.logo{width:62px;height:62px;border-radius:20px;background:linear-gradient(135deg,#fbbf24,#f97316);display:grid;place-items:center;color:#fff;font-size:30px;font-weight:900;margin:auto}.login h1{text-align:center;font-size:22px;margin:14px 0 4px;color:var(--navy)}.login p{text-align:center;color:var(--muted);margin:0 0 20px}
-.app{display:grid;grid-template-columns:255px 1fr;min-height:100vh}.sidebar{background:linear-gradient(180deg,#102d59,#174c91);color:white;padding:18px 13px}.brand{display:flex;gap:10px;align-items:center;padding:6px 8px 18px;border-bottom:1px solid #ffffff2b}.brand .logo{width:45px;height:45px;border-radius:14px;font-size:22px;flex-shrink:0}.brand strong{font-size:15px;line-height:1.4}.nav{display:grid;gap:6px;margin-top:18px}.nav button{background:transparent;color:#e5efff;text-align:left;font-weight:550;padding:12px;border-radius:11px}.nav button.active,.nav button:hover{background:#ffffff22;color:white}.side-foot{font-size:12px;color:#c7d9f7;margin:24px 8px}
-main{min-width:0}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:17px 22px;background:white;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:2}.topbar h2{margin:0;font-size:21px;color:var(--navy)}.topbar small{color:var(--muted)}.content{padding:22px;max-width:1500px;margin:auto}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.stat,.panel{background:white;border:1px solid #e5eaf3;border-radius:17px;padding:18px;box-shadow:0 5px 18px #18376a08}.stat .label{font-size:13px;color:var(--muted)}.stat strong{display:block;font-size:27px;margin-top:7px;color:var(--navy)}.stat .emoji{float:right;font-size:25px}.panel{margin-bottom:16px}.panel h3{margin:0 0 15px;color:var(--navy);font-size:17px}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row>*{flex:1}.field{display:grid;gap:6px;margin-bottom:13px;min-width:0}.field label{font-size:13px;font-weight:700;color:#334155}.field input,.field select,.field textarea{width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#172033}.field textarea{min-height:75px}.formgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 13px}.full{grid-column:1/-1}.actions{display:flex;gap:7px;flex-wrap:wrap}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:720px}th,td{text-align:left;padding:11px 10px;border-bottom:1px solid #edf1f7;font-size:14px;vertical-align:middle}th{background:#f8faff;color:#334155;font-size:12px}td img,.person-photo{width:42px;height:42px;object-fit:cover;border-radius:50%;background:#e2e8f0}.pill{display:inline-block;background:#e0f2fe;color:#075985;padding:4px 8px;border-radius:30px;font-size:12px}.muted{color:var(--muted);font-size:13px}.empty{text-align:center;padding:28px;color:var(--muted)}.bloodgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.blood{padding:20px;background:linear-gradient(135deg,#fff,#fff1f2);border:1px solid #fecdd3;border-radius:16px;text-align:center;color:#9f1239}.blood b{font-size:27px;display:block}.blood span{font-size:12px}.notice{padding:12px 14px;background:#fff7ed;color:#9a3412;border-radius:12px;font-size:13px;margin-bottom:15px}.photo-preview{max-width:100px;max-height:100px;border-radius:12px;object-fit:cover;display:block;margin-top:6px}.receipt{max-width:850px;margin:0 auto;border:2px solid #163b72;padding:25px;background:white}.receipt-head{text-align:center;border-bottom:2px solid #163b72;padding-bottom:14px}.signatures{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:65px;text-align:center}.signatures div{border-top:1px solid #334155;padding-top:8px;font-size:12px}.detailgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.detailgrid div{padding:10px;background:#f8fafc;border-radius:9px}.detailgrid b{display:block;font-size:12px;color:var(--muted);margin-bottom:3px}
-@media(max-width:900px){.app{grid-template-columns:1fr}.sidebar{padding:10px}.brand{padding-bottom:10px}.nav{display:flex;overflow:auto;margin-top:10px}.nav button{white-space:nowrap;padding:9px}.side-foot{display:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.topbar{padding:13px 15px}.content{padding:14px}}
-@media(max-width:520px){.grid{grid-template-columns:1fr 1fr;gap:8px}.stat{padding:12px}.stat strong{font-size:22px}.formgrid,.detailgrid{grid-template-columns:1fr}.bloodgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.signatures{grid-template-columns:repeat(2,1fr)}.topbar h2{font-size:17px}}
-@media print{body{background:white}.sidebar,.topbar,.no-print,#appContent{display:none!important}#printArea{display:block!important}.receipt{border:2px solid #000;max-width:none;margin:0;padding:20px}.signatures{break-inside:avoid}}
-</style>
-</head>
-<body>
-<div id="loginScreen" class="login-wrap"><form class="login" id="loginForm"><div class="logo">চা</div><h1>চর কাজল সমাজ কল্যাণ সংগঠন</h1><p>ERP ব্যবস্থাপনা প্যানেল</p><div class="field"><label>ইউজারনেম</label><input id="username" value="admin" autocomplete="username" required></div><div class="field"><label>পাসওয়ার্ড</label><input id="password" type="password" value="demo123" autocomplete="current-password" required></div><button style="width:100%">লগইন করুন</button><p class="muted" style="margin-top:14px">ডেমো: admin / demo123</p></form></div>
-<div id="app" class="app hidden">
-<aside class="sidebar"><div class="brand"><div class="logo">চা</div><strong>চর কাজল সমাজ কল্যাণ সংগঠন<br><small>ERP Management</small></strong></div>
-<div class="nav" id="nav">
-<button class="active" data-page="dashboard">🏠 ড্যাশবোর্ড</button><button data-page="members">👥 সদস্য তালিকা</button><button data-page="add">➕ সদস্য যোগ</button><button data-page="blood">🩸 ব্লাড গ্রুপ</button><button data-page="committee">🧑‍🤝‍🧑 কমিটির তালিকা</button><button data-page="fund">💰 ফান্ড জমা</button><button data-page="receipts">🧾 রসিদ তালিকা</button><button data-page="admin">🛡️ এডমিন প্যানেল</button><button data-page="user">👤 ইউজার প্যানেল</button><button data-page="islamic">🌙 ইসলামিক জ্ঞান</button><button data-page="backup">💾 ডাটা ব্যাকআপ</button>
-</div><div class="side-foot">এডমিন: শাকিল মাহমুদ<br>ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</div></aside>
-<main><header class="topbar"><div><h2 id="pageTitle">ড্যাশবোর্ড</h2><small>শাকিল মাহমুদ · এডমিন</small></div><button class="secondary" id="logout">লগআউট</button></header><div class="content" id="appContent"></div></main></div>
-<div id="printArea" class="hidden"></div>
-<script>
-const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const GROUPS=['A+','A−','B+','B−','AB+','AB−','O+','O−'];
-const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}};
-let members=load('ck_members',[]),funds=load('ck_funds',[]),committee=load('ck_committee',[]),receipts=load('ck_receipts',[]),page='dashboard',editingId=null;
-const save=()=>{localStorage.setItem('ck_members',JSON.stringify(members));localStorage.setItem('ck_funds',JSON.stringify(funds));localStorage.setItem('ck_committee',JSON.stringify(committee));localStorage.setItem('ck_receipts',JSON.stringify(receipts))};
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const nextId=()=>{let n=members.reduce((m,x)=>Math.max(m,Number((x.id||'').split('-').pop())||0),0)+1;return '0010-'+String(n).padStart(3,'0')};
-const money=n=>'৳ '+Number(n||0).toLocaleString('en-US');
-function showPage(p){page=p;$$('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===p));$('#pageTitle').textContent=({'dashboard':'ড্যাশবোর্ড','members':'সদস্য তালিকা','add':'সদস্য যোগ','blood':'ব্লাড গ্রুপ','committee':'কমিটির তালিকা','fund':'ফান্ড জমা','receipts':'রসিদ তালিকা','admin':'এডমিন প্যানেল','user':'ইউজার প্যানেল','islamic':'ইসলামিক জ্ঞান','backup':'ডাটা ব্যাকআপ'})[p]||p;render()}
-function render(){
-const c=$('#appContent');
-if(page==='dashboard'){c.innerHTML=`<div class="grid"><div class="stat"><span class="emoji">👥</span><span class="label">মোট সদস্য</span><strong>${members.length}</strong></div><div class="stat"><span class="emoji">🩸</span><span class="label">ব্লাড গ্রুপ</span><strong>৮টি</strong></div><div class="stat"><span class="emoji">💰</span><span class="label">মোট ফান্ড জমা</span><strong>${money(funds.reduce((a,x)=>a+Number(x.amount||0),0))}</strong></div><div class="stat"><span class="emoji">🧾</span><span class="label">মোট রসিদ</span><strong>${receipts.length}</strong></div></div><div class="panel" style="margin-top:16px"><h3>সংগঠনের পরিচিতি</h3><p><b>চর কাজল সমাজ কল্যাণ সংগঠন</b></p><p class="muted">ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</p><p class="muted">এই সিস্টেমটি প্রাথমিক ডেমো। ডাটা এই ব্রাউজারের মধ্যেই সংরক্ষিত হয়।</p><div class="actions"><button onclick="showPage('add')">＋ সদস্য যোগ করুন</button><button class="secondary" onclick="showPage('fund')">ফান্ড জমা দিন</button><button class="secondary" onclick="showPage('blood')">রক্তদাতা খুঁজুন</button></div></div>`}
-else if(page==='members'){c.innerHTML=`<div class="panel"><div class="row"><div><h3>সদস্য তালিকা</h3><div class="muted">মোট ${members.length} জন সদস্য</div></div><button onclick="showPage('add')">＋ নতুন সদস্য</button></div><div class="field"><input id="memberSearch" placeholder="নাম, আইডি বা ফোন দিয়ে খুঁজুন..." oninput="renderMemberRows()"></div><div class="tablewrap"><table><thead><tr><th>ছবি</th><th>সদস্য আইডি</th><th>নাম</th><th>ফোন</th><th>ব্লাড গ্রুপ</th><th>কাজ</th></tr></thead><tbody id="memberRows"></tbody></table></div></div>`;renderMemberRows()}
-else if(page==='add'){const m=members.find(x=>x.id===editingId)||{};c.innerHTML=`<div class="panel"><h3>${editingId?'সদস্যের তথ্য সম্পাদনা':'নতুন সদস্য যোগ করুন'}</h3><form id="memberForm"><div class="formgrid">
-${field('নাম','name',m.name,true)}${field('মোবাইল নম্বর','phone',m.phone,true)}${field('সদস্য আইডি','id',m.id||nextId(),true,'text',true)}
-${field('ঠিকানা','address',m.address)}${field('পিতার নাম','father',m.father)}${field('মাতার নাম','mother',m.mother)}
-${field('জাতীয়তা','nationality',m.nationality||'বাংলাদেশি')}${field('জন্ম তারিখ','dob',m.dob,false,'date')}${selectField('ব্লাড গ্রুপ','blood',GROUPS,m.blood)}
-${field('জাতীয় পরিচয়পত্র নম্বর','nid',m.nid)}${field('নমিনির নাম','nominee',m.nominee)}${field('নমিনির ফোন','nomineePhone',m.nomineePhone)}
-${field('নমিনির NID নম্বর','nomineeNid',m.nomineeNid)}${fileField('সদস্যের ছবি','photo',m.photo)}${fileField('সদস্যের NID সামনের ছবি','nidFront',m.nidFront)}
-${fileField('সদস্যের NID পেছনের ছবি','nidBack',m.nidBack)}${fileField('নমিনির ছবি','nomineePhoto',m.nomineePhoto)}${fileField('নমিনির NID সামনের ছবি','nomineeNidFront',m.nomineeNidFront)}${fileField('নমিনির NID পেছনের ছবি','nomineeNidBack',m.nomineeNidBack)}
-</div><div class="actions"><button>${editingId?'আপডেট করুন':'সদস্য সংরক্ষণ করুন'}</button><button type="button" class="secondary" onclick="editingId=null;showPage('members')">বাতিল</button></div></form></div>`;$('#memberForm').onsubmit=saveMember}
-else if(page==='blood'){c.innerHTML=`<div class="panel"><h3>ব্লাড গ্রুপ অনুযায়ী সদস্য খুঁজুন</h3><div class="bloodgrid">${GROUPS.map(g=>`<button class="blood" onclick="showBlood('${g}')"><b>${g}</b><span>${members.filter(m=>m.blood===g).length} জন সদস্য</span></button>`).join('')}</div></div><div id="bloodResults"></div>`}
-else if(page==='committee'){c.innerHTML=`<div class="panel"><h3>কমিটির তালিকা</h3><form id="committeeForm"><div class="row"><div class="field"><label>নাম</label><input id="comName" required></div><div class="field"><label>পদবি</label><input id="comRole" required></div><div class="field"><label>মোবাইল</label><input id="comPhone"></div><div style="align-self:center"><button>যোগ করুন</button></div></div></form><div class="tablewrap"><table><thead><tr><th>নাম</th><th>পদবি</th><th>মোবাইল</th><th>কাজ</th></tr></thead><tbody>${committee.map((x,i)=>`<tr><td>${esc(x.name)}</td><td>${esc(x.role)}</td><td>${esc(x.phone)}</td><td><button class="danger small" onclick="deleteCommittee(${i})">মুছুন</button></td></tr>`).join('')||'<tr><td colspan="4" class="empty">এখনো কমিটির তথ্য যোগ করা হয়নি</td></tr>'}</tbody></table></div></div>`;$('#committeeForm').onsubmit=e=>{e.preventDefault();committee.push({name:$('#comName').value,role:$('#comRole').value,phone:$('#comPhone').value});save();render()}}
-else if(page==='fund'){c.innerHTML=`<div class="panel"><h3>ফান্ড জমা এন্ট্রি</h3><form id="fundForm"><div class="formgrid">${selectField('সদস্য','memberId',members.map(m=>m.id+' — '+m.name), '')}${selectField('জমার ধরন','type',['নিয়মিত জমা','বিশেষ ফান্ড','অন্যান্য'],'নিয়মিত জমা')}${field('টাকার পরিমাণ','amount','',true,'number')}${field('জমার তারিখ','date',new Date().toISOString().slice(0,10),true,'date')}${field('অনুমোদনকারী ১','sign1','শাকিল মাহমুদ')}${field('অনুমোদনকারী ২','sign2','')}${field('অনুমোদনকারী ৩','sign3','')}${field('অনুমোদনকারী ৪','sign4','')}${field('নোট','note','')}</div><button>ফান্ড জমা ও রসিদ তৈরি</button></form></div><div class="panel"><h3>সাম্প্রতিক ফান্ড জমা</h3><div class="tablewrap"><table><thead><tr><th>রসিদ</th><th>তারিখ</th><th>সদস্য</th><th>ধরন</th><th>পরিমাণ</th><th>কাজ</th></tr></thead><tbody>${fundRows()}</tbody></table></div></div>`;$('#fundForm').onsubmit=saveFund}
-else if(page==='receipts'){c.innerHTML=`<div class="panel"><h3>ফান্ড জমার রসিদ তালিকা</h3><div class="tablewrap"><table><thead><tr><th>রসিদ নম্বর</th><th>তারিখ</th><th>সদস্য</th><th>পরিমাণ</th><th>কাজ</th></tr></thead><tbody>${fundRows()}</tbody></table></div></div>`}
-else if(page==='admin'){c.innerHTML=`<div class="panel"><h3>এডমিন প্যানেল</h3><p><b>এডমিন:</b> শাকিল মাহমুদ</p><p><b>পদবি:</b> এডমিন</p><p><b>সংগঠন:</b> চর কাজল সমাজ কল্যাণ সংগঠন</p><div class="notice">এটি ডেমো লগইন। বাস্তব নিরাপদ ব্যবহারকারীর অনুমতি ও সার্ভার-ভিত্তিক লগইন এখানে এখনো যুক্ত নেই।</div><button onclick="showPage('backup')">ডাটা ব্যাকআপ ব্যবস্থাপনা</button></div>`}
-else if(page==='user'){c.innerHTML=`<div class="panel"><h3>ইউজার প্যানেল</h3><p>এখানে সদস্য তালিকা দেখা, ব্লাড গ্রুপ অনুযায়ী রক্তদাতা খোঁজা এবং ফান্ড রসিদ দেখা যায়।</p><div class="actions"><button onclick="showPage('members')">সদস্য তালিকা</button><button onclick="showPage('blood')">ব্লাড গ্রুপ</button><button onclick="showPage('receipts')">রসিদ তালিকা</button></div></div>`}
-else if(page==='islamic'){c.innerHTML=`<div class="panel"><h3>ইসলামিক জ্ঞান</h3><div class="notice">এই বিভাগটি সাধারণ শিক্ষামূলক তথ্যের জন্য। ধর্মীয় বিধান বা গুরুত্বপূর্ণ সিদ্ধান্তের ক্ষেত্রে নির্ভরযোগ্য আলেমের পরামর্শ নিন।</div><h3>সততা ও আমানতদারি</h3><p>সততা, ন্যায়, মানুষের উপকার এবং আমানত রক্ষা—সমাজকল্যাণমূলক কাজের গুরুত্বপূর্ণ মূল্যবোধ।</p><h3>প্রতিবেশীর অধিকার</h3><p>প্রতিবেশীর প্রতি সদাচরণ, অসুস্থ বা বিপদগ্রস্ত মানুষের পাশে দাঁড়ানো এবং সামর্থ্য অনুযায়ী সাহায্য করা উত্তম কাজ।</p></div>`}
-else if(page==='backup'){c.innerHTML=`<div class="panel"><h3>ডাটা ব্যাকআপ ও পুনরুদ্ধার</h3><div class="notice">এই ব্যাকআপে এই ব্রাউজারে সংরক্ষিত সদস্য, ফান্ড, রসিদ ও কমিটির তথ্য থাকবে। নিরাপদ স্থানে রাখুন।</div><div class="actions"><button onclick="downloadBackup()">⬇ ব্যাকআপ ডাউনলোড</button><label class="secondary" style="display:inline-block;padding:10px 14px;border-radius:10px;cursor:pointer">ব্যাকআপ আপলোড করে ফিরিয়ে আনুন <input type="file" accept="application/json" onchange="restoreBackup(event)" hidden></label></div></div>`}
-}
-function field(label,name,value='',required=false,type='text',readonly=false){return `<div class="field"><label>${label}${required?' *':''}</label><input name="${name}" id="f_${name}" type="${type}" value="${esc(value)}" ${required?'required':''} ${readonly?'readonly':''}></div>`}
-function selectField(label,name,opts,value=''){return `<div class="field"><label>${label}</label><select name="${name}" id="f_${name}"><option value="">নির্বাচন করুন</option>${opts.map(o=>{let v=o.includes(' — ')?o.split(' — ')[0]:o;return `<option value="${esc(v)}" ${v===value?'selected':''}>${esc(o)}</option>`}).join('')}</select></div>`}
-function fileField(label,name,existing){return `<div class="field"><label>${label}</label><input type="file" accept="image/*" id="f_${name}">${existing?`<img class="photo-preview" src="${existing}" alt="বর্তমান ছবি">`:''}</div>`}
-function renderMemberRows(){let q=($('#memberSearch')?.value||'').toLowerCase();let arr=members.filter(m=>[m.id,m.name,m.phone,m.address].some(v=>String(v||'').toLowerCase().includes(q)));$('#memberRows').innerHTML=arr.map(m=>`<tr><td>${m.photo?`<img src="${m.photo}">`:'👤'}</td><td><span class="pill">${esc(m.id)}</span></td><td>${esc(m.name)}</td><td>${esc(m.phone)}</td><td>${esc(m.blood||'—')}</td><td><div class="actions"><button class="small" onclick="viewMember('${m.id}')">ভিউ</button><button class="secondary small" onclick="editMember('${m.id}')">এডিট</button><button class="danger small" onclick="deleteMember('${m.id}')">মুছুন</button></div></td></tr>`).join('')||'<tr><td colspan="6" class="empty">কোনো সদস্য পাওয়া যায়নি</td></tr>'}
-function saveMember(e){e.preventDefault();let m=members.find(x=>x.id===editingId)||{id:nextId()};let names=['name','phone','id','address','father','mother','nationality','dob','blood','nid','nominee','nomineePhone','nomineeNid'];names.forEach(n=>{let el=$('#f_'+n);if(el)m[n]=el.value});let fileNames=['photo','nidFront','nidBack','nomineePhoto','nomineeNidFront','nomineeNidBack'];let tasks=fileNames.map(n=>new Promise(resolve=>{let el=$('#f_'+n);if(el?.files?.[0]){let r=new FileReader();r.onload=()=>{m[n]=r.result;resolve()};r.readAsDataURL(el.files[0])}else resolve()}));Promise.all(tasks).then(()=>{if(members.some(x=>x.id===m.id&&x!==m)){alert('এই সদস্য আইডি আগে থেকেই আছে।');return}if(!members.includes(m))members.push(m);save();editingId=null;showPage('members');alert('সদস্যের তথ্য সংরক্ষণ হয়েছে')})}
-function editMember(id){editingId=id;showPage('add')}
-function deleteMember(id){if(confirm('এই সদস্যের তথ্য মুছে ফেলবেন?')){members=members.filter(m=>m.id!==id);save();render()}}
-function viewMember(id){let m=members.find(x=>x.id===id);if(!m)return;$('#printArea').innerHTML=`<div class="receipt"><div class="receipt-head"><h2>চর কাজল সমাজ কল্যাণ সংগঠন</h2><p>সদস্যের সম্পূর্ণ তথ্য</p><p>ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</p></div><div style="display:flex;gap:15px;align-items:center;margin:18px 0">${m.photo?`<img src="${m.photo}" style="width:100px;height:100px;object-fit:cover;border-radius:10px">`:''}<div><h2>${esc(m.name)}</h2><p>সদস্য আইডি: ${esc(m.id)}</p></div></div><div class="detailgrid">${[['মোবাইল',m.phone],['ঠিকানা',m.address],['পিতার নাম',m.father],['মাতার নাম',m.mother],['জাতীয়তা',m.nationality],['জন্ম তারিখ',m.dob],['ব্লাড গ্রুপ',m.blood],['NID নম্বর',m.nid],['নমিনির নাম',m.nominee],['নমিনির ফোন',m.nomineePhone],['নমিনির NID',m.nomineeNid]].map(a=>`<div><b>${a[0]}</b>${esc(a[1]||'—')}</div>`).join('')}</div><h3 style="margin-top:20px">সংযুক্ত ছবি</h3><div class="row">${[['সদস্য NID সামনে',m.nidFront],['সদস্য NID পেছনে',m.nidBack],['নমিনির ছবি',m.nomineePhoto],['নমিনি NID সামনে',m.nomineeNidFront],['নমিনি NID পেছনে',m.nomineeNidBack]].filter(a=>a[1]).map(a=>`<div><p>${a[0]}</p><img src="${a[1]}" style="max-width:160px;max-height:130px;object-fit:contain"></div>`).join('')}</div></div>`;$('#printArea').classList.remove('hidden');setTimeout(()=>{window.print();$('#printArea').classList.add('hidden')},150)}
-function showBlood(g){let arr=members.filter(m=>m.blood===g);$('#bloodResults').innerHTML=`<div class="panel"><h3>${g} ব্লাড গ্রুপের সদস্য (${arr.length})</h3>${arr.map(m=>`<div class="row" style="padding:12px 0;border-bottom:1px solid #edf1f7"><div style="display:flex;gap:10px;align-items:center;min-width:230px">${m.photo?`<img class="person-photo" src="${m.photo}">`:'<span class="person-photo" style="display:grid;place-items:center">👤</span>'}<div><b>${esc(m.name)}</b><div class="muted">ID: ${esc(m.id)} · ${esc(m.address||'')}</div><div class="muted">${esc(m.phone||'')}</div></div></div><div class="actions"><a href="tel:${esc(m.phone)}"><button class="green">📞 কল</button></a><a target="_blank" href="https://wa.me/${String(m.phone||'').replace(/\\D/g,'')}"><button>WhatsApp</button></a></div></div>`).join('')||'<div class="empty">এই ব্লাড গ্রুপে এখনো সদস্য যোগ করা হয়নি</div>'}</div>`}
-function saveFund(e){e.preventDefault();let id=$('#f_memberId').value,m=members.find(x=>x.id===id);if(!m){alert('আগে সদস্য যোগ করুন, তারপর সদস্য নির্বাচন করুন।');return}let f={receipt:'CK-'+String(receipts.length+1).padStart(5,'0'),memberId:id,name:m.name,phone:m.phone,type:$('#f_type').value,amount:Number($('#f_amount').value),date:$('#f_date').value,signs:[1,2,3,4].map(i=>$('#f_sign'+i).value).filter(Boolean),note:$('#f_note').value};funds.unshift(f);receipts.unshift(f);save();printReceipt(f);showPage('fund')}
-function fundRows(){return funds.map(f=>`<tr><td>${esc(f.receipt)}</td><td>${esc(f.date)}</td><td>${esc(f.name)}<div class="muted">${esc(f.memberId)}</div></td><td>${esc(f.type)}</td><td>${money(f.amount)}</td><td><button class="small" onclick="printByReceipt('${f.receipt}')">রসিদ প্রিন্ট</button></td></tr>`).join('')||'<tr><td colspan="6" class="empty">এখনো ফান্ড জমা নেই</td></tr>'}
-function printByReceipt(r){let f=funds.find(x=>x.receipt===r);if(f)printReceipt(f)}
-function printReceipt(f){$('#printArea').innerHTML=`<div class="receipt"><div class="receipt-head"><div class="logo" style="margin:auto">চা</div><h2>চর কাজল সমাজ কল্যাণ সংগঠন</h2><p>ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</p><h3>ফান্ড জমার রসিদ</h3></div><p><b>রসিদ নম্বর:</b> ${esc(f.receipt)} <span style="float:right"><b>তারিখ:</b> ${esc(f.date)}</span></p><hr><p><b>সদস্য আইডি:</b> ${esc(f.memberId)}</p><p><b>সদস্যের নাম:</b> ${esc(f.name)}</p><p><b>মোবাইল:</b> ${esc(f.phone)}</p><p><b>জমার ধরন:</b> ${esc(f.type)}</p><h2 style="background:#eef6ff;padding:15px;border-radius:8px">জমার পরিমাণ: ${money(f.amount)}</h2><p><b>নোট:</b> ${esc(f.note||'—')}</p><div class="signatures">${[0,1,2,3].map((i)=>`<div>${esc(f.signs[i]||'অনুমোদনকারী')}<br>অনুমোদনকারীর স্বাক্ষর</div>`).join('')}</div><p style="text-align:center;margin-top:25px;font-size:12px">রসিদটি সংরক্ষণ করুন।</p></div>`;$('#printArea').classList.remove('hidden');setTimeout(()=>{window.print();$('#printArea').classList.add('hidden')},150)}
-function deleteCommittee(i){committee.splice(i,1);save();render()}
-function downloadBackup(){let blob=new Blob([JSON.stringify({members,funds,receipts,committee},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='charkajolbd-backup.json';a.click();URL.revokeObjectURL(a.href)}
-function restoreBackup(e){let file=e.target.files[0];if(!file)return;let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);members=d.members||[];funds=d.funds||[];receipts=d.receipts||[];committee=d.committee||[];save();render();alert('ব্যাকআপ ফিরিয়ে আনা হয়েছে')}catch{alert('ফাইলটি সঠিক ব্যাকআপ নয়')}};r.readAsText(file)}
-$('#loginForm').onsubmit=e=>{e.preventDefault();if($('#username').value==='admin'&&$('#password').value==='demo123'){$('#loginScreen').classList.add('hidden');$('#app').classList.remove('hidden');showPage('dashboard')}else alert('ইউজারনেম বা পাসওয়ার্ড সঠিক নয়')};
-$('#logout').onclick=()=>{if(confirm('লগআউট করবেন?')){$('#app').classList.add('hidden');$('#loginScreen').classList.remove('hidden')}};
-$('#nav').onclick=e=>{let b=e.target.closest('button[data-page]');if(b)showPage(b.dataset.page)};
-</script>
-</body></html>
-<!doctype html>
-<html lang="bn">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>চর কাজল সমাজ কল্যাণ সংগঠন | ERP</title>
-<style>
-:root{--navy:#163b72;--blue:#2563eb;--cyan:#06b6d4;--green:#059669;--orange:#f59e0b;--red:#dc2626;--bg:#f3f7ff;--ink:#172554;--muted:#64748b}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;background:var(--bg);color:#172033}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px;background:var(--blue);color:white;font-weight:650}button.secondary{background:#e8efff;color:#1e40af}button.danger{background:#fee2e2;color:#991b1b}button.green{background:var(--green)}button.small{padding:6px 9px;font-size:13px}.hidden{display:none!important}
-.login-wrap{min-height:100vh;display:grid;place-items:center;padding:20px;background:linear-gradient(135deg,#0f2f63,#2563eb 55%,#06b6d4)}.login{background:white;width:min(440px,100%);padding:28px;border-radius:24px;box-shadow:0 25px 70px #0b1b3d55}.logo{width:62px;height:62px;border-radius:20px;background:linear-gradient(135deg,#fbbf24,#f97316);display:grid;place-items:center;color:#fff;font-size:30px;font-weight:900;margin:auto}.login h1{text-align:center;font-size:22px;margin:14px 0 4px;color:var(--navy)}.login p{text-align:center;color:var(--muted);margin:0 0 20px}
-.app{display:grid;grid-template-columns:255px 1fr;min-height:100vh}.sidebar{background:linear-gradient(180deg,#102d59,#174c91);color:white;padding:18px 13px}.brand{display:flex;gap:10px;align-items:center;padding:6px 8px 18px;border-bottom:1px solid #ffffff2b}.brand .logo{width:45px;height:45px;border-radius:14px;font-size:22px;flex-shrink:0}.brand strong{font-size:15px;line-height:1.4}.nav{display:grid;gap:6px;margin-top:18px}.nav button{background:transparent;color:#e5efff;text-align:left;font-weight:550;padding:12px;border-radius:11px}.nav button.active,.nav button:hover{background:#ffffff22;color:white}.side-foot{font-size:12px;color:#c7d9f7;margin:24px 8px}
-main{min-width:0}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:17px 22px;background:white;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:2}.topbar h2{margin:0;font-size:21px;color:var(--navy)}.topbar small{color:var(--muted)}.content{padding:22px;max-width:1500px;margin:auto}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.stat,.panel{background:white;border:1px solid #e5eaf3;border-radius:17px;padding:18px;box-shadow:0 5px 18px #18376a08}.stat .label{font-size:13px;color:var(--muted)}.stat strong{display:block;font-size:27px;margin-top:7px;color:var(--navy)}.stat .emoji{float:right;font-size:25px}.panel{margin-bottom:16px}.panel h3{margin:0 0 15px;color:var(--navy);font-size:17px}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row>*{flex:1}.field{display:grid;gap:6px;margin-bottom:13px;min-width:0}.field label{font-size:13px;font-weight:700;color:#334155}.field input,.field select,.field textarea{width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#172033}.field textarea{min-height:75px}.formgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 13px}.full{grid-column:1/-1}.actions{display:flex;gap:7px;flex-wrap:wrap}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:720px}th,td{text-align:left;padding:11px 10px;border-bottom:1px solid #edf1f7;font-size:14px;vertical-align:middle}th{background:#f8faff;color:#334155;font-size:12px}td img,.person-photo{width:42px;height:42px;object-fit:cover;border-radius:50%;background:#e2e8f0}.pill{display:inline-block;background:#e0f2fe;color:#075985;padding:4px 8px;border-radius:30px;font-size:12px}.muted{color:var(--muted);font-size:13px}.empty{text-align:center;padding:28px;color:var(--muted)}.bloodgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.blood{padding:20px;background:linear-gradient(135deg,#fff,#fff1f2);border:1px solid #fecdd3;border-radius:16px;text-align:center;color:#9f1239}.blood b{font-size:27px;display:block}.blood span{font-size:12px}.notice{padding:12px 14px;background:#fff7ed;color:#9a3412;border-radius:12px;font-size:13px;margin-bottom:15px}.photo-preview{max-width:100px;max-height:100px;border-radius:12px;object-fit:cover;display:block;margin-top:6px}.receipt{max-width:850px;margin:0 auto;border:2px solid #163b72;padding:25px;background:white}.receipt-head{text-align:center;border-bottom:2px solid #163b72;padding-bottom:14px}.signatures{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:65px;text-align:center}.signatures div{border-top:1px solid #334155;padding-top:8px;font-size:12px}.detailgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.detailgrid div{padding:10px;background:#f8fafc;border-radius:9px}.detailgrid b{display:block;font-size:12px;color:var(--muted);margin-bottom:3px}
-@media(max-width:900px){.app{grid-template-columns:1fr}.sidebar{padding:10px}.brand{padding-bottom:10px}.nav{display:flex;overflow:auto;margin-top:10px}.nav button{white-space:nowrap;padding:9px}.side-foot{display:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.topbar{padding:13px 15px}.content{padding:14px}}
-@media(max-width:520px){.grid{grid-template-columns:1fr 1fr;gap:8px}.stat{padding:12px}.stat strong{font-size:22px}.formgrid,.detailgrid{grid-template-columns:1fr}.bloodgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.signatures{grid-template-columns:repeat(2,1fr)}.topbar h2{font-size:17px}}
-@media print{body{background:white}.sidebar,.topbar,.no-print,#appContent{display:none!important}#printArea{display:block!important}.receipt{border:2px solid #000;max-width:none;margin:0;padding:20px}.signatures{break-inside:avoid}}
-</style>
-</head>
-<body>
-<div id="loginScreen" class="login-wrap"><form class="login" id="loginForm"><div class="logo">চা</div><h1>চর কাজল সমাজ কল্যাণ সংগঠন</h1><p>ERP ব্যবস্থাপনা প্যানেল</p><div class="field"><label>ইউজারনেম</label><input id="username" value="admin" autocomplete="username" required></div><div class="field"><label>পাসওয়ার্ড</label><input id="password" type="password" value="demo123" autocomplete="current-password" required></div><button style="width:100%">লগইন করুন</button><p class="muted" style="margin-top:14px">ডেমো: admin / demo123</p></form></div>
-<div id="app" class="app hidden">
-<aside class="sidebar"><div class="brand"><div class="logo">চা</div><strong>চর কাজল সমাজ কল্যাণ সংগঠন<br><small>ERP Management</small></strong></div>
-<div class="nav" id="nav">
-<button class="active" data-page="dashboard">🏠 ড্যাশবোর্ড</button><button data-page="members">👥 সদস্য তালিকা</button><button data-page="add">➕ সদস্য যোগ</button><button data-page="blood">🩸 ব্লাড গ্রুপ</button><button data-page="committee">🧑‍🤝‍🧑 কমিটির তালিকা</button><button data-page="fund">💰 ফান্ড জমা</button><button data-page="receipts">🧾 রসিদ তালিকা</button><button data-page="admin">🛡️ এডমিন প্যানেল</button><button data-page="user">👤 ইউজার প্যানেল</button><button data-page="islamic">🌙 ইসলামিক জ্ঞান</button><button data-page="backup">💾 ডাটা ব্যাকআপ</button>
-</div><div class="side-foot">এডমিন: শাকিল মাহমুদ<br>ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</div></aside>
-<main><header class="topbar"><div><h2 id="pageTitle">ড্যাশবোর্ড</h2><small>শাকিল মাহমুদ · এডমিন</small></div><button class="secondary" id="logout">লগআউট</button></header><div class="content" id="appContent"></div></main></div>
-<div id="printArea" class="hidden"></div>
-<script>
-const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const GROUPS=['A+','A−','B+','B−','AB+','AB−','O+','O−'];
-const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}};
-let members=load('ck_members',[]),funds=load('ck_funds',[]),committee=load('ck_committee',[]),receipts=load('ck_receipts',[]),page='dashboard',editingId=null;
-const save=()=>{localStorage.setItem('ck_members',JSON.stringify(members));localStorage.setItem('ck_funds',JSON.stringify(funds));localStorage.setItem('ck_committee',JSON.stringify(committee));localStorage.setItem('ck_receipts',JSON.stringify(receipts))};
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const nextId=()=>{let n=members.reduce((m,x)=>Math.max(m,Number((x.id||'').split('-').pop())||0),0)+1;return '0010-'+String(n).padStart(3,'0')};
-const money=n=>'৳ '+Number(n||0).toLocaleString('en-US');
-function showPage(p){page=p;$$('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===p));$('#pageTitle').textContent=({'dashboard':'ড্যাশবোর্ড','members':'সদস্য তালিকা','add':'সদস্য যোগ','blood':'ব্লাড গ্রুপ','committee':'কমিটির তালিকা','fund':'ফান্ড জমা','receipts':'রসিদ তালিকা','admin':'এডমিন প্যানেল','user':'ইউজার প্যানেল','islamic':'ইসলামিক জ্ঞান','backup':'ডাটা ব্যাকআপ'})[p]||p;render()}
-function render(){
-const c=$('#appContent');
-if(page==='dashboard'){c.innerHTML=`<div class="grid"><div class="stat"><span class="emoji">👥</span><span class="label">মোট সদস্য</span><strong>${members.length}</strong></div><div class="stat"><span class="emoji">🩸</span><span class="label">ব্লাড গ্রুপ</span><strong>৮টি</strong></div><div class="stat"><span class="emoji">💰</span><span class="label">মোট ফান্ড জমা</span><strong>${money(funds.reduce((a,x)=>a+Number(x.amount||0),0))}</strong></div><div class="stat"><span class="emoji">🧾</span><span class="label">মোট রসিদ</span><strong>${receipts.length}</strong></div></div><div class="panel" style="margin-top:16px"><h3>সংগঠনের পরিচিতি</h3><p><b>চর কাজল সমাজ কল্যাণ সংগঠন</b></p><p class="muted">ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</p><p class="muted">এই সিস্টেমটি প্রাথমিক ডেমো। ডাটা এই ব্রাউজারের মধ্যেই সংরক্ষিত হয়।</p><div class="actions"><button onclick="showPage('add')">＋ সদস্য যোগ করুন</button><button class="secondary" onclick="showPage('fund')">ফান্ড জমা দিন</button><button class="secondary" onclick="showPage('blood')">রক্তদাতা খুঁজুন</button></div></div>`}
-else if(page==='members'){c.innerHTML=`<div class="panel"><div class="row"><div><h3>সদস্য তালিকা</h3><div class="muted">মোট ${members.length} জন সদস্য</div></div><button onclick="showPage('add')">＋ নতুন সদস্য</button></div><div class="field"><input id="memberSearch" placeholder="নাম, আইডি বা ফোন দিয়ে খুঁজুন..." oninput="renderMemberRows()"></div><div class="tablewrap"><table><thead><tr><th>ছবি</th><th>সদস্য আইডি</th><th>নাম</th><th>ফোন</th><th>ব্লাড গ্রুপ</th><th>কাজ</th></tr></thead><tbody id="memberRows"></tbody></table></div></div>`;renderMemberRows()}
-else if(page==='add'){const m=members.find(x=>x.id===editingId)||{};c.innerHTML=`<div class="panel"><h3>${editingId?'সদস্যের তথ্য সম্পাদনা':'নতুন সদস্য যোগ করুন'}</h3><form id="memberForm"><div class="formgrid">
-${field('নাম','name',m.name,true)}${field('মোবাইল নম্বর','phone',m.phone,true)}${field('সদস্য আইডি','id',m.id||nextId(),true,'text',true)}
-${field('ঠিকানা','address',m.address)}${field('পিতার নাম','father',m.father)}${field('মাতার নাম','mother',m.mother)}
-${field('জাতীয়তা','nationality',m.nationality||'বাংলাদেশি')}${field('জন্ম তারিখ','dob',m.dob,false,'date')}${selectField('ব্লাড গ্রুপ','blood',GROUPS,m.blood)}
-${field('জাতীয় পরিচয়পত্র নম্বর','nid',m.nid)}${field('নমিনির নাম','nominee',m.nominee)}${field('নমিনির ফোন','nomineePhone',m.nomineePhone)}
-${field('নমিনির NID নম্বর','nomineeNid',m.nomineeNid)}${fileField('সদস্যের ছবি','photo',m.photo)}${fileField('সদস্যের NID সামনের ছবি','nidFront',m.nidFront)}
-${fileField('সদস্যের NID পেছনের ছবি','nidBack',m.nidBack)}${fileField('নমিনির ছবি','nomineePhoto',m.nomineePhoto)}${fileField('নমিনির NID সামনের ছবি','nomineeNidFront',m.nomineeNidFront)}${fileField('নমিনির NID পেছনের ছবি','nomineeNidBack',m.nomineeNidBack)}
-</div><div class="actions"><button>${editingId?'আপডেট করুন':'সদস্য সংরক্ষণ করুন'}</button><button type="button" class="secondary" onclick="editingId=null;showPage('members')">বাতিল</button></div></form></div>`;$('#memberForm').onsubmit=saveMember}
-else if(page==='blood'){c.innerHTML=`<div class="panel"><h3>ব্লাড গ্রুপ অনুযায়ী সদস্য খুঁজুন</h3><div class="bloodgrid">${GROUPS.map(g=>`<button class="blood" onclick="showBlood('${g}')"><b>${g}</b><span>${members.filter(m=>m.blood===g).length} জন সদস্য</span></button>`).join('')}</div></div><div id="bloodResults"></div>`}
-else if(page==='committee'){c.innerHTML=`<div class="panel"><h3>কমিটির তালিকা</h3><form id="committeeForm"><div class="row"><div class="field"><label>নাম</label><input id="comName" required></div><div class="field"><label>পদবি</label><input id="comRole" required></div><div class="field"><label>মোবাইল</label><input id="comPhone"></div><div style="align-self:center"><button>যোগ করুন</button></div></div></form><div class="tablewrap"><table><thead><tr><th>নাম</th><th>পদবি</th><th>মোবাইল</th><th>কাজ</th></tr></thead><tbody>${committee.map((x,i)=>`<tr><td>${esc(x.name)}</td><td>${esc(x.role)}</td><td>${esc(x.phone)}</td><td><button class="danger small" onclick="deleteCommittee(${i})">মুছুন</button></td></tr>`).join('')||'<tr><td colspan="4" class="empty">এখনো কমিটির তথ্য যোগ করা হয়নি</td></tr>'}</tbody></table></div></div>`;$('#committeeForm').onsubmit=e=>{e.preventDefault();committee.push({name:$('#comName').value,role:$('#comRole').value,phone:$('#comPhone').value});save();render()}}
-else if(page==='fund'){c.innerHTML=`<div class="panel"><h3>ফান্ড জমা এন্ট্রি</h3><form id="fundForm"><div class="formgrid">${selectField('সদস্য','memberId',members.map(m=>m.id+' — '+m.name), '')}${selectField('জমার ধরন','type',['নিয়মিত জমা','বিশেষ ফান্ড','অন্যান্য'],'নিয়মিত জমা')}${field('টাকার পরিমাণ','amount','',true,'number')}${field('জমার তারিখ','date',new Date().toISOString().slice(0,10),true,'date')}${field('অনুমোদনকারী ১','sign1','শাকিল মাহমুদ')}${field('অনুমোদনকারী ২','sign2','')}${field('অনুমোদনকারী ৩','sign3','')}${field('অনুমোদনকারী ৪','sign4','')}${field('নোট','note','')}</div><button>ফান্ড জমা ও রসিদ তৈরি</button></form></div><div class="panel"><h3>সাম্প্রতিক ফান্ড জমা</h3><div class="tablewrap"><table><thead><tr><th>রসিদ</th><th>তারিখ</th><th>সদস্য</th><th>ধরন</th><th>পরিমাণ</th><th>কাজ</th></tr></thead><tbody>${fundRows()}</tbody></table></div></div>`;$('#fundForm').onsubmit=saveFund}
-else if(page==='receipts'){c.innerHTML=`<div class="panel"><h3>ফান্ড জমার রসিদ তালিকা</h3><div class="tablewrap"><table><thead><tr><th>রসিদ নম্বর</th><th>তারিখ</th><th>সদস্য</th><th>পরিমাণ</th><th>কাজ</th></tr></thead><tbody>${fundRows()}</tbody></table></div></div>`}
-else if(page==='admin'){c.innerHTML=`<div class="panel"><h3>এডমিন প্যানেল</h3><p><b>এডমিন:</b> শাকিল মাহমুদ</p><p><b>পদবি:</b> এডমিন</p><p><b>সংগঠন:</b> চর কাজল সমাজ কল্যাণ সংগঠন</p><div class="notice">এটি ডেমো লগইন। বাস্তব নিরাপদ ব্যবহারকারীর অনুমতি ও সার্ভার-ভিত্তিক লগইন এখানে এখনো যুক্ত নেই।</div><button onclick="showPage('backup')">ডাটা ব্যাকআপ ব্যবস্থাপনা</button></div>`}
-else if(page==='user'){c.innerHTML=`<div class="panel"><h3>ইউজার প্যানেল</h3><p>এখানে সদস্য তালিকা দেখা, ব্লাড গ্রুপ অনুযায়ী রক্তদাতা খোঁজা এবং ফান্ড রসিদ দেখা যায়।</p><div class="actions"><button onclick="showPage('members')">সদস্য তালিকা</button><button onclick="showPage('blood')">ব্লাড গ্রুপ</button><button onclick="showPage('receipts')">রসিদ তালিকা</button></div></div>`}
-else if(page==='islamic'){c.innerHTML=`<div class="panel"><h3>ইসলামিক জ্ঞান</h3><div class="notice">এই বিভাগটি সাধারণ শিক্ষামূলক তথ্যের জন্য। ধর্মীয় বিধান বা গুরুত্বপূর্ণ সিদ্ধান্তের ক্ষেত্রে নির্ভরযোগ্য আলেমের পরামর্শ নিন।</div><h3>সততা ও আমানতদারি</h3><p>সততা, ন্যায়, মানুষের উপকার এবং আমানত রক্ষা—সমাজকল্যাণমূলক কাজের গুরুত্বপূর্ণ মূল্যবোধ।</p><h3>প্রতিবেশীর অধিকার</h3><p>প্রতিবেশীর প্রতি সদাচরণ, অসুস্থ বা বিপদগ্রস্ত মানুষের পাশে দাঁড়ানো এবং সামর্থ্য অনুযায়ী সাহায্য করা উত্তম কাজ।</p></div>`}
-else if(page==='backup'){c.innerHTML=`<div class="panel"><h3>ডাটা ব্যাকআপ ও পুনরুদ্ধার</h3><div class="notice">এই ব্যাকআপে এই ব্রাউজারে সংরক্ষিত সদস্য, ফান্ড, রসিদ ও কমিটির তথ্য থাকবে। নিরাপদ স্থানে রাখুন।</div><div class="actions"><button onclick="downloadBackup()">⬇ ব্যাকআপ ডাউনলোড</button><label class="secondary" style="display:inline-block;padding:10px 14px;border-radius:10px;cursor:pointer">ব্যাকআপ আপলোড করে ফিরিয়ে আনুন <input type="file" accept="application/json" onchange="restoreBackup(event)" hidden></label></div></div>`}
-}
-function field(label,name,value='',required=false,type='text',readonly=false){return `<div class="field"><label>${label}${required?' *':''}</label><input name="${name}" id="f_${name}" type="${type}" value="${esc(value)}" ${required?'required':''} ${readonly?'readonly':''}></div>`}
-function selectField(label,name,opts,value=''){return `<div class="field"><label>${label}</label><select name="${name}" id="f_${name}"><option value="">নির্বাচন করুন</option>${opts.map(o=>{let v=o.includes(' — ')?o.split(' — ')[0]:o;return `<option value="${esc(v)}" ${v===value?'selected':''}>${esc(o)}</option>`}).join('')}</select></div>`}
-function fileField(label,name,existing){return `<div class="field"><label>${label}</label><input type="file" accept="image/*" id="f_${name}">${existing?`<img class="photo-preview" src="${existing}" alt="বর্তমান ছবি">`:''}</div>`}
-function renderMemberRows(){let q=($('#memberSearch')?.value||'').toLowerCase();let arr=members.filter(m=>[m.id,m.name,m.phone,m.address].some(v=>String(v||'').toLowerCase().includes(q)));$('#memberRows').innerHTML=arr.map(m=>`<tr><td>${m.photo?`<img src="${m.photo}">`:'👤'}</td><td><span class="pill">${esc(m.id)}</span></td><td>${esc(m.name)}</td><td>${esc(m.phone)}</td><td>${esc(m.blood||'—')}</td><td><div class="actions"><button class="small" onclick="viewMember('${m.id}')">ভিউ</button><button class="secondary small" onclick="editMember('${m.id}')">এডিট</button><button class="danger small" onclick="deleteMember('${m.id}')">মুছুন</button></div></td></tr>`).join('')||'<tr><td colspan="6" class="empty">কোনো সদস্য পাওয়া যায়নি</td></tr>'}
-function saveMember(e){e.preventDefault();let m=members.find(x=>x.id===editingId)||{id:nextId()};let names=['name','phone','id','address','father','mother','nationality','dob','blood','nid','nominee','nomineePhone','nomineeNid'];names.forEach(n=>{let el=$('#f_'+n);if(el)m[n]=el.value});let fileNames=['photo','nidFront','nidBack','nomineePhoto','nomineeNidFront','nomineeNidBack'];let tasks=fileNames.map(n=>new Promise(resolve=>{let el=$('#f_'+n);if(el?.files?.[0]){let r=new FileReader();r.onload=()=>{m[n]=r.result;resolve()};r.readAsDataURL(el.files[0])}else resolve()}));Promise.all(tasks).then(()=>{if(members.some(x=>x.id===m.id&&x!==m)){alert('এই সদস্য আইডি আগে থেকেই আছে।');return}if(!members.includes(m))members.push(m);save();editingId=null;showPage('members');alert('সদস্যের তথ্য সংরক্ষণ হয়েছে')})}
-function editMember(id){editingId=id;showPage('add')}
-function deleteMember(id){if(confirm('এই সদস্যের তথ্য মুছে ফেলবেন?')){members=members.filter(m=>m.id!==id);save();render()}}
-function viewMember(id){let m=members.find(x=>x.id===id);if(!m)return;$('#printArea').innerHTML=`<div class="receipt"><div class="receipt-head"><h2>চর কাজল সমাজ কল্যাণ সংগঠন</h2><p>সদস্যের সম্পূর্ণ তথ্য</p><p>ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</p></div><div style="display:flex;gap:15px;align-items:center;margin:18px 0">${m.photo?`<img src="${m.photo}" style="width:100px;height:100px;object-fit:cover;border-radius:10px">`:''}<div><h2>${esc(m.name)}</h2><p>সদস্য আইডি: ${esc(m.id)}</p></div></div><div class="detailgrid">${[['মোবাইল',m.phone],['ঠিকানা',m.address],['পিতার নাম',m.father],['মাতার নাম',m.mother],['জাতীয়তা',m.nationality],['জন্ম তারিখ',m.dob],['ব্লাড গ্রুপ',m.blood],['NID নম্বর',m.nid],['নমিনির নাম',m.nominee],['নমিনির ফোন',m.nomineePhone],['নমিনির NID',m.nomineeNid]].map(a=>`<div><b>${a[0]}</b>${esc(a[1]||'—')}</div>`).join('')}</div><h3 style="margin-top:20px">সংযুক্ত ছবি</h3><div class="row">${[['সদস্য NID সামনে',m.nidFront],['সদস্য NID পেছনে',m.nidBack],['নমিনির ছবি',m.nomineePhoto],['নমিনি NID সামনে',m.nomineeNidFront],['নমিনি NID পেছনে',m.nomineeNidBack]].filter(a=>a[1]).map(a=>`<div><p>${a[0]}</p><img src="${a[1]}" style="max-width:160px;max-height:130px;object-fit:contain"></div>`).join('')}</div></div>`;$('#printArea').classList.remove('hidden');setTimeout(()=>{window.print();$('#printArea').classList.add('hidden')},150)}
-function showBlood(g){let arr=members.filter(m=>m.blood===g);$('#bloodResults').innerHTML=`<div class="panel"><h3>${g} ব্লাড গ্রুপের সদস্য (${arr.length})</h3>${arr.map(m=>`<div class="row" style="padding:12px 0;border-bottom:1px solid #edf1f7"><div style="display:flex;gap:10px;align-items:center;min-width:230px">${m.photo?`<img class="person-photo" src="${m.photo}">`:'<span class="person-photo" style="display:grid;place-items:center">👤</span>'}<div><b>${esc(m.name)}</b><div class="muted">ID: ${esc(m.id)} · ${esc(m.address||'')}</div><div class="muted">${esc(m.phone||'')}</div></div></div><div class="actions"><a href="tel:${esc(m.phone)}"><button class="green">📞 কল</button></a><a target="_blank" href="https://wa.me/${String(m.phone||'').replace(/\\D/g,'')}"><button>WhatsApp</button></a></div></div>`).join('')||'<div class="empty">এই ব্লাড গ্রুপে এখনো সদস্য যোগ করা হয়নি</div>'}</div>`}
-function saveFund(e){e.preventDefault();let id=$('#f_memberId').value,m=members.find(x=>x.id===id);if(!m){alert('আগে সদস্য যোগ করুন, তারপর সদস্য নির্বাচন করুন।');return}let f={receipt:'CK-'+String(receipts.length+1).padStart(5,'0'),memberId:id,name:m.name,phone:m.phone,type:$('#f_type').value,amount:Number($('#f_amount').value),date:$('#f_date').value,signs:[1,2,3,4].map(i=>$('#f_sign'+i).value).filter(Boolean),note:$('#f_note').value};funds.unshift(f);receipts.unshift(f);save();printReceipt(f);showPage('fund')}
-function fundRows(){return funds.map(f=>`<tr><td>${esc(f.receipt)}</td><td>${esc(f.date)}</td><td>${esc(f.name)}<div class="muted">${esc(f.memberId)}</div></td><td>${esc(f.type)}</td><td>${money(f.amount)}</td><td><button class="small" onclick="printByReceipt('${f.receipt}')">রসিদ প্রিন্ট</button></td></tr>`).join('')||'<tr><td colspan="6" class="empty">এখনো ফান্ড জমা নেই</td></tr>'}
-function printByReceipt(r){let f=funds.find(x=>x.receipt===r);if(f)printReceipt(f)}
-function printReceipt(f){$('#printArea').innerHTML=`<div class="receipt"><div class="receipt-head"><div class="logo" style="margin:auto">চা</div><h2>চর কাজল সমাজ কল্যাণ সংগঠন</h2><p>ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</p><h3>ফান্ড জমার রসিদ</h3></div><p><b>রসিদ নম্বর:</b> ${esc(f.receipt)} <span style="float:right"><b>তারিখ:</b> ${esc(f.date)}</span></p><hr><p><b>সদস্য আইডি:</b> ${esc(f.memberId)}</p><p><b>সদস্যের নাম:</b> ${esc(f.name)}</p><p><b>মোবাইল:</b> ${esc(f.phone)}</p><p><b>জমার ধরন:</b> ${esc(f.type)}</p><h2 style="background:#eef6ff;padding:15px;border-radius:8px">জমার পরিমাণ: ${money(f.amount)}</h2><p><b>নোট:</b> ${esc(f.note||'—')}</p><div class="signatures">${[0,1,2,3].map((i)=>`<div>${esc(f.signs[i]||'অনুমোদনকারী')}<br>অনুমোদনকারীর স্বাক্ষর</div>`).join('')}</div><p style="text-align:center;margin-top:25px;font-size:12px">রসিদটি সংরক্ষণ করুন।</p></div>`;$('#printArea').classList.remove('hidden');setTimeout(()=>{window.print();$('#printArea').classList.add('hidden')},150)}
-function deleteCommittee(i){committee.splice(i,1);save();render()}
-function downloadBackup(){let blob=new Blob([JSON.stringify({members,funds,receipts,committee},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='charkajolbd-backup.json';a.click();URL.revokeObjectURL(a.href)}
-function restoreBackup(e){let file=e.target.files[0];if(!file)return;let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);members=d.members||[];funds=d.funds||[];receipts=d.receipts||[];committee=d.committee||[];save();render();alert('ব্যাকআপ ফিরিয়ে আনা হয়েছে')}catch{alert('ফাইলটি সঠিক ব্যাকআপ নয়')}};r.readAsText(file)}
-$('#loginForm').onsubmit=e=>{e.preventDefault();if($('#username').value==='admin'&&$('#password').value==='demo123'){$('#loginScreen').classList.add('hidden');$('#app').classList.remove('hidden');showPage('dashboard')}else alert('ইউজারনেম বা পাসওয়ার্ড সঠিক নয়')};
-$('#logout').onclick=()=>{if(confirm('লগআউট করবেন?')){$('#app').classList.add('hidden');$('#loginScreen').classList.remove('hidden')}};
-$('#nav').onclick=e=>{let b=e.target.closest('button[data-page]');if(b)showPage(b.dataset.page)};
-</script>
-</body></html>
-<!doctype html>
-<html lang="bn">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>চর কাজল সমাজ কল্যাণ সংগঠন | ERP</title>
-<style>
-:root{--navy:#163b72;--blue:#2563eb;--cyan:#06b6d4;--green:#059669;--orange:#f59e0b;--red:#dc2626;--bg:#f3f7ff;--ink:#172554;--muted:#64748b}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;background:var(--bg);color:#172033}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px;background:var(--blue);color:white;font-weight:650}button.secondary{background:#e8efff;color:#1e40af}button.danger{background:#fee2e2;color:#991b1b}button.green{background:var(--green)}button.small{padding:6px 9px;font-size:13px}.hidden{display:none!important}
-.login-wrap{min-height:100vh;display:grid;place-items:center;padding:20px;background:linear-gradient(135deg,#0f2f63,#2563eb 55%,#06b6d4)}.login{background:white;width:min(440px,100%);padding:28px;border-radius:24px;box-shadow:0 25px 70px #0b1b3d55}.logo{width:62px;height:62px;border-radius:20px;background:linear-gradient(135deg,#fbbf24,#f97316);display:grid;place-items:center;color:#fff;font-size:30px;font-weight:900;margin:auto}.login h1{text-align:center;font-size:22px;margin:14px 0 4px;color:var(--navy)}.login p{text-align:center;color:var(--muted);margin:0 0 20px}
-.app{display:grid;grid-template-columns:255px 1fr;min-height:100vh}.sidebar{background:linear-gradient(180deg,#102d59,#174c91);color:white;padding:18px 13px}.brand{display:flex;gap:10px;align-items:center;padding:6px 8px 18px;border-bottom:1px solid #ffffff2b}.brand .logo{width:45px;height:45px;border-radius:14px;font-size:22px;flex-shrink:0}.brand strong{font-size:15px;line-height:1.4}.nav{display:grid;gap:6px;margin-top:18px}.nav button{background:transparent;color:#e5efff;text-align:left;font-weight:550;padding:12px;border-radius:11px}.nav button.active,.nav button:hover{background:#ffffff22;color:white}.side-foot{font-size:12px;color:#c7d9f7;margin:24px 8px}
-main{min-width:0}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:17px 22px;background:white;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:2}.topbar h2{margin:0;font-size:21px;color:var(--navy)}.topbar small{color:var(--muted)}.content{padding:22px;max-width:1500px;margin:auto}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.stat,.panel{background:white;border:1px solid #e5eaf3;border-radius:17px;padding:18px;box-shadow:0 5px 18px #18376a08}.stat .label{font-size:13px;color:var(--muted)}.stat strong{display:block;font-size:27px;margin-top:7px;color:var(--navy)}.stat .emoji{float:right;font-size:25px}.panel{margin-bottom:16px}.panel h3{margin:0 0 15px;color:var(--navy);font-size:17px}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row>*{flex:1}.field{display:grid;gap:6px;margin-bottom:13px;min-width:0}.field label{font-size:13px;font-weight:700;color:#334155}.field input,.field select,.field textarea{width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#172033}.field textarea{min-height:75px}.formgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 13px}.full{grid-column:1/-1}.actions{display:flex;gap:7px;flex-wrap:wrap}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:720px}th,td{text-align:left;padding:11px 10px;border-bottom:1px solid #edf1f7;font-size:14px;vertical-align:middle}th{background:#f8faff;color:#334155;font-size:12px}td img,.person-photo{width:42px;height:42px;object-fit:cover;border-radius:50%;background:#e2e8f0}.pill{display:inline-block;background:#e0f2fe;color:#075985;padding:4px 8px;border-radius:30px;font-size:12px}.muted{color:var(--muted);font-size:13px}.empty{text-align:center;padding:28px;color:var(--muted)}.bloodgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.blood{padding:20px;background:linear-gradient(135deg,#fff,#fff1f2);border:1px solid #fecdd3;border-radius:16px;text-align:center;color:#9f1239}.blood b{font-size:27px;display:block}.blood span{font-size:12px}.notice{padding:12px 14px;background:#fff7ed;color:#9a3412;border-radius:12px;font-size:13px;margin-bottom:15px}.photo-preview{max-width:100px;max-height:100px;border-radius:12px;object-fit:cover;display:block;margin-top:6px}.receipt{max-width:850px;margin:0 auto;border:2px solid #163b72;padding:25px;background:white}.receipt-head{text-align:center;border-bottom:2px solid #163b72;padding-bottom:14px}.signatures{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:65px;text-align:center}.signatures div{border-top:1px solid #334155;padding-top:8px;font-size:12px}.detailgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.detailgrid div{padding:10px;background:#f8fafc;border-radius:9px}.detailgrid b{display:block;font-size:12px;color:var(--muted);margin-bottom:3px}
-@media(max-width:900px){.app{grid-template-columns:1fr}.sidebar{padding:10px}.brand{padding-bottom:10px}.nav{display:flex;overflow:auto;margin-top:10px}.nav button{white-space:nowrap;padding:9px}.side-foot{display:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.topbar{padding:13px 15px}.content{padding:14px}}
-@media(max-width:520px){.grid{grid-template-columns:1fr 1fr;gap:8px}.stat{padding:12px}.stat strong{font-size:22px}.formgrid,.detailgrid{grid-template-columns:1fr}.bloodgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.signatures{grid-template-columns:repeat(2,1fr)}.topbar h2{font-size:17px}}
-@media print{body{background:white}.sidebar,.topbar,.no-print,#appContent{display:none!important}#printArea{display:block!important}.receipt{border:2px solid #000;max-width:none;margin:0;padding:20px}.signatures{break-inside:avoid}}
-</style>
-</head>
-<body>
-<div id="loginScreen" class="login-wrap"><form class="login" id="loginForm"><div class="logo">চা</div><h1>চর কাজল সমাজ কল্যাণ সংগঠন</h1><p>ERP ব্যবস্থাপনা প্যানেল</p><div class="field"><label>ইউজারনেম</label><input id="username" value="admin" autocomplete="username" required></div><div class="field"><label>পাসওয়ার্ড</label><input id="password" type="password" value="demo123" autocomplete="current-password" required></div><button style="width:100%">লগইন করুন</button><p class="muted" style="margin-top:14px">ডেমো: admin / demo123</p></form></div>
-<div id="app" class="app hidden">
-<aside class="sidebar"><div class="brand"><div class="logo">চা</div><strong>চর কাজল সমাজ কল্যাণ সংগঠন<br><small>ERP Management</small></strong></div>
-<div class="nav" id="nav">
-<button class="active" data-page="dashboard">🏠 ড্যাশবোর্ড</button><button data-page="members">👥 সদস্য তালিকা</button><button data-page="add">➕ সদস্য যোগ</button><button data-page="blood">🩸 ব্লাড গ্রুপ</button><button data-page="committee">🧑‍🤝‍🧑 কমিটির তালিকা</button><button data-page="fund">💰 ফান্ড জমা</button><button data-page="receipts">🧾 রসিদ তালিকা</button><button data-page="admin">🛡️ এডমিন প্যানেল</button><button data-page="user">👤 ইউজার প্যানেল</button><button data-page="islamic">🌙 ইসলামিক জ্ঞান</button><button data-page="backup">💾 ডাটা ব্যাকআপ</button>
-</div><div class="side-foot">এডমিন: শাকিল মাহমুদ<br>ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</div></aside>
-<main><header class="topbar"><div><h2 id="pageTitle">ড্যাশবোর্ড</h2><small>শাকিল মাহমুদ · এডমিন</small></div><button class="secondary" id="logout">লগআউট</button></header><div class="content" id="appContent"></div></main></div>
-<div id="printArea" class="hidden"></div>
-<script>
-const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const GROUPS=['A+','A−','B+','B−','AB+','AB−','O+','O−'];
-const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}};
-let members=load('ck_members',[]),funds=load('ck_funds',[]),committee=load('ck_committee',[]),receipts=load('ck_receipts',[]),page='dashboard',editingId=null;
-const save=()=>{localStorage.setItem('ck_members',JSON.stringify(members));localStorage.setItem('ck_funds',JSON.stringify(funds));localStorage.setItem('ck_committee',JSON.stringify(committee));localStorage.setItem('ck_receipts',JSON.stringify(receipts))};
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const nextId=()=>{let n=members.reduce((m,x)=>Math.max(m,Number((x.id||'').split('-').pop())||0),0)+1;return '0010-'+String(n).padStart(3,'0')};
-const money=n=>'৳ '+Number(n||0).toLocaleString('en-US');
-function showPage(p){page=p;$$('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===p));$('#pageTitle').textContent=({'dashboard':'ড্যাশবোর্ড','members':'সদস্য তালিকা','add':'সদস্য যোগ','blood':'ব্লাড গ্রুপ','committee':'কমিটির তালিকা','fund':'ফান্ড জমা','receipts':'রসিদ তালিকা','admin':'এডমিন প্যানেল','user':'ইউজার প্যানেল','islamic':'ইসলামিক জ্ঞান','backup':'ডাটা ব্যাকআপ'})[p]||p;render()}
-function render(){
-const c=$('#appContent');
-if(page==='dashboard'){c.innerHTML=`<div class="grid"><div class="stat"><span class="emoji">👥</span><span class="label">মোট সদস্য</span><strong>${members.length}</strong></div><div class="stat"><span class="emoji">🩸</span><span class="label">ব্লাড গ্রুপ</span><strong>৮টি</strong></div><div class="stat"><span class="emoji">💰</span><span class="label">মোট ফান্ড জমা</span><strong>${money(funds.reduce((a,x)=>a+Number(x.amount||0),0))}</strong></div><div class="stat"><span class="emoji">🧾</span><span class="label">মোট রসিদ</span><strong>${receipts.length}</strong></div></div><div class="panel" style="margin-top:16px"><h3>সংগঠনের পরিচিতি</h3><p><b>চর কাজল সমাজ কল্যাণ সংগঠন</b></p><p class="muted">ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</p><p class="muted">এই সিস্টেমটি প্রাথমিক ডেমো। ডাটা এই ব্রাউজারের মধ্যেই সংরক্ষিত হয়।</p><div class="actions"><button onclick="showPage('add')">＋ সদস্য যোগ করুন</button><button class="secondary" onclick="showPage('fund')">ফান্ড জমা দিন</button><button class="secondary" onclick="showPage('blood')">রক্তদাতা খুঁজুন</button></div></div>`}
-else if(page==='members'){c.innerHTML=`<div class="panel"><div class="row"><div><h3>সদস্য তালিকা</h3><div class="muted">মোট ${members.length} জন সদস্য</div></div><button onclick="showPage('add')">＋ নতুন সদস্য</button></div><div class="field"><input id="memberSearch" placeholder="নাম, আইডি বা ফোন দিয়ে খুঁজুন..." oninput="renderMemberRows()"></div><div class="tablewrap"><table><thead><tr><th>ছবি</th><th>সদস্য আইডি</th><th>নাম</th><th>ফোন</th><th>ব্লাড গ্রুপ</th><th>কাজ</th></tr></thead><tbody id="memberRows"></tbody></table></div></div>`;renderMemberRows()}
-else if(page==='add'){const m=members.find(x=>x.id===editingId)||{};c.innerHTML=`<div class="panel"><h3>${editingId?'সদস্যের তথ্য সম্পাদনা':'নতুন সদস্য যোগ করুন'}</h3><form id="memberForm"><div class="formgrid">
-${field('নাম','name',m.name,true)}${field('মোবাইল নম্বর','phone',m.phone,true)}${field('সদস্য আইডি','id',m.id||nextId(),true,'text',true)}
-${field('ঠিকানা','address',m.address)}${field('পিতার নাম','father',m.father)}${field('মাতার নাম','mother',m.mother)}
-${field('জাতীয়তা','nationality',m.nationality||'বাংলাদেশি')}${field('জন্ম তারিখ','dob',m.dob,false,'date')}${selectField('ব্লাড গ্রুপ','blood',GROUPS,m.blood)}
-${field('জাতীয় পরিচয়পত্র নম্বর','nid',m.nid)}${field('নমিনির নাম','nominee',m.nominee)}${field('নমিনির ফোন','nomineePhone',m.nomineePhone)}
-${field('নমিনির NID নম্বর','nomineeNid',m.nomineeNid)}${fileField('সদস্যের ছবি','photo',m.photo)}${fileField('সদস্যের NID সামনের ছবি','nidFront',m.nidFront)}
-${fileField('সদস্যের NID পেছনের ছবি','nidBack',m.nidBack)}${fileField('নমিনির ছবি','nomineePhoto',m.nomineePhoto)}${fileField('নমিনির NID সামনের ছবি','nomineeNidFront',m.nomineeNidFront)}${fileField('নমিনির NID পেছনের ছবি','nomineeNidBack',m.nomineeNidBack)}
-</div><div class="actions"><button>${editingId?'আপডেট করুন':'সদস্য সংরক্ষণ করুন'}</button><button type="button" class="secondary" onclick="editingId=null;showPage('members')">বাতিল</button></div></form></div>`;$('#memberForm').onsubmit=saveMember}
-else if(page==='blood'){c.innerHTML=`<div class="panel"><h3>ব্লাড গ্রুপ অনুযায়ী সদস্য খুঁজুন</h3><div class="bloodgrid">${GROUPS.map(g=>`<button class="blood" onclick="showBlood('${g}')"><b>${g}</b><span>${members.filter(m=>m.blood===g).length} জন সদস্য</span></button>`).join('')}</div></div><div id="bloodResults"></div>`}
-else if(page==='committee'){c.innerHTML=`<div class="panel"><h3>কমিটির তালিকা</h3><form id="committeeForm"><div class="row"><div class="field"><label>নাম</label><input id="comName" required></div><div class="field"><label>পদবি</label><input id="comRole" required></div><div class="field"><label>মোবাইল</label><input id="comPhone"></div><div style="align-self:center"><button>যোগ করুন</button></div></div></form><div class="tablewrap"><table><thead><tr><th>নাম</th><th>পদবি</th><th>মোবাইল</th><th>কাজ</th></tr></thead><tbody>${committee.map((x,i)=>`<tr><td>${esc(x.name)}</td><td>${esc(x.role)}</td><td>${esc(x.phone)}</td><td><button class="danger small" onclick="deleteCommittee(${i})">মুছুন</button></td></tr>`).join('')||'<tr><td colspan="4" class="empty">এখনো কমিটির তথ্য যোগ করা হয়নি</td></tr>'}</tbody></table></div></div>`;$('#committeeForm').onsubmit=e=>{e.preventDefault();committee.push({name:$('#comName').value,role:$('#comRole').value,phone:$('#comPhone').value});save();render()}}
-else if(page==='fund'){c.innerHTML=`<div class="panel"><h3>ফান্ড জমা এন্ট্রি</h3><form id="fundForm"><div class="formgrid">${selectField('সদস্য','memberId',members.map(m=>m.id+' — '+m.name), '')}${selectField('জমার ধরন','type',['নিয়মিত জমা','বিশেষ ফান্ড','অন্যান্য'],'নিয়মিত জমা')}${field('টাকার পরিমাণ','amount','',true,'number')}${field('জমার তারিখ','date',new Date().toISOString().slice(0,10),true,'date')}${field('অনুমোদনকারী ১','sign1','শাকিল মাহমুদ')}${field('অনুমোদনকারী ২','sign2','')}${field('অনুমোদনকারী ৩','sign3','')}${field('অনুমোদনকারী ৪','sign4','')}${field('নোট','note','')}</div><button>ফান্ড জমা ও রসিদ তৈরি</button></form></div><div class="panel"><h3>সাম্প্রতিক ফান্ড জমা</h3><div class="tablewrap"><table><thead><tr><th>রসিদ</th><th>তারিখ</th><th>সদস্য</th><th>ধরন</th><th>পরিমাণ</th><th>কাজ</th></tr></thead><tbody>${fundRows()}</tbody></table></div></div>`;$('#fundForm').onsubmit=saveFund}
-else if(page==='receipts'){c.innerHTML=`<div class="panel"><h3>ফান্ড জমার রসিদ তালিকা</h3><div class="tablewrap"><table><thead><tr><th>রসিদ নম্বর</th><th>তারিখ</th><th>সদস্য</th><th>পরিমাণ</th><th>কাজ</th></tr></thead><tbody>${fundRows()}</tbody></table></div></div>`}
-else if(page==='admin'){c.innerHTML=`<div class="panel"><h3>এডমিন প্যানেল</h3><p><b>এডমিন:</b> শাকিল মাহমুদ</p><p><b>পদবি:</b> এডমিন</p><p><b>সংগঠন:</b> চর কাজল সমাজ কল্যাণ সংগঠন</p><div class="notice">এটি ডেমো লগইন। বাস্তব নিরাপদ ব্যবহারকারীর অনুমতি ও সার্ভার-ভিত্তিক লগইন এখানে এখনো যুক্ত নেই।</div><button onclick="showPage('backup')">ডাটা ব্যাকআপ ব্যবস্থাপনা</button></div>`}
-else if(page==='user'){c.innerHTML=`<div class="panel"><h3>ইউজার প্যানেল</h3><p>এখানে সদস্য তালিকা দেখা, ব্লাড গ্রুপ অনুযায়ী রক্তদাতা খোঁজা এবং ফান্ড রসিদ দেখা যায়।</p><div class="actions"><button onclick="showPage('members')">সদস্য তালিকা</button><button onclick="showPage('blood')">ব্লাড গ্রুপ</button><button onclick="showPage('receipts')">রসিদ তালিকা</button></div></div>`}
-else if(page==='islamic'){c.innerHTML=`<div class="panel"><h3>ইসলামিক জ্ঞান</h3><div class="notice">এই বিভাগটি সাধারণ শিক্ষামূলক তথ্যের জন্য। ধর্মীয় বিধান বা গুরুত্বপূর্ণ সিদ্ধান্তের ক্ষেত্রে নির্ভরযোগ্য আলেমের পরামর্শ নিন।</div><h3>সততা ও আমানতদারি</h3><p>সততা, ন্যায়, মানুষের উপকার এবং আমানত রক্ষা—সমাজকল্যাণমূলক কাজের গুরুত্বপূর্ণ মূল্যবোধ।</p><h3>প্রতিবেশীর অধিকার</h3><p>প্রতিবেশীর প্রতি সদাচরণ, অসুস্থ বা বিপদগ্রস্ত মানুষের পাশে দাঁড়ানো এবং সামর্থ্য অনুযায়ী সাহায্য করা উত্তম কাজ।</p></div>`}
-else if(page==='backup'){c.innerHTML=`<div class="panel"><h3>ডাটা ব্যাকআপ ও পুনরুদ্ধার</h3><div class="notice">এই ব্যাকআপে এই ব্রাউজারে সংরক্ষিত সদস্য, ফান্ড, রসিদ ও কমিটির তথ্য থাকবে। নিরাপদ স্থানে রাখুন।</div><div class="actions"><button onclick="downloadBackup()">⬇ ব্যাকআপ ডাউনলোড</button><label class="secondary" style="display:inline-block;padding:10px 14px;border-radius:10px;cursor:pointer">ব্যাকআপ আপলোড করে ফিরিয়ে আনুন <input type="file" accept="application/json" onchange="restoreBackup(event)" hidden></label></div></div>`}
-}
-function field(label,name,value='',required=false,type='text',readonly=false){return `<div class="field"><label>${label}${required?' *':''}</label><input name="${name}" id="f_${name}" type="${type}" value="${esc(value)}" ${required?'required':''} ${readonly?'readonly':''}></div>`}
-function selectField(label,name,opts,value=''){return `<div class="field"><label>${label}</label><select name="${name}" id="f_${name}"><option value="">নির্বাচন করুন</option>${opts.map(o=>{let v=o.includes(' — ')?o.split(' — ')[0]:o;return `<option value="${esc(v)}" ${v===value?'selected':''}>${esc(o)}</option>`}).join('')}</select></div>`}
-function fileField(label,name,existing){return `<div class="field"><label>${label}</label><input type="file" accept="image/*" id="f_${name}">${existing?`<img class="photo-preview" src="${existing}" alt="বর্তমান ছবি">`:''}</div>`}
-function renderMemberRows(){let q=($('#memberSearch')?.value||'').toLowerCase();let arr=members.filter(m=>[m.id,m.name,m.phone,m.address].some(v=>String(v||'').toLowerCase().includes(q)));$('#memberRows').innerHTML=arr.map(m=>`<tr><td>${m.photo?`<img src="${m.photo}">`:'👤'}</td><td><span class="pill">${esc(m.id)}</span></td><td>${esc(m.name)}</td><td>${esc(m.phone)}</td><td>${esc(m.blood||'—')}</td><td><div class="actions"><button class="small" onclick="viewMember('${m.id}')">ভিউ</button><button class="secondary small" onclick="editMember('${m.id}')">এডিট</button><button class="danger small" onclick="deleteMember('${m.id}')">মুছুন</button></div></td></tr>`).join('')||'<tr><td colspan="6" class="empty">কোনো সদস্য পাওয়া যায়নি</td></tr>'}
-function saveMember(e){e.preventDefault();let m=members.find(x=>x.id===editingId)||{id:nextId()};let names=['name','phone','id','address','father','mother','nationality','dob','blood','nid','nominee','nomineePhone','nomineeNid'];names.forEach(n=>{let el=$('#f_'+n);if(el)m[n]=el.value});let fileNames=['photo','nidFront','nidBack','nomineePhoto','nomineeNidFront','nomineeNidBack'];let tasks=fileNames.map(n=>new Promise(resolve=>{let el=$('#f_'+n);if(el?.files?.[0]){let r=new FileReader();r.onload=()=>{m[n]=r.result;resolve()};r.readAsDataURL(el.files[0])}else resolve()}));Promise.all(tasks).then(()=>{if(members.some(x=>x.id===m.id&&x!==m)){alert('এই সদস্য আইডি আগে থেকেই আছে।');return}if(!members.includes(m))members.push(m);save();editingId=null;showPage('members');alert('সদস্যের তথ্য সংরক্ষণ হয়েছে')})}
-function editMember(id){editingId=id;showPage('add')}
-function deleteMember(id){if(confirm('এই সদস্যের তথ্য মুছে ফেলবেন?')){members=members.filter(m=>m.id!==id);save();render()}}
-function viewMember(id){let m=members.find(x=>x.id===id);if(!m)return;$('#printArea').innerHTML=`<div class="receipt"><div class="receipt-head"><h2>চর কাজল সমাজ কল্যাণ সংগঠন</h2><p>সদস্যের সম্পূর্ণ তথ্য</p><p>ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</p></div><div style="display:flex;gap:15px;align-items:center;margin:18px 0">${m.photo?`<img src="${m.photo}" style="width:100px;height:100px;object-fit:cover;border-radius:10px">`:''}<div><h2>${esc(m.name)}</h2><p>সদস্য আইডি: ${esc(m.id)}</p></div></div><div class="detailgrid">${[['মোবাইল',m.phone],['ঠিকানা',m.address],['পিতার নাম',m.father],['মাতার নাম',m.mother],['জাতীয়তা',m.nationality],['জন্ম তারিখ',m.dob],['ব্লাড গ্রুপ',m.blood],['NID নম্বর',m.nid],['নমিনির নাম',m.nominee],['নমিনির ফোন',m.nomineePhone],['নমিনির NID',m.nomineeNid]].map(a=>`<div><b>${a[0]}</b>${esc(a[1]||'—')}</div>`).join('')}</div><h3 style="margin-top:20px">সংযুক্ত ছবি</h3><div class="row">${[['সদস্য NID সামনে',m.nidFront],['সদস্য NID পেছনে',m.nidBack],['নমিনির ছবি',m.nomineePhoto],['নমিনি NID সামনে',m.nomineeNidFront],['নমিনি NID পেছনে',m.nomineeNidBack]].filter(a=>a[1]).map(a=>`<div><p>${a[0]}</p><img src="${a[1]}" style="max-width:160px;max-height:130px;object-fit:contain"></div>`).join('')}</div></div>`;$('#printArea').classList.remove('hidden');setTimeout(()=>{window.print();$('#printArea').classList.add('hidden')},150)}
-function showBlood(g){let arr=members.filter(m=>m.blood===g);$('#bloodResults').innerHTML=`<div class="panel"><h3>${g} ব্লাড গ্রুপের সদস্য (${arr.length})</h3>${arr.map(m=>`<div class="row" style="padding:12px 0;border-bottom:1px solid #edf1f7"><div style="display:flex;gap:10px;align-items:center;min-width:230px">${m.photo?`<img class="person-photo" src="${m.photo}">`:'<span class="person-photo" style="display:grid;place-items:center">👤</span>'}<div><b>${esc(m.name)}</b><div class="muted">ID: ${esc(m.id)} · ${esc(m.address||'')}</div><div class="muted">${esc(m.phone||'')}</div></div></div><div class="actions"><a href="tel:${esc(m.phone)}"><button class="green">📞 কল</button></a><a target="_blank" href="https://wa.me/${String(m.phone||'').replace(/\\D/g,'')}"><button>WhatsApp</button></a></div></div>`).join('')||'<div class="empty">এই ব্লাড গ্রুপে এখনো সদস্য যোগ করা হয়নি</div>'}</div>`}
-function saveFund(e){e.preventDefault();let id=$('#f_memberId').value,m=members.find(x=>x.id===id);if(!m){alert('আগে সদস্য যোগ করুন, তারপর সদস্য নির্বাচন করুন।');return}let f={receipt:'CK-'+String(receipts.length+1).padStart(5,'0'),memberId:id,name:m.name,phone:m.phone,type:$('#f_type').value,amount:Number($('#f_amount').value),date:$('#f_date').value,signs:[1,2,3,4].map(i=>$('#f_sign'+i).value).filter(Boolean),note:$('#f_note').value};funds.unshift(f);receipts.unshift(f);save();printReceipt(f);showPage('fund')}
-function fundRows(){return funds.map(f=>`<tr><td>${esc(f.receipt)}</td><td>${esc(f.date)}</td><td>${esc(f.name)}<div class="muted">${esc(f.memberId)}</div></td><td>${esc(f.type)}</td><td>${money(f.amount)}</td><td><button class="small" onclick="printByReceipt('${f.receipt}')">রসিদ প্রিন্ট</button></td></tr>`).join('')||'<tr><td colspan="6" class="empty">এখনো ফান্ড জমা নেই</td></tr>'}
-function printByReceipt(r){let f=funds.find(x=>x.receipt===r);if(f)printReceipt(f)}
-function printReceipt(f){$('#printArea').innerHTML=`<div class="receipt"><div class="receipt-head"><div class="logo" style="margin:auto">চা</div><h2>চর কাজল সমাজ কল্যাণ সংগঠন</h2><p>ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</p><h3>ফান্ড জমার রসিদ</h3></div><p><b>রসিদ নম্বর:</b> ${esc(f.receipt)} <span style="float:right"><b>তারিখ:</b> ${esc(f.date)}</span></p><hr><p><b>সদস্য আইডি:</b> ${esc(f.memberId)}</p><p><b>সদস্যের নাম:</b> ${esc(f.name)}</p><p><b>মোবাইল:</b> ${esc(f.phone)}</p><p><b>জমার ধরন:</b> ${esc(f.type)}</p><h2 style="background:#eef6ff;padding:15px;border-radius:8px">জমার পরিমাণ: ${money(f.amount)}</h2><p><b>নোট:</b> ${esc(f.note||'—')}</p><div class="signatures">${[0,1,2,3].map((i)=>`<div>${esc(f.signs[i]||'অনুমোদনকারী')}<br>অনুমোদনকারীর স্বাক্ষর</div>`).join('')}</div><p style="text-align:center;margin-top:25px;font-size:12px">রসিদটি সংরক্ষণ করুন।</p></div>`;$('#printArea').classList.remove('hidden');setTimeout(()=>{window.print();$('#printArea').classList.add('hidden')},150)}
-function deleteCommittee(i){committee.splice(i,1);save();render()}
-function downloadBackup(){let blob=new Blob([JSON.stringify({members,funds,receipts,committee},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='charkajolbd-backup.json';a.click();URL.revokeObjectURL(a.href)}
-function restoreBackup(e){let file=e.target.files[0];if(!file)return;let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);members=d.members||[];funds=d.funds||[];receipts=d.receipts||[];committee=d.committee||[];save();render();alert('ব্যাকআপ ফিরিয়ে আনা হয়েছে')}catch{alert('ফাইলটি সঠিক ব্যাকআপ নয়')}};r.readAsText(file)}
-$('#loginForm').onsubmit=e=>{e.preventDefault();if($('#username').value==='admin'&&$('#password').value==='demo123'){$('#loginScreen').classList.add('hidden');$('#app').classList.remove('hidden');showPage('dashboard')}else alert('ইউজারনেম বা পাসওয়ার্ড সঠিক নয়')};
-$('#logout').onclick=()=>{if(confirm('লগআউট করবেন?')){$('#app').classList.add('hidden');$('#loginScreen').classList.remove('hidden')}};
-$('#nav').onclick=e=>{let b=e.target.closest('button[data-page]');if(b)showPage(b.dataset.page)};
-</script>
-</body></html>
-<!doctype html>
-<html lang="bn">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>চর কাজল সমাজ কল্যাণ সংগঠন | ERP</title>
-<style>
-:root{--navy:#12304a;--blue:#1769aa;--teal:#0b998b;--bg:#f2f6fa;--ink:#203247;--muted:#65758b;--line:#dce5ed;--white:#fff;--red:#c0392b;--gold:#f4b942}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,"Noto Sans Bengali",Arial,sans-serif;background:var(--bg);color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:9px;padding:10px 14px;background:var(--blue);color:white;font-weight:600}.secondary{background:#e7eef5;color:var(--navy)}.danger{background:var(--red)}.good{background:var(--teal)}.hidden{display:none!important}
-.login-wrap{min-height:100vh;display:grid;place-items:center;padding:20px;background:linear-gradient(140deg,#102c46,#1976a8 65%,#0c9c8b)}.login-card{width:min(430px,100%);background:white;border-radius:22px;padding:28px;box-shadow:0 20px 60px #001b3344;text-align:center}.logo{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;margin:0 auto 14px;background:linear-gradient(135deg,#0b998b,#1769aa);color:white;font-size:30px;font-weight:800;border:4px solid #d8f5f0}.login-card h1{font-size:23px;margin:8px 0}.login-card p{color:var(--muted);margin-top:0}.field{text-align:left;margin:12px 0}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;padding:11px;border:1px solid #cbd8e4;border-radius:9px;background:white;color:var(--ink)}.login-card button{width:100%;margin-top:10px}.hint{font-size:12px;color:var(--muted);margin-top:14px}
-.app{display:flex;min-height:100vh}.sidebar{width:250px;background:var(--navy);color:white;padding:18px 14px;flex-shrink:0}.brand{padding:6px 8px 18px;border-bottom:1px solid #ffffff25;margin-bottom:16px}.brand strong{display:block;font-size:17px}.brand small{color:#c4d6e5}.navbtn{display:block;width:100%;text-align:left;margin:5px 0;background:transparent;color:#dbe8f1;padding:12px;border-radius:9px}.navbtn.active,.navbtn:hover{background:#ffffff20;color:white}.sidefoot{font-size:12px;color:#b9ccdc;margin:24px 8px}.main{min-width:0;flex:1}.topbar{background:white;border-bottom:1px solid var(--line);padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:10px}.topbar h2{font-size:18px;margin:0}.content{padding:22px;max-width:1400px;margin:auto}.page{display:none}.page.active{display:block}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.card{background:white;border:1px solid var(--line);border-radius:14px;padding:17px;box-shadow:0 3px 12px #14334a08}.stat small{color:var(--muted)}.stat strong{display:block;font-size:27px;margin-top:8px}.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 15px;flex-wrap:wrap}.sectionhead h3{margin:0}.formgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.formgrid .field{margin:0}.wide{grid-column:1/-1}.tablewrap{overflow:auto;background:white;border:1px solid var(--line);border-radius:12px}table{border-collapse:collapse;width:100%;min-width:650px}th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left;font-size:14px}th{background:#edf4f8;color:#29465e;white-space:nowrap}tr:last-child td{border-bottom:0}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.toolbar input,.toolbar select{padding:10px;border:1px solid #cbd8e4;border-radius:9px;background:white}.pill{display:inline-block;background:#e1f5ef;color:#08745e;padding:4px 9px;border-radius:30px;font-size:12px}.notice{padding:12px 14px;background:#fff6dc;border:1px solid #f5dfa0;border-radius:10px;color:#725415;margin:12px 0;font-size:13px}.bloodgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.bloodcard{background:white;border:1px solid var(--line);border-radius:12px;padding:17px;text-align:center}.bloodcard strong{font-size:25px;color:#c0392b;display:block}.bloodcard span{font-size:13px;color:var(--muted)}.empty{padding:24px;text-align:center;color:var(--muted)}.actions{display:flex;gap:6px;flex-wrap:wrap}.actions button{padding:7px 9px;font-size:12px}.photo{width:44px;height:44px;border-radius:50%;object-fit:cover;background:#edf4f8}.modal-backdrop{position:fixed;inset:0;background:#061a2bbb;display:none;align-items:center;justify-content:center;padding:16px;z-index:1000}.modal-backdrop.open{display:flex}.modal-card{background:white;border-radius:16px;padding:20px;max-width:850px;width:100%;max-height:90vh;overflow:auto}.detailgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.detailitem{padding:10px;background:#f2f6fa;border-radius:8px;overflow-wrap:anywhere}.detailitem b{display:block;font-size:12px;color:#65758b;margin-bottom:4px}.detailphoto{max-width:100%;max-height:180px;object-fit:contain;border:1px solid #dce5ed;border-radius:8px;background:white}.receipt{max-width:800px;margin:auto;border:2px solid #173c58;padding:24px;background:white}.receipt h2,.receipt h3{text-align:center;margin:4px}.receipt .center{text-align:center}.receipt table{min-width:0;margin:16px 0}.signatures{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:50px;text-align:center}.signatures div{border-top:1px solid #555;padding-top:8px;font-size:12px}.mobilemenu{display:none}
-@media(max-width:900px){.sidebar{width:215px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.bloodgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:650px){.app{display:block}.sidebar{width:100%;display:none}.sidebar.open{display:block}.mobilemenu{display:inline-block}.topbar{padding:12px}.content{padding:13px}.grid{gap:9px}.card{padding:13px}.stat strong{font-size:22px}.formgrid{grid-template-columns:1fr}.wide{grid-column:auto}.signatures{grid-template-columns:repeat(2,1fr)}.topbar h2{font-size:15px}}
-@media print{body{background:white}.sidebar,.topbar,.no-print{display:none!important}.main,.content{padding:0;margin:0}.page{display:none!important}#receipts{display:block!important}.receipt{border:2px solid #173c58;box-shadow:none}}
-</style>
-</head>
-<body>
-<section id="loginScreen" class="login-wrap">
- <div class="login-card"><div class="logo">চক</div><h1>চর কাজল সমাজ কল্যাণ সংগঠন</h1><p>ERP ব্যবস্থাপনা প্যানেল</p>
- <form id="loginForm"><div class="field"><label>ইউজারনেম</label><input id="loginUser" autocomplete="username" required placeholder="admin"></div><div class="field"><label>পাসওয়ার্ড</label><input id="loginPass" type="password" autocomplete="current-password" required placeholder="পাসওয়ার্ড লিখুন"></div><button type="submit">লগইন করুন</button></form>
- <div class="hint">প্রাথমিক ডেমো লগইন: <b>admin</b> / <b>demo123</b></div></div>
-</section>
-<div id="app" class="app hidden">
- <aside id="sidebar" class="sidebar"><div class="brand"><strong>চর কাজল সমাজ কল্যাণ সংগঠন</strong><small>ERP Management</small></div>
- <button class="navbtn active" data-page="dashboard">🏠 ড্যাশবোর্ড</button><button class="navbtn" data-page="members">👥 সদস্য তালিকা</button><button class="navbtn" data-page="memberAdd">➕ সদস্য এড</button><button class="navbtn" data-page="blood">🩸 রক্তের গ্রুপ</button><button class="navbtn" data-page="fund">💰 ফান্ড জমা</button><button class="navbtn" data-page="receipts">🧾 জমার রসিদ</button><button class="navbtn" data-page="committee">🤝 কমিটির তালিকা</button><button class="navbtn" data-page="islamic">📚 ইসলামিক জ্ঞান</button><button class="navbtn" data-page="userPanel">👤 ইউজার প্যানেল</button><button class="navbtn" data-page="adminPanel">⚙️ এডমিন প্যানেল</button>
- <div class="sidefoot">এডমিন: শাকিল মাহমুদ</div></aside>
- <main class="main"><header class="topbar"><div style="display:flex;align-items:center;gap:10px"><button class="mobilemenu secondary" id="menuToggle">☰</button><h2 id="pageTitle">ড্যাশবোর্ড</h2></div><div><span id="currentUser">শাকিল মাহমুদ</span> <button class="secondary" id="logoutBtn">লগআউট</button></div></header>
- <div class="content">
- <section id="dashboard" class="page active"><div class="sectionhead"><h3>সংক্ষিপ্ত বিবরণ</h3><span class="pill">সিস্টেম চালু</span></div><div class="grid"><div class="card stat"><small>মোট সদস্য</small><strong id="statMembers">0</strong></div><div class="card stat"><small>রক্তদাতা</small><strong id="statDonors">0</strong></div><div class="card stat"><small>মোট ফান্ড জমা</small><strong id="statFund">৳0</strong></div><div class="card stat"><small>জমার রসিদ</small><strong id="statReceipts">0</strong></div></div><div class="notice">এটি একটি প্রাথমিক এক-ফাইল ডেমো। এখানে যোগ করা তথ্য এই ব্রাউজারের মধ্যেই সংরক্ষিত হয়; অনলাইন/একাধিক ডিভাইসে একই ডাটাবেজ ও নিরাপদ লগইনের জন্য পরে সার্ভার ডাটাবেজ যুক্ত করতে হবে।</div><div class="card"><h3>দ্রুত কাজ</h3><div class="toolbar"><button data-go="memberAdd">নতুন সদস্য যোগ করুন</button><button class="good" data-go="fund">ফান্ড জমা যোগ করুন</button><button class="secondary" data-go="blood">রক্তদাতার তালিকা দেখুন</button></div></div></section>
- <section id="members" class="page"><div class="sectionhead"><h3>সদস্য তালিকা</h3><button data-go="memberAdd">+ নতুন সদস্য</button></div><div class="toolbar"><input id="memberSearch" placeholder="নাম, আইডি বা মোবাইল দিয়ে খুঁজুন"><select id="memberBloodFilter"><option value="">সব রক্তের গ্রুপ</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></div><div class="tablewrap"><table><thead><tr><th>আইডি</th><th>নাম</th><th>মোবাইল</th><th>ঠিকানা</th><th>রক্তের গ্রুপ</th><th>কাজ</th></tr></thead><tbody id="memberRows"></tbody></table></div></section>
- <section id="memberAdd" class="page"><div class="sectionhead"><h3 id="memberFormTitle">নতুন সদস্য যোগ করুন</h3><button class="secondary" data-go="members">সদস্য তালিকায় ফিরুন</button></div><form id="memberForm" class="card"><input type="hidden" id="editMemberId"><div class="formgrid">
- <div class="field"><label>সদস্য আইডি (অটো)</label><input id="mId" readonly></div><div class="field"><label>সদস্যের নাম *</label><input id="mName" required></div><div class="field"><label>মোবাইল নম্বর *</label><input id="mPhone" required inputmode="tel"></div>
- <div class="field"><label>পিতার নাম</label><input id="mFather"></div><div class="field"><label>মাতার নাম</label><input id="mMother"></div><div class="field"><label>জন্ম তারিখ</label><input id="mDob" type="date"></div>
- <div class="field"><label>জাতীয়তা / জাতি</label><input id="mNationality" value="বাংলাদেশি"></div><div class="field"><label>জাতীয় পরিচয়পত্রের নম্বর (NID)</label><input id="mNidNumber" inputmode="numeric"></div><div class="field"><label>রক্তের গ্রুপ</label><select id="mBlood"><option value="">নির্বাচন করুন</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></div>
- <div class="field wide"><label>ঠিকানা</label><textarea id="mAddress" rows="2"></textarea></div><div class="field"><label>সদস্যের ছবি (ঐচ্ছিক)</label><input id="mPhoto" type="file" accept="image/*"></div><div class="field"><label>NID কার্ডের সামনের ছবি</label><input id="mNidFront" type="file" accept="image/*"></div><div class="field"><label>NID কার্ডের পেছনের ছবি</label><input id="mNidBack" type="file" accept="image/*"></div>
- <div class="field"><label>নমিনির নাম</label><input id="mNominee"></div><div class="field"><label>নমিনির মোবাইল</label><input id="mNomineePhone"></div><div class="field"><label>নমিনির NID নম্বর</label><input id="mNomineeNidNumber" inputmode="numeric"></div><div class="field"><label>নমিনির NID কার্ডের সামনের ছবি</label><input id="mNomineeNidFront" type="file" accept="image/*"></div><div class="field"><label>নমিনির NID কার্ডের পেছনের ছবি</label><input id="mNomineeNidBack" type="file" accept="image/*"></div>
- </div><div class="toolbar" style="margin-top:18px"><button type="submit">সদস্য সংরক্ষণ করুন</button><button type="button" class="secondary" id="clearMember">ফর্ম খালি করুন</button></div></form></section>
- <section id="blood" class="page"><div class="sectionhead"><h3>রক্তের গ্রুপ অনুযায়ী সদস্য</h3></div><div id="bloodCards" class="bloodgrid"></div><div class="card" style="margin-top:15px"><div class="sectionhead"><h3 id="bloodListTitle">রক্তদাতার তালিকা</h3></div><div class="toolbar"><select id="bloodGroupSelect"><option value="">একটি গ্রুপ নির্বাচন করুন</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select><input id="bloodSearch" placeholder="নাম বা ফোন নম্বর খুঁজুন"></div><div class="tablewrap"><table><thead><tr><th>ছবি</th><th>সদস্য আইডি</th><th>নাম</th><th>মোবাইল</th><th>ঠিকানা</th><th>যোগাযোগ</th></tr></thead><tbody id="bloodRows"></tbody></table></div></div></section>
- <section id="fund" class="page"><div class="sectionhead"><h3>ফান্ড জমা</h3></div><form id="fundForm" class="card"><div class="formgrid"><div class="field"><label>সদস্য *</label><select id="fMember" required></select></div><div class="field"><label>জমার ধরন</label><select id="fType"><option>ফান্ড জমা</option><option>মাসিক জমা</option><option>নিয়মিত জমা</option><option>অনুদান</option></select></div><div class="field"><label>টাকার পরিমাণ *</label><input id="fAmount" type="number" min="1" required></div><div class="field"><label>জমার তারিখ</label><input id="fDate" type="date" required></div><div class="field wide"><label>মন্তব্য</label><input id="fNote"></div></div><div class="toolbar" style="margin-top:16px"><button type="submit">জমা সংরক্ষণ ও রসিদ তৈরি</button></div></form><div class="sectionhead" style="margin-top:22px"><h3>ফান্ড লেজার</h3></div><div class="tablewrap"><table><thead><tr><th>রসিদ নং</th><th>তারিখ</th><th>সদস্য</th><th>ধরন</th><th>পরিমাণ</th><th>কাজ</th></tr></thead><tbody id="fundRows"></tbody></table></div></section>
- <section id="receipts" class="page"><div class="sectionhead"><h3>জমার রসিদ</h3><button class="secondary" id="printReceiptBtn">রসিদ প্রিন্ট করুন</button></div><div id="receiptPaper" class="receipt"><div class="center"><div class="logo" style="width:58px;height:58px;font-size:22px">চক</div><h2>চর কাজল সমাজ কল্যাণ সংগঠন</h2><p>ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</p><h3>ফান্ড জমার রসিদ</h3></div><hr><p><b>রসিদ নম্বর:</b> <span id="rNo">—</span>　 <b>তারিখ:</b> <span id="rDate">—</span></p><table><tbody><tr><th>সদস্য আইডি</th><td id="rId">—</td><th>নাম</th><td id="rName">—</td></tr><tr><th>মোবাইল</th><td id="rPhone">—</td><th>জমার ধরন</th><td id="rType">—</td></tr><tr><th>পরিমাণ</th><td colspan="3" id="rAmount">৳0</td></tr><tr><th>মন্তব্য</th><td colspan="3" id="rNote">—</td></tr></tbody></table><p>প্রাপ্ত টাকার জন্য ধন্যবাদ।</p><div class="signatures"><div>জমাদানকারীর স্বাক্ষর</div><div>গ্রহণকারীর স্বাক্ষর</div><div>অনুমোদনকারীর স্বাক্ষর</div><div><b>শাকিল মাহমুদ</b><br>সভাপতি</div></div></div><div class="notice">রসিদে স্বাক্ষর/অনুমোদনের অংশটি ডেমো। বাস্তব অনুমোদন-প্রক্রিয়া ও চারজন অনুমোদনকারীর যাচাই যুক্ত করতে সার্ভারভিত্তিক ব্যবস্থা লাগবে।</div></section>
- <section id="committee" class="page"><div class="sectionhead"><h3>কমিটির তালিকা</h3><button id="addCommitteeBtn">+ সদস্য যোগ করুন</button></div><form id="committeeForm" class="card hidden"><div class="formgrid"><div class="field"><label>নাম</label><input id="cName" required></div><div class="field"><label>পদবি</label><input id="cRole" required></div><div class="field"><label>মোবাইল</label><input id="cPhone"></div></div><div class="toolbar" style="margin-top:12px"><button>সংরক্ষণ</button><button type="button" class="secondary" id="cancelCommittee">বাতিল</button></div></form><div class="tablewrap" style="margin-top:12px"><table><thead><tr><th>নাম</th><th>পদবি</th><th>মোবাইল</th><th>কাজ</th></tr></thead><tbody id="committeeRows"></tbody></table></div></section>
- <section id="islamic" class="page"><div class="sectionhead"><h3>ইসলামিক জ্ঞান</h3></div><div class="card"><p>এই অংশে ইসলামিক বিষয়ভিত্তিক পাঠ/নোট রাখা যাবে। এটি সদস্যের তথ্য বা রসিদের অংশ নয়।</p><div class="formgrid"><div class="field"><label>বিষয়</label><select id="topic"><option>নামাজ</option><option>রোজা</option><option>যাকাত</option><option>আখলাক</option><option>দোয়া</option></select></div><div class="field wide"><label>নোট/পাঠ</label><textarea id="topicText" rows="3" placeholder="এখানে পাঠ বা নোট লিখুন"></textarea></div></div><button id="saveTopic">নোট সংরক্ষণ</button><div id="topicList" style="margin-top:15px"></div></div></section>
- <section id="userPanel" class="page"><div class="sectionhead"><h3>ইউজার প্যানেল</h3></div><div class="card"><p>ব্যবহারকারী: <b>শাকিল মাহমুদ</b></p><p>পদবি: <b>এডমিন</b></p><p>এখানে সাধারণ ব্যবহারকারীর প্রোফাইল ও অনুমতি ব্যবস্থাপনা পরবর্তীতে যুক্ত করা যাবে।</p></div></section>
- <section id="adminPanel" class="page"><div class="sectionhead"><h3>এডমিন প্যানেল</h3></div><div class="card"><p><b>এডমিন:</b> শাকিল মাহমুদ</p><p>এই ডেমোতে ডাটা আপনার বর্তমান ব্রাউজারের localStorage-এ থাকে। ব্রাউজারের ডাটা মুছে গেলে তথ্য হারাতে পারে। বাস্তব ব্যবহারের আগে নিরাপদ লগইন, সার্ভার ডাটাবেজ, ব্যাকআপ এবং অনুমতি নিয়ন্ত্রণ যুক্ত করা জরুরি।</p><button class="danger" id="exportBtn">ডাটা ব্যাকআপ ডাউনলোড</button></div></section>
- </div></main></div>
-<div id="memberModal" class="modal-backdrop"><div class="modal-card"><div class="sectionhead"><h3>সদস্যের সম্পূর্ণ তথ্য</h3><div class="actions"><button id="printMemberBtn">🖨️ প্রিন্ট</button><button class="secondary" id="closeMemberModal">বন্ধ করুন</button></div></div><div id="memberDetails"></div></div></div>
-<script>
-const $=id=>document.getElementById(id);
-const store={get(k,def=[]){try{return JSON.parse(localStorage.getItem('ckbd_'+k))??def}catch{return def}},set(k,v){localStorage.setItem('ckbd_'+k,JSON.stringify(v))}};
-let members=store.get('members'),funds=store.get('funds'),committee=store.get('committee',[{name:'শাকিল মাহমুদ',role:'সভাপতি',phone:''}]),topics=store.get('topics'),currentReceipt=null;
-const bloods=['A+','A-','B+','B-','AB+','AB-','O+','O-'];
-const today=()=>new Date().toISOString().slice(0,10);
-function nextId(){let max=0;members.forEach(m=>{let n=Number((m.id||'').split('-').pop());if(Number.isFinite(n))max=Math.max(max,n)});return '0010-'+String(max+1).padStart(3,'0')}
-function money(n){return '৳'+Number(n||0).toLocaleString('en-US')}
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function saveAll(){store.set('members',members);store.set('funds',funds);store.set('committee',committee);store.set('topics',topics);renderAll()}
-function go(page){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));$(page).classList.add('active');document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.page===page));const btn=document.querySelector('.navbtn[data-page="'+page+'"]');$('pageTitle').textContent=btn?btn.textContent.replace(/^[^ ]+ /,''):({memberAdd:'সদস্য এড',receipts:'জমার রসিদ'}[page]||page);$('sidebar').classList.remove('open');if(page==='memberAdd'&&!$('editMemberId').value){$('mId').value=nextId()}if(page==='fund')populateFundMembers()}
-document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
-$('menuToggle').onclick=()=>$('sidebar').classList.toggle('open');
-$('loginForm').addEventListener('submit',e=>{e.preventDefault();if($('loginUser').value.trim()==='admin'&&$('loginPass').value==='demo123'){$('loginScreen').classList.add('hidden');$('app').classList.remove('hidden');renderAll()}else alert('লগইন তথ্য সঠিক নয়। ডেমো ইউজার: admin, পাসওয়ার্ড: demo123')});
-$('logoutBtn').onclick=()=>{$('app').classList.add('hidden');$('loginScreen').classList.remove('hidden');$('loginPass').value=''};
-function renderAll(){renderMembers();renderBlood();renderFunds();renderCommittee();renderTopics();$('statMembers').textContent=members.length;$('statDonors').textContent=members.filter(m=>m.blood).length;$('statFund').textContent=money(funds.reduce((a,f)=>a+Number(f.amount||0),0));$('statReceipts').textContent=funds.length;populateFundMembers()}
-function renderMembers(){let q=($('memberSearch')?.value||'').toLowerCase(),bg=$('memberBloodFilter')?.value||'';let list=members.filter(m=>(!bg||m.blood===bg)&&[m.name,m.id,m.phone,m.address].some(x=>String(x||'').toLowerCase().includes(q)));$('memberRows').innerHTML=list.length?list.map(m=>`<tr><td>${esc(m.id)}</td><td>${esc(m.name)}</td><td>${esc(m.phone)}</td><td>${esc(m.address)}</td><td>${esc(m.blood||'—')}</td><td><div class="actions"><button onclick="viewMember('${m.key}')">ভিউ</button><button class="secondary" onclick="editMember('${m.key}')">এডিট</button><button class="danger" onclick="deleteMember('${m.key}')">মুছুন</button></div></td></tr>`).join(''):'<tr><td colspan="6" class="empty">কোনো সদস্য পাওয়া যায়নি</td></tr>'}
-$('memberSearch').addEventListener('input',renderMembers);$('memberBloodFilter').addEventListener('change',renderMembers);
-function readFile(input){return new Promise(resolve=>{const f=input.files?.[0];if(!f)return resolve('');const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=()=>resolve('');r.readAsDataURL(f)})}
-$('memberForm').addEventListener('submit',async e=>{e.preventDefault();const key=$('editMemberId').value;let old=members.find(m=>m.key===key);const photo=await readFile($('mPhoto')),nidFront=await readFile($('mNidFront')),nidBack=await readFile($('mNidBack')),nomNidFront=await readFile($('mNomineeNidFront')),nomNidBack=await readFile($('mNomineeNidBack'));let m={key:key||('m'+Date.now()),id:old?.id||$('mId').value||nextId(),name:$('mName').value.trim(),phone:$('mPhone').value.trim(),father:$('mFather').value,mother:$('mMother').value,dob:$('mDob').value,nationality:$('mNationality').value,nidNumber:$('mNidNumber').value,blood:$('mBlood').value,address:$('mAddress').value,photo:photo||old?.photo||'',nidFront:nidFront||old?.nidFront||'',nidBack:nidBack||old?.nidBack||'',nominee:$('mNominee').value,nomineePhone:$('mNomineePhone').value,nomineeNidNumber:$('mNomineeNidNumber').value,nomineeNidFront:nomNidFront||old?.nomineeNidFront||'',nomineeNidBack:nomNidBack||old?.nomineeNidBack||''};if(old)members=members.map(x=>x.key===key?m:x);else members.push(m);$('memberForm').reset();$('editMemberId').value='';$('memberFormTitle').textContent='নতুন সদস্য যোগ করুন';$('mId').value=nextId();saveAll();go('members');alert(old?'সদস্যের তথ্য আপডেট হয়েছে':'সদস্য সংরক্ষণ হয়েছে। আইডি: '+m.id)});
-function editMember(key){let m=members.find(x=>x.key===key);if(!m)return;go('memberAdd');$('editMemberId').value=m.key;$('memberFormTitle').textContent='সদস্যের তথ্য এডিট করুন';for(const [id,v] of Object.entries({mId:m.id,mName:m.name,mPhone:m.phone,mFather:m.father,mMother:m.mother,mDob:m.dob,mNationality:m.nationality,mNidNumber:m.nidNumber,mBlood:m.blood,mAddress:m.address,mNominee:m.nominee,mNomineePhone:m.nomineePhone,mNomineeNidNumber:m.nomineeNidNumber}))$(id).value=v||''}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CharkajolBD ERP | Login</title>
 
-let memberPrintKey=null;
-function viewMember(key){
- const m=members.find(x=>x.key===key); if(!m)return; memberPrintKey=key;
- const item=(label,value)=>`<div class="detailitem"><b>${esc(label)}</b>${esc(value||'—')}</div>`;
- const photo=(label,src)=>src?`<div class="detailitem"><b>${esc(label)}</b><br><img class="detailphoto" src="${src}" alt="${esc(label)}"></div>`:'';
- $('memberDetails').innerHTML=`<div class="center">${m.photo?`<img class="detailphoto" style="width:120px;height:120px;border-radius:50%" src="${m.photo}">`:''}<h2>${esc(m.name)}</h2><p>সদস্য আইডি: ${esc(m.id)}</p></div><div class="detailgrid">
- ${item('সদস্য আইডি',m.id)}${item('সদস্যের নাম',m.name)}${item('মোবাইল নম্বর',m.phone)}${item('ঠিকানা',m.address)}${item('পিতার নাম',m.father)}${item('মাতার নাম',m.mother)}${item('জন্ম তারিখ',m.dob)}${item('জাতীয়তা',m.nationality)}${item('রক্তের গ্রুপ',m.blood)}${item('NID নম্বর',m.nidNumber)}${photo('NID কার্ডের সামনের ছবি',m.nidFront)}${photo('NID কার্ডের পেছনের ছবি',m.nidBack)}${item('নমিনির নাম',m.nominee)}${item('নমিনির মোবাইল',m.nomineePhone)}${item('নমিনির NID নম্বর',m.nomineeNidNumber)}${photo('নমিনির NID সামনের ছবি',m.nomineeNidFront)}${photo('নমিনির NID পেছনের ছবি',m.nomineeNidBack)}</div>`;
- $('memberModal').classList.add('open');
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-$('closeMemberModal').onclick=()=>$('memberModal').classList.remove('open');
-$('memberModal').addEventListener('click',e=>{if(e.target===$('memberModal'))$('memberModal').classList.remove('open')});
-$('printMemberBtn').onclick=()=>{
- const m=members.find(x=>x.key===memberPrintKey);if(!m)return;
- const w=window.open('','_blank');if(!w){alert('প্রিন্টের জন্য ব্রাউজারে পপ-আপ অনুমতি দিন।');return}
- const rows=[['সদস্য আইডি',m.id],['নাম',m.name],['মোবাইল',m.phone],['ঠিকানা',m.address],['পিতার নাম',m.father],['মাতার নাম',m.mother],['জন্ম তারিখ',m.dob],['জাতীয়তা',m.nationality],['রক্তের গ্রুপ',m.blood],['NID নম্বর',m.nidNumber],['নমিনির নাম',m.nominee],['নমিনির মোবাইল',m.nomineePhone],['নমিনির NID নম্বর',m.nomineeNidNumber]];
- const imgs=[['সদস্যের ছবি',m.photo],['NID সামনের ছবি',m.nidFront],['NID পেছনের ছবি',m.nidBack],['নমিনির NID সামনের ছবি',m.nomineeNidFront],['নমিনির NID পেছনের ছবি',m.nomineeNidBack]].filter(x=>x[1]);
- w.document.write(`<!doctype html><html lang="bn"><head><meta charset="utf-8"><title>সদস্য তথ্য</title><style>body{font-family:Arial,sans-serif;padding:22px;color:#222}h1,p.center{text-align:center}.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.item{padding:8px;border:1px solid #ccc;overflow-wrap:anywhere}.item b{display:block;font-size:12px;color:#555}img{max-width:180px;max-height:140px;object-fit:contain}@media print{body{padding:10mm}}</style></head><body><h1>চর কাজল সমাজ কল্যাণ সংগঠন</h1><p class="center">সদস্যের সম্পূর্ণ তথ্য</p><hr><div class="grid">${rows.map(([l,v])=>`<div class="item"><b>${esc(l)}</b>${esc(v||'—')}</div>`).join('')}${imgs.map(([l,v])=>`<div class="item"><b>${esc(l)}</b><br><img src="${v}"></div>`).join('')}</div><script>window.onload=()=>setTimeout(()=>window.print(),500)<\/script></body></html>`);
- w.document.close();
-};
 
-function deleteMember(key){if(confirm('এই সদস্যকে মুছে ফেলবেন?')){members=members.filter(m=>m.key!==key);saveAll()}}
-$('clearMember').onclick=()=>{$('memberForm').reset();$('editMemberId').value='';$('mId').value=nextId();$('memberFormTitle').textContent='নতুন সদস্য যোগ করুন'};
-function renderBlood(){let counts=Object.fromEntries(bloods.map(b=>[b,members.filter(m=>m.blood===b).length]));$('bloodCards').innerHTML=bloods.map(b=>`<button class="bloodcard" style="color:inherit" onclick="$('bloodGroupSelect').value='${b}';renderBloodRows()"><strong>${b}</strong><span>${counts[b]} জন সদস্য</span></button>`).join('');renderBloodRows()}
-function renderBloodRows(){let bg=$('bloodGroupSelect').value,q=$('bloodSearch').value.toLowerCase();$('bloodListTitle').textContent=bg?bg+' রক্তের গ্রুপের সদস্য':'রক্তদাতার তালিকা';let list=members.filter(m=>(!bg||m.blood===bg)&&[m.name,m.phone,m.id,m.address].some(x=>String(x||'').toLowerCase().includes(q)));$('bloodRows').innerHTML=list.length?list.map(m=>`<tr><td>${m.photo?`<img class="photo" src="${m.photo}" alt="সদস্যের ছবি">`:`<span class="photo" style="display:inline-grid;place-items:center;color:#65758b">ছবি নেই</span>`}</td><td>${esc(m.id)}</td><td>${esc(m.name)}</td><td>${esc(m.phone)}</td><td>${esc(m.address)}</td><td><div class="actions"><a href="tel:${esc(m.phone)}"><button>কল</button></a><a href="https://wa.me/${String(m.phone||'').replace(/\D/g,'')}" target="_blank"><button class="good">WhatsApp</button></a></div></td></tr>`).join(''):'<tr><td colspan="6" class="empty">এই গ্রুপে কোনো সদস্য নেই</td></tr>'}
+body {
+  font-family: Arial, "Noto Sans Bengali", sans-serif;
+  min-height: 100vh;
+  color: #123d50;
+}
 
-function populateFundMembers(){let sel=$('fMember'),prev=sel.value;sel.innerHTML='<option value="">সদস্য নির্বাচন করুন</option>'+members.map(m=>`<option value="${esc(m.key)}">${esc(m.id)} — ${esc(m.name)}</option>`).join('');if(prev)sel.value=prev;if(!$('fDate').value)$('fDate').value=today()}
-$('fundForm').addEventListener('submit',e=>{e.preventDefault();let m=members.find(x=>x.key===$('fMember').value);if(!m)return alert('আগে সদস্য নির্বাচন করুন');let f={key:'f'+Date.now(),receipt:'CK-'+String(funds.length+1).padStart(5,'0'),memberKey:m.key,memberId:m.id,name:m.name,phone:m.phone,type:$('fType').value,amount:Number($('fAmount').value),date:$('fDate').value,note:$('fNote').value};funds.unshift(f);saveAll();showReceipt(f);$('fundForm').reset();$('fDate').value=today();go('receipts')});
-function renderFunds(){$('fundRows').innerHTML=funds.length?funds.map(f=>`<tr><td>${esc(f.receipt)}</td><td>${esc(f.date)}</td><td>${esc(f.name)}</td><td>${esc(f.type)}</td><td>${money(f.amount)}</td><td><button class="secondary" onclick="openReceipt('${f.key}')">রসিদ দেখুন</button></td></tr>`).join(''):'<tr><td colspan="6" class="empty">এখনও কোনো জমা নেই</td></tr>'}
-function showReceipt(f){currentReceipt=f;$('rNo').textContent=f.receipt;$('rDate').textContent=f.date;$('rId').textContent=f.memberId;$('rName').textContent=f.name;$('rPhone').textContent=f.phone;$('rType').textContent=f.type;$('rAmount').textContent=money(f.amount);$('rNote').textContent=f.note||'—'}
-function openReceipt(key){let f=funds.find(x=>x.key===key);if(f){showReceipt(f);go('receipts')}}
-$('printReceiptBtn').onclick=()=>window.print();
-$('addCommitteeBtn').onclick=()=>$('committeeForm').classList.toggle('hidden');$('cancelCommittee').onclick=()=>$('committeeForm').classList.add('hidden');
-$('committeeForm').addEventListener('submit',e=>{e.preventDefault();committee.push({name:$('cName').value,role:$('cRole').value,phone:$('cPhone').value});store.set('committee',committee);renderCommittee();$('committeeForm').reset();$('committeeForm').classList.add('hidden')});
-function renderCommittee(){$('committeeRows').innerHTML=committee.length?committee.map((c,i)=>`<tr><td>${esc(c.name)}</td><td>${esc(c.role)}</td><td>${esc(c.phone)}</td><td><button class="danger" onclick="removeCommittee(${i})">মুছুন</button></td></tr>`).join(''):'<tr><td colspan="4" class="empty">কমিটির তথ্য যোগ করুন</td></tr>'}
-function removeCommittee(i){if(confirm('এই তথ্য মুছবেন?')){committee.splice(i,1);store.set('committee',committee);renderCommittee()}}
-$('saveTopic').onclick=()=>{let text=$('topicText').value.trim();if(!text)return alert('নোট লিখুন');topics.unshift({topic:$('topic').value,text,date:today()});store.set('topics',topics);$('topicText').value='';renderTopics()};
-function renderTopics(){$('topicList').innerHTML=topics.map(t=>`<div class="card" style="margin-top:8px"><b>${esc(t.topic)}</b> <small>${esc(t.date)}</small><p>${esc(t.text)}</p></div>`).join('')||'<p class="empty">এখনও কোনো নোট নেই</p>'}
-$('exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify({members,funds,committee,topics},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='charkajolbd-backup.json';a.click();URL.revokeObjectURL(a.href)};
-function init(){if(!$('fDate').value)$('fDate').value=today();$('mId').value=nextId();renderAll()}
-init();
+/* Background */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  background:
+    linear-gradient(120deg, rgba(0,80,120,.20),
+    rgba(0,180,190,.12)),
+    url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2000&q=85")
+    center/cover no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Liquid Glass Card */
+.glass-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 32px;
+  text-align: center;
+  border-radius: 30px;
+  background: rgba(255,255,255,.38);
+  border: 1px solid rgba(255,255,255,.75);
+  box-shadow:
+    0 20px 60px rgba(0,40,70,.25),
+    inset 0 1px 2px rgba(255,255,255,.8);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+}
+
+.logo {
+  width: 112px;
+  height: 112px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: white;
+  border: 4px solid rgba(255,255,255,.9);
+  box-shadow: 0 8px 25px #003b4525;
+  margin-bottom: 14px;
+}
+
+h1 {
+  color: #075b28;
+  font-size: 25px;
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+
+h2 {
+  color: #0875c9;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.tagline {
+  color: #075c82;
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+
+.field {
+  position: relative;
+  margin: 14px 0;
+}
+
+.field input {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid rgba(255,255,255,.95);
+  border-radius: 17px;
+  background: rgba(255,255,255,.62);
+  color: #123d50;
+  font-size: 16px;
+  outline: none;
+  box-shadow: inset 0 2px 8px #ffffff55;
+}
+
+.field input:focus {
+  border-color: #00bcd4;
+  box-shadow: 0 0 0 3px #00bcd433;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 15px;
+  margin-top: 8px;
+  border: 0;
+  border-radius: 16px;
+  color: white;
+  font-size: 19px;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(110deg,#04bce7,#00a89c,#078b91);
+  box-shadow: 0 8px 22px #009cba55;
+  transition: .25s;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+
+.divider {
+  margin: 23px 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #125b73;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: #1686a2;
+}
+
+.panels {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 12px;
+}
+
+.panel {
+  padding: 17px 8px;
+  border-radius: 17px;
+  background: rgba(255,255,255,.55);
+  border: 1px solid #ffffffb0;
+  color: #08638b;
+  font-weight: bold;
+}
+
+.panel span {
+  display: block;
+  font-size: 25px;
+  margin-bottom: 7px;
+}
+
+.error {
+  display: none;
+  color: #9c1725;
+  background: #ffffffa8;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 12px;
+}
+
+.footer {
+  margin-top: 22px;
+  color: #164d60;
+  font-size: 12px;
+}
+
+@media(max-width:500px) {
+  .login-page { padding: 14px; }
+  .glass-card { padding: 23px 18px; }
+  h1 { font-size: 21px; }
+  h2 { font-size: 23px; }
+  .logo { width: 95px; height: 95px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-page">
+  <main class="glass-card">
+
+    <!-- সংগঠনের লোগো -->
+    <img
+      class="logo"
+      src="logo.png"
+      alt="চর কাজল সমাজ কল্যাণ সংগঠনের লোগো"
+    >
+
+    <h1>চর কাজল সমাজ কল্যাণ সংগঠন</h1>
+    <h2>CharkajolBD ERP</h2>
+
+    <p class="tagline">“মানবতার সেবায়, ঐক্যের শক্তি”</p>
+
+    <form id="loginForm">
+      <div class="field">
+        <input
+          id="username"
+          type="text"
+          placeholder="ইউজারনেম / মোবাইল নম্বর"
+          autocomplete="username"
+          required
+        >
+      </div>
+
+      <div class="field">
+        <input
+          id="password"
+          type="password"
+          placeholder="পাসওয়ার্ড"
+          autocomplete="current-password"
+          required
+        >
+      </div>
+
+      <button class="login-btn" type="submit">
+        ⇥ লগইন করুন
+      </button>
+
+      <p id="error" class="error">
+        ইউজার আইডি অথবা পাসওয়ার্ড সঠিক নয়।
+      </p>
+    </form>
+
+    <div class="divider">অথবা</div>
+
+    <div class="panels">
+      <div class="panel">
+        <span>🛡️</span>
+        Admin Panel
+      </div>
+
+      <div class="panel">
+        <span>👤</span>
+        User Panel
+      </div>
+
+      <div class="panel">
+        <span>👥</span>
+        Committee List
+      </div>
+
+      <div class="panel">
+        <span>➕</span>
+        Member Add
+      </div>
+    </div>
+
+    <p class="footer">
+      CharkajolBD ERP · চর কাজল সমাজ কল্যাণ সংগঠন
+    </p>
+
+  </main>
+</div>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value;
+
+  if (username === "admin" && password === "demo123") {
+    document.getElementById("error").style.display = "none";
+
+    // এটি শুধু ডেমো লগইন।
+    // এখানে আপনার ERP ড্যাশবোর্ডের ঠিকানা বসাতে হবে।
+    window.location.href = "dashboard.html";
+  } else {
+    document.getElementById("error").style.display = "block";
+  }
+});
 </script>
-</body></html>
+
+</body>
+</html>
