@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="icon" type="image/png" href="logo.png">
-<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+
 <meta name="theme-color" content="#091e32">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,12 +19,26 @@
 @media(max-width:900px){.sidebar{width:215px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.bloodgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.app{display:block}.sidebar{width:100%;display:none}.sidebar.open{display:block}.mobilemenu{display:inline-block}.topbar{padding:12px;flex-wrap:wrap}.content{padding:13px}.grid{gap:9px}.card{padding:13px}.stat strong{font-size:22px}.formgrid{grid-template-columns:1fr}.wide{grid-column:auto}.signatures{grid-template-columns:repeat(2,1fr)}.topbar h2{font-size:15px}.topbar-center{order:-1;width:100%;justify-content:center;margin-bottom:6px}}
 @media print{body{background:white}.sidebar,.topbar,.no-print,.main-footer{display:none!important}.main,.content{padding:0;margin:0}.page{display:none!important}#receipts{display:block!important}.receipt{border:2px solid #173c58;box-shadow:none}}
+img[src$="logo.svg"]{object-fit:contain;background:#fff} @media(max-width:650px){.bloodgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style><style>
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
 </style>
 </head>
-<body>
+<body>body {
+margin: 0;
+min-height: 100vh;
+background-image: url("background.webp");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
 <section id="loginScreen" class="login-wrap">
  <div class="login-card">
-  <img src="logo.png" class="logo" alt="Logo" style="width:84px;height:84px;border-radius:50%;object-fit:cover;margin:0 auto 12px;border:3px solid #38bdf8;box-shadow:0 8px 24px rgba(56,189,248,0.4);display:block">
+  <img src="logo.svg" class="logo" alt="Logo" style="width:84px;height:84px;border-radius:50%;object-fit:cover;margin:0 auto 12px;border:3px solid #38bdf8;box-shadow:0 8px 24px rgba(56,189,248,0.4);display:block">
   <div style="margin:10px 0 6px">
    <h1 style="color:#ffffff;font-size:22px;font-weight:900;letter-spacing:0.3px;margin:0;text-shadow:0 2px 8px rgba(0,0,0,0.6)">চর কাজল সমাজ কল্যাণ সংগঠন</h1>
    <p style="color:#38ef7d;font-size:12px;font-weight:800;letter-spacing:1px;margin:4px 0 0;text-transform:uppercase;text-shadow:0 1px 4px rgba(0,0,0,0.6)">CHAR KAJOL SOCIAL WELFARE ORGANIZATION</p>
@@ -37,11 +51,11 @@
   <form id="loginForm">
    <div class="field" style="position:relative;margin:14px 0">
     <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;color:#38bdf8;pointer-events:none">👤</span>
-    <input id="loginUser" autocomplete="username" required placeholder="আপনার আইডি দিন" style="padding-left:42px;height:46px">
+    <input id="loginUser" autocomplete="username" required placeholder="আপনার আইডি দিন" value="admin" style="padding-left:42px;height:46px">
    </div>
    <div class="field" style="position:relative;margin:14px 0">
     <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;color:#38bdf8;pointer-events:none">🔒</span>
-    <input id="loginPass" type="password" autocomplete="current-password" required placeholder="পাসওয়ার্ড দিন" style="padding-left:42px;height:46px">
+    <input id="loginPass" type="password" autocomplete="current-password" required placeholder="পাসওয়ার্ড দিন" value="demo123" style="padding-left:42px;height:46px">
    </div>
    <div style="display:flex;align-items:center;justify-content:space-between;margin:12px 0 18px;font-size:13px">
     <label style="display:flex;align-items:center;gap:6px;cursor:pointer;color:#ffffff;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,0.4)">
@@ -52,7 +66,7 @@
    </div>
    <button type="submit">লগইন করুন</button>
   </form>
-  <div class="hint">প্রাথমিক ডেমো লগইন: <b>admin</b> / <b>123</b></div>
+  <div class="hint">ডেমো লগইন: <b>admin</b> / <b>demo123</b></div>
  </div>
 </section>
 <div id="app" class="app hidden">
@@ -60,19 +74,19 @@
    <div class="topbar-left">
     <button class="mobilemenu secondary" id="menuToggle">☰</button>
     <div style="display:flex;align-items:center;gap:10px">
-     <img src="logo.png" alt="Logo" style="width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid #38bdf8;box-shadow:0 0 12px rgba(56,189,248,0.6)">
+     <img src="logo.svg" alt="Logo" style="width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid #38bdf8;box-shadow:0 0 12px rgba(56,189,248,0.6)">
      <strong style="color:#ffffff;font-size:20px;font-weight:900;letter-spacing:0.8px;text-shadow:0 2px 6px rgba(0,0,0,0.5)" data-i18n="appTitle">Charkajolbd-ERP</strong>
     </div>
     <h2 id="pageTitle" style="margin-left:8px;border-left:2px solid rgba(255,255,255,0.2);padding-left:12px;font-size:16px;color:#38bdf8;font-weight:800">ড্যাশবোর্ড</h2>
    </div>
    <div class="topbar-center">
-    <img src="logo.png" class="logo" alt="Logo" style="width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid #38bdf8;box-shadow:0 0 10px rgba(56,189,248,0.4);margin:0">
+    <img src="logo.svg" class="logo" alt="Logo" style="width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid #38bdf8;box-shadow:0 0 10px rgba(56,189,248,0.4);margin:0">
     <h1 id="topbarOrgTitle" style="font-size:20px;margin:0;font-weight:900;color:#ffffff;text-shadow:0 2px 8px rgba(0,0,0,0.4);letter-spacing:0.5px" data-i18n="orgTitle">চর কাজল সমাজ কল্যাণ সংগঠন</h1>
    </div>
    <div class="topbar-right">
     <div class="user-logout-wrap">
-     <button id="installAppBtn" style="padding:4px 8px;font-size:13px;background:transparent;color:#ffffff;border:none;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all 0.2s"><img src="Install App.png" alt="Install App" style="height:22px;width:auto;display:block;object-fit:contain;filter:brightness(0) invert(1)">Install App</button>
-     <img src="admin_photo.jpg" alt="শাকিল মাহমুদ" style="width:32px;height:32px;border-radius:50%;object-fit:cover;border:2px solid var(--teal)">
+     <button id="installAppBtn" style="padding:4px 8px;font-size:13px;background:transparent;color:#ffffff;border:none;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all 0.2s"><span aria-hidden="true">📲</span>Install App</button>
+     <img src="logo.svg" alt="শাকিল মাহমুদ" style="width:32px;height:32px;border-radius:50%;object-fit:cover;border:2px solid var(--teal)">
      <span id="currentUser" class="user-status"><span class="dot"></span> শাকিল মাহমুদ (এডমিন)</span>
      <button class="secondary" id="logoutBtn" style="padding:6px 12px;font-size:12px;display:flex;align-items:center;gap:4px">↪ Logout</button>
     </div>
@@ -209,13 +223,13 @@
        <button class="navbtn" data-page="settings" style="font-size:12px;padding:6px 10px" data-i18n="webSettings">🌐 ওয়েবসাইট সেটিংস</button>
        <button class="navbtn" data-page="userPanel" style="font-size:12px;padding:6px 10px" data-i18n="profile">👤 প্রোফাইল</button>
        <button class="navbtn" data-page="adminPanel" style="font-size:12px;padding:6px 10px" data-i18n="backupData">💾 ব্যাকআপ ও ডেটা ব্যবস্থাপনা</button>
-       <button class="navbtn" onclick="$('app').classList.add('hidden');$('loginScreen').classList.remove('hidden');$('loginPass').value=''" style="font-size:12px;padding:6px 10px;color:#fca5a5" data-i18n="logoutMenu">🚪 লগআউট</button>
+       <button class="navbtn" onclick="$('app').classList.add('hidden');$('loginScreen').classList.remove('hidden');$('loginUser').value='admin';$('loginPass').value='demo123'" style="font-size:12px;padding:6px 10px;color:#fca5a5" data-i18n="logoutMenu">🚪 লগআউট</button>
       </div>
      </div>
 
     </div>
     <div class="sidefoot" style="display:flex;align-items:center;gap:10px">
-     <img src="admin_photo.jpg" alt="এডমিন শাকিল মাহমুদ" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--teal)">
+     <img src="logo.svg" alt="এডমিন শাকিল মাহমুদ" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--teal)">
      <div>
       <div style="font-weight:700;color:white">শাকিল মাহমুদ</div>
       <div style="font-size:11px;color:#93adc2">এডমিন (সভাপতি)</div>
@@ -243,6 +257,57 @@
      </div>
     </div>
    </section>
+
+   <!-- Repaired member and committee pages -->
+   <section id="members" class="page">
+    <div class="sectionhead"><h3>👥 সদস্য তালিকা</h3><button data-go="memberAdd">➕ নতুন সদস্য যোগ</button></div>
+    <div class="card"><div class="toolbar"><input id="memberSearch" placeholder="নাম, আইডি, মোবাইল বা ঠিকানা দিয়ে খুঁজুন" style="flex:1;min-width:200px"><button class="secondary" id="exportMembersBtn">CSV ডাউনলোড</button></div>
+    <div class="tablewrap"><table><thead><tr><th>আইডি</th><th>নাম</th><th>মোবাইল</th><th>রক্তের গ্রুপ</th><th>ঠিকানা</th><th>অবস্থা</th><th>কাজ</th></tr></thead><tbody id="memberRows"></tbody></table></div></div>
+   </section>
+   <section id="memberAdd" class="page">
+    <div class="sectionhead"><h3 id="memberFormTitle">➕ নতুন সদস্য নিবন্ধন</h3><button class="secondary" data-go="members">সদস্য তালিকা</button></div>
+    <div class="card"><form id="memberForm"><input type="hidden" id="editMemberId">
+     <div class="formgrid">
+      <div class="field"><label for="mId">সদস্য আইডি</label><input id="mId" readonly></div>
+      <div class="field"><label for="mName">সদস্যের পূর্ণ নাম *</label><input id="mName" required maxlength="100" placeholder="নাম লিখুন"></div>
+      <div class="field"><label for="mPhone">মোবাইল নম্বর *</label><input id="mPhone" type="tel" required maxlength="20" autocomplete="tel" placeholder="01700-000000"></div>
+      <div class="field"><label for="mBlood">রক্তের গ্রুপ</label><select id="mBlood"><option value="">জানা নেই</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></div>
+      <div class="field"><label for="mCommitteeRole">কমিটিতে পদবি</label><select id="mCommitteeRole"><option value="">কমিটিতে নেই</option><option>সভাপতি</option><option>সহ-সভাপতি</option><option>সাধারণ সম্পাদক</option><option>যুগ্ম সাধারণ সম্পাদক</option><option>সাংগঠনিক সম্পাদক</option><option>কোষাধ্যক্ষ</option><option>দপ্তর সম্পাদক</option><option>প্রচার সম্পাদক</option><option>কার্যকরী সদস্য</option><option>সদস্য</option></select></div>
+      <div class="field"><label for="mType">সদস্যের ধরন</label><select id="mType"><option>সাধারণ সদস্য</option><option>আজীবন সদস্য</option><option>দাতা সদস্য</option><option>সম্মানিত সদস্য</option><option>স্বেচ্ছাসেবক</option></select></div>
+      <div class="field wide"><label for="mAddress">ঠিকানা</label><textarea id="mAddress" rows="2" maxlength="500" placeholder="গ্রাম/ঠিকানা লিখুন"></textarea></div>
+      <div class="field wide"><label for="mPhoto">সদস্যের ছবি (Profile Photo)</label><input id="mPhoto" type="file" accept="image/*"><small>ছবি ছোট করে সংরক্ষণ করা হবে।</small></div>
+
+      <!-- Extra Optional Details Collapsible -->
+      <details class="wide" style="margin-top:10px;border:1px solid #7dd3fc;border-radius:12px;padding:12px;background:#f0f9ff">
+       <summary style="cursor:pointer;font-weight:800;color:#0284c7;font-size:14px;outline:none">➕ অতিরিক্ত তথ্য (পিতা/মাতা, জন্মতারিখ, এলাকা ইত্যাদি - ঐচ্ছিক)</summary>
+       <div class="formgrid" style="margin-top:14px">
+        <div class="field"><label for="mFather">পিতার নাম</label><input id="mFather" maxlength="100"></div>
+        <div class="field"><label for="mMother">মাতার নাম</label><input id="mMother" maxlength="100"></div>
+        <div class="field"><label for="mDob">जन्मতারিখ</label><input id="mDob" type="date"></div>
+        <div class="field"><label for="mGender">লিঙ্গ</label><select id="mGender"><option value="">নির্বাচন করুন</option><option>পুরুষ</option><option>নারী</option><option>অন্যান্য</option></select></div>
+        <div class="field"><label for="mEmail">ইমেইল অ্যাড্রেস</label><input id="mEmail" type="email" maxlength="150" autocomplete="email"></div>
+        <div class="field"><label for="mOccupation">পেশা</label><input id="mOccupation" maxlength="100"></div>
+        <div class="field"><label for="mJoinDate">সদস্য হওয়ার তারিখ</label><input id="mJoinDate" type="date"></div>
+        <div class="field"><label for="mStatus">সদস্যের বর্তমান অবস্থা</label><select id="mStatus"><option>সক্রিয়</option><option>নিষ্ক্রিয়</option><option>স্থগিত</option></select></div>
+        <div class="field"><label for="mVillage">গ্রাম</label><input id="mVillage" maxlength="100"></div>
+        <div class="field"><label for="mWard">ওয়ার্ড নম্বর</label><input id="mWard" maxlength="20"></div>
+        <div class="field"><label for="mUnion">ইউনিয়ন</label><input id="mUnion" maxlength="100"></div>
+        <div class="field"><label for="mPostOffice">ডাকঘর</label><input id="mPostOffice" maxlength="100"></div>
+        <div class="field"><label for="mUpazila">উপজেলা</label><input id="mUpazila" maxlength="100"></div>
+        <div class="field"><label for="mDistrict">জেলা</label><input id="mDistrict" maxlength="100"></div>
+        <div class="field wide"><label for="mPermanentAddress">স্থায়ী ঠিকানা</label><textarea id="mPermanentAddress" rows="2" maxlength="500"></textarea></div>
+       </div>
+      </details>
+     </div><div class="toolbar" style="margin-top:16px"><button type="submit">💾 সদস্য সংরক্ষণ করুন</button><button type="button" class="secondary" id="resetMemberForm">ফর্ম পরিষ্কার</button></div>
+    </form></div>
+   </section>
+   <section id="inactiveMembers" class="page"><div class="sectionhead"><h3>🚫 নিষ্ক্রিয় সদস্য তালিকা</h3><button data-go="members" class="secondary">সব সদস্য</button></div><div class="tablewrap"><table><thead><tr><th>আইডি</th><th>নাম</th><th>মোবাইল</th><th>রক্তের গ্রুপ</th><th>কাজ</th></tr></thead><tbody id="inactiveMemberRows"></tbody></table></div></section>
+   <section id="committee" class="page"><div class="sectionhead"><h3>🏛️ কমিটি ব্যবস্থাপনা</h3><button id="toggleCommitteeForm">➕ কমিটির সদস্য যোগ</button></div>
+    <form id="committeeForm" class="card hidden"><div class="formgrid"><div class="field"><label>নাম *</label><input id="cName" required></div><div class="field"><label>পদবি *</label><select id="cRole" required><option>সভাপতি</option><option>সহ-সভাপতি</option><option>সাধারণ সম্পাদক</option><option>যুগ্ম সাধারণ সম্পাদক</option><option>সাংগঠনিক সম্পাদক</option><option>কোষাধ্যক্ষ</option><option>দপ্তর সম্পাদক</option><option>প্রচার সম্পাদক</option><option>কার্যকরী সদস্য</option><option>সদস্য</option></select></div><div class="field"><label>মোবাইল</label><input id="cPhone" type="tel"></div><div class="field"><label>মেয়াদ</label><input id="cTerm" placeholder="২০২৬-২০২৮"></div></div><div class="toolbar" style="margin-top:14px"><button type="submit">কমিটিতে যোগ করুন</button><button type="button" class="secondary" id="cancelCommitteeForm">বাতিল</button></div></form>
+    <div class="tablewrap"><table><thead><tr><th>নাম</th><th>পদবি</th><th>মোবাইল</th><th>মেয়াদ</th><th>কাজ</th></tr></thead><tbody id="committeeRows"></tbody></table></div></section>
+   <section id="formerCommittee" class="page"><div class="sectionhead"><h3>📜 সাবেক কমিটির তালিকা</h3></div><div class="notice">বর্তমান সংস্করণে সাবেক কমিটির আলাদা ইতিহাস সংরক্ষণের ব্যবস্থা এখনও যোগ করা হয়নি।</div></section>
+   <section id="blood" class="page"><div class="sectionhead"><h3>🩸 রক্তের গ্রুপ অনুযায়ী সদস্য</h3><button data-go="donorList">রক্তদাতার তালিকা</button></div><div id="bloodCards" class="bloodgrid"></div><div class="tablewrap" style="margin-top:16px"><table><thead><tr><th>আইডি</th><th>নাম</th><th>মোবাইল</th><th>রক্তের গ্রুপ</th><th>ঠিকানা</th></tr></thead><tbody id="bloodRows"></tbody></table></div></section>
+   <section id="reports" class="page"><div class="sectionhead"><h3>📊 রিপোর্ট প্যানেল</h3><button class="secondary" id="printReportBtn">প্রিন্ট</button></div><div class="card"><div class="toolbar"><select id="reportTypeSelect"><option value="member">সদস্য রিপোর্ট</option><option value="committee">কমিটি রিপোর্ট</option><option value="fund">ফান্ড জমা রিপোর্ট</option><option value="expense">খরচ রিপোর্ট</option><option value="monthly">আর্থিক সারসংক্ষেপ</option><option value="yearly">বার্ষিক সারসংক্ষেপ</option></select><button id="generateReportBtn">রিপোর্ট তৈরি</button></div><div id="reportViewContainer" class="tablewrap"></div></div></section>
 
    <!-- Fund Dashboard Page -->
    <section id="fundDashboard" class="page">
@@ -339,7 +404,7 @@
     <div class="sectionhead"><h3>📄 ফান্ড জমার রসিদ</h3><button class="secondary" onclick="window.print()">🖨️ রসিদ প্রিন্ট করুন</button></div>
     <div id="receiptPaper" class="receipt">
      <div class="center">
-      <img src="logo.png" class="logo" alt="Logo">
+      <img src="logo.svg" class="logo" alt="Logo">
       <h2>চর কাজল সমাজ কল্যাণ সংগঠন</h2>
       <p>ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</p>
       <h3>ফান্ড জমার রসিদ</h3>
@@ -369,7 +434,7 @@
     <div class="sectionhead"><h3>🧾 খরচের ভাউচার</h3><button class="secondary" onclick="window.print()">🖨️ ভাউচার প্রিন্ট করুন</button></div>
     <div class="receipt" style="border:2px solid #e11d48">
      <div class="center">
-      <img src="logo.png" class="logo" alt="Logo">
+      <img src="logo.svg" class="logo" alt="Logo">
       <h2>চর কাজল সমাজ কল্যাণ সংগঠন</h2>
       <p>ছোট চর কাজল, চর কাজল, গলাচিপা, পটুয়াখালী</p>
       <h3 style="color:#e11d48">খরচের ভাউচার (Expense Voucher)</h3>
@@ -476,7 +541,7 @@
     <div class="card" style="margin-bottom:20px;background:linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%);border:2px solid #38bdf8;border-radius:18px;padding:24px;box-shadow:0 8px 24px rgba(14,165,233,0.18)">
      <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap">
       <div style="position:relative">
-       <img src="admin_photo.jpg" alt="এডমিন শাকিল মাহমুদ" style="width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid #0284c7;box-shadow:0 6px 18px rgba(2,132,199,0.3)">
+       <img src="logo.svg" alt="এডমিন শাকিল মাহমুদ" style="width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid #0284c7;box-shadow:0 6px 18px rgba(2,132,199,0.3)">
        <span style="position:absolute;bottom:4px;right:4px;width:18px;height:18px;background:#10b981;border:3px solid white;border-radius:50%" title="Online"></span>
       </div>
       <div style="flex:1">
@@ -514,7 +579,7 @@
     <div class="sectionhead"><h3>👤 ইউজার প্যানেল ও প্রোফাইল</h3></div>
     <div class="card">
      <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
-      <img src="admin_photo.jpg" alt="শাকিল মাহমুদ" style="width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid var(--teal);box-shadow:0 4px 12px rgba(0,0,0,0.08)">
+      <img src="logo.svg" alt="শাকিল মাহমুদ" style="width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid var(--teal);box-shadow:0 4px 12px rgba(0,0,0,0.08)">
       <div>
        <h3 style="margin:0 0 4px 0;color:var(--navy);font-size:20px">শাকিল মাহমুদ</h3>
        <p style="margin:0 0 6px 0">পদবি: <b>সভাপতি (চর কাজল সমাজ কল্যাণ সংগঠন)</b></p>
@@ -587,7 +652,7 @@
     <div class="sectionhead"><h3>🏛️ সংগঠনের তথ্য ও প্রোফাইল</h3></div>
     <div class="card" style="max-width:700px;border:2px solid #38bdf8;background:linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 100%)">
      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px">
-      <img src="logo.png" alt="Logo" style="width:70px;height:70px;border-radius:50%;object-fit:cover;border:2px solid #0284c7">
+      <img src="logo.svg" alt="Logo" style="width:70px;height:70px;border-radius:50%;object-fit:cover;border:2px solid #0284c7">
       <div>
        <h2 style="margin:0;color:#0369a1;font-size:22px">চর কাজল সমাজ কল্যাণ সংগঠন</h2>
        <p style="margin:4px 0 0 0;color:#0284c7;font-weight:700">Char Kajol Social Welfare Organization</p>
@@ -606,9 +671,9 @@
    <section id="orgLogo" class="page">
     <div class="sectionhead"><h3>🖼️ সংগঠনের লোগো ব্যবস্থাপনা</h3></div>
     <div class="card center" style="text-align:center;max-width:500px;border:2px solid #38bdf8">
-     <img src="logo.png" alt="Logo" style="width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid #0284c7;margin-bottom:14px">
+     <img src="logo.svg" alt="Logo" style="width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid #0284c7;margin-bottom:14px">
      <h3 style="margin:0 0 4px 0;color:#0369a1">চর কাজল সমাজ কল্যাণ সংগঠন</h3>
-     <p style="color:#64748b;font-size:13px">প্রাতিষ্ঠানিক অফিশিয়াল লোগো (logo.png)</p>
+     <p style="color:#64748b;font-size:13px">প্রাতিষ্ঠানিক অফিশিয়াল লোগো (logo.svg)</p>
      <div class="field" style="margin-top:16px;text-align:left">
       <label>নতুন লোগো আপলোড করুন</label>
       <input type="file" accept="image/*" onchange="alert('🖼️ নতুন লোগো নির্বাচিত হয়েছে।')">
@@ -923,7 +988,7 @@ function go(page){
   }
  });
  $('sidebar').classList.remove('open');
- if(page==='memberAdd'&&!$('editMemberId').value){$('mId').value=nextId()}
+ if(page==='memberAdd'&&!$('editMemberId').value){$('mId').value=nextId();if($('mJoinDate')&&!$('mJoinDate').value)$('mJoinDate').value=today()}
  if(page==='fundDeposit'||page==='fund')populateFundMembers();
  if(page==='inactiveMembers')renderInactiveMembers();
  if(page==='fundDashboard')renderFundDashboard();
@@ -974,7 +1039,48 @@ document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',(
 document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
 $('menuToggle').onclick=()=>$('sidebar').classList.toggle('open');
 $('loginForm').addEventListener('submit',e=>{e.preventDefault();if($('loginUser').value.trim()==='admin'&&$('loginPass').value==='demo123'){$('loginScreen').classList.add('hidden');$('app').classList.remove('hidden');renderAll();go('adminPanel')}else alert('লগইন তথ্য সঠিক নয়। ডেমো ইউজার: admin, পাসওয়ার্ড: demo123')});
-$('logoutBtn').onclick=()=>{$('app').classList.add('hidden');$('loginScreen').classList.remove('hidden');$('loginPass').value=''};
+$('logoutBtn').onclick=()=>{$('app').classList.add('hidden');$('loginScreen').classList.remove('hidden');$('loginUser').value='admin';$('loginPass').value='demo123'};
+
+function memberPhotoFallback(m){return m.photo?`<img class="photo" src="${m.photo}" alt="সদস্যের ছবি" onerror="this.style.display='none'">`:'—'}
+function renderMembers(){
+ const body=$('memberRows'); if(!body)return;
+ const q=($('memberSearch')?.value||'').trim().toLowerCase();
+ const list=members.filter(m=>[m.id,m.name,m.phone,m.address,m.blood].some(v=>String(v||'').toLowerCase().includes(q)));
+ body.innerHTML=list.length?list.map(m=>`<tr><td>${esc(m.id)}</td><td>${esc(m.name)}</td><td>${esc(m.phone)}</td><td>${esc(m.blood||'—')}</td><td>${esc([m.address,m.village,m.ward,m.union,m.postOffice,m.upazila,m.district].filter(Boolean).join(', ')||'—')}</td><td><span class="pill">${esc(m.status||'সক্রিয়')}</span></td><td><div class="actions"><button class="secondary" onclick="editMember('${esc(m.id)}')">সম্পাদনা</button><button class="secondary" onclick="toggleMemberStatus('${esc(m.id)}')">${m.status==='নিষ্ক্রিয়'?'সক্রিয় করুন':'নিষ্ক্রিয়'}</button><button class="danger" onclick="deleteMember('${esc(m.id)}')">মুছুন</button></div></td></tr>`).join(''):'<tr><td colspan="7" class="empty">কোনো সদস্য পাওয়া যায়নি। “নতুন সদস্য যোগ” চাপুন।</td></tr>';
+}
+function renderInactiveMembers(){const b=$('inactiveMemberRows');if(!b)return;const a=members.filter(m=>m.status==='নিষ্ক্রিয়');b.innerHTML=a.length?a.map(m=>`<tr><td>${esc(m.id)}</td><td>${esc(m.name)}</td><td>${esc(m.phone)}</td><td>${esc(m.blood||'—')}</td><td><button class="good" onclick="toggleMemberStatus('${esc(m.id)}')">সক্রিয় করুন</button></td></tr>`).join(''):'<tr><td colspan="5" class="empty">কোনো নিষ্ক্রিয় সদস্য নেই</td></tr>'}
+function renderBlood(){const cards=$('bloodCards'),rows=$('bloodRows');const groups=['A+','A-','B+','B-','AB+','AB-','O+','O-'];if(cards)cards.innerHTML=groups.map(g=>`<div class="bloodcard" onclick="filterBlood('${g}')"><strong>${g}</strong><span>${members.filter(m=>m.blood===g&&m.status!=='নিষ্ক্রিয়').length} জন</span></div>`).join('');if(rows)rows.innerHTML=members.filter(m=>m.blood&&m.status!=='নিষ্ক্রিয়').length?members.filter(m=>m.blood&&m.status!=='নিষ্ক্রিয়').map(m=>`<tr><td>${esc(m.id)}</td><td>${esc(m.name)}</td><td>${esc(m.phone)}</td><td><span class="bloodpill">${esc(m.blood)}</span></td><td>${esc([m.address,m.village,m.ward,m.union,m.postOffice,m.upazila,m.district].filter(Boolean).join(', ')||'—')}</td></tr>`).join(''):'<tr><td colspan="5" class="empty">রক্তের গ্রুপসহ কোনো সক্রিয় সদস্য নেই</td></tr>'}
+function filterBlood(group){const rows=$('bloodRows');if(!rows)return;const a=members.filter(m=>m.blood===group&&m.status!=='নিষ্ক্রিয়');rows.innerHTML=a.length?a.map(m=>`<tr><td>${esc(m.id)}</td><td>${esc(m.name)}</td><td>${esc(m.phone)}</td><td><span class="bloodpill">${esc(m.blood)}</span></td><td>${esc([m.address,m.village,m.ward,m.union,m.postOffice,m.upazila,m.district].filter(Boolean).join(', ')||'—')}</td></tr>`).join(''):'<tr><td colspan="5" class="empty">'+group+' গ্রুপের কোনো সক্রিয় সদস্য নেই</td></tr>'}
+function renderFunds(){const b=$('fundRows');if(!b)return;b.innerHTML=funds.length?funds.map(f=>`<tr><td>${esc(f.receipt||'—')}</td><td>${esc(f.date||'')}</td><td>${esc(f.name||'')}</td><td>${esc(f.type||'জমা')}</td><td>${money(f.amount)}</td><td><button class="secondary" onclick="openReceipt('${esc(f.key)}')">রসিদ</button><button class="danger" onclick="deleteFund('${esc(f.key)}')">মুছুন</button></td></tr>`).join(''):'<tr><td colspan="6" class="empty">এখনও কোনো ফান্ড জমা নেই</td></tr>'}
+function renderCommittee(){const b=$('committeeRows');if(!b)return;b.innerHTML=committee.length?committee.map((c,i)=>`<tr><td>${esc(c.name)}</td><td>${esc(c.role)}</td><td>${esc(c.phone||'—')}</td><td>${esc(c.term||'—')}</td><td><button class="danger" onclick="deleteCommittee(${i})">মুছুন</button></td></tr>`).join(''):'<tr><td colspan="5" class="empty">কমিটির সদস্য যোগ করুন</td></tr>'}
+function deleteCommittee(i){if(confirm('কমিটির এই সদস্যকে মুছবেন?')){committee.splice(i,1);saveAll()}}
+function populateFundMembers(){const sel=$('fMember');if(!sel)return;const old=sel.value;sel.innerHTML='<option value="">সদস্য নির্বাচন করুন</option>'+members.filter(m=>m.status!=='নিষ্ক্রিয়').map(m=>`<option value="${esc(m.id)}">${esc(m.id)} — ${esc(m.name)}</option>`).join('');if([...sel.options].some(o=>o.value===old))sel.value=old}
+function resetMemberForm(){const f=$('memberForm');if(!f)return;f.reset();$('editMemberId').value='';$('mId').value=nextId();$('mJoinDate').value=today();$('memberFormTitle').textContent='➕ নতুন সদস্য নিবন্ধন'}
+function editMember(id){const m=members.find(x=>x.id===id);if(!m)return;go('memberAdd');$('editMemberId').value=id;$('mId').value=m.id;$('mName').value=m.name||'';$('mFather').value=m.father||'';$('mMother').value=m.mother||'';$('mPhone').value=m.phone||'';$('mEmail').value=m.email||'';$('mGender').value=m.gender||'';$('mDob').value=m.dob||'';$('mBlood').value=m.blood||'';$('mJoinDate').value=m.joinDate||'';$('mStatus').value=m.status||'সক্রিয়';$('mAddress').value=m.address||'';$('mPermanentAddress').value=m.permanentAddress||'';$('mVillage').value=m.village||'';$('mWard').value=m.ward||'';$('mUnion').value=m.union||'';$('mPostOffice').value=m.postOffice||'';$('mUpazila').value=m.upazila||'';$('mDistrict').value=m.district||'';$('mOccupation').value=m.occupation||'';$('mCommitteeRole').value=m.committeeRole||'';$('mType').value=m.type||'সাধারণ সদস্য';$('memberFormTitle').textContent='✏️ সদস্যের তথ্য আপডেট'}
+function toggleMemberStatus(id){const m=members.find(x=>x.id===id);if(!m)return;m.status=m.status==='নিষ্ক্রিয়'?'সক্রিয়':'নিষ্ক্রিয়';saveAll()}
+function deleteMember(id){if(!confirm('এই সদস্যের তথ্য মুছে ফেলবেন? এই কাজটি ফিরিয়ে আনা যাবে না।'))return;members=members.filter(m=>m.id!==id);saveAll()}
+function openMemberUpdateList(){go('members');$('memberSearch')?.focus()}
+function openMemberDetailsList(){go('members')}
+function openMemberIdCardList(){go('members');alert('সদস্যের তথ্য তালিকা থেকে নির্বাচন করে সম্পাদনা করুন।')}
+function openReceipt(key){const f=funds.find(x=>String(x.key)===String(key));if(!f)return;$('rNo').textContent=f.receipt||'—';$('rDate').textContent=f.date||'—';$('rId').textContent=f.memberId||'—';$('rName').textContent=f.name||'—';$('rPhone').textContent=f.phone||'—';$('rType').textContent=f.type||'—';$('rAmount').textContent=money(f.amount);$('rNote').textContent=f.note||'—';go('receipts')}
+$('memberForm')?.addEventListener('submit',async e=>{e.preventDefault();const oldId=$('editMemberId').value;const existing=members.find(m=>m.id===oldId);let photo=existing?.photo||'';const file=$('mPhoto')?.files?.[0];if(file){if(!file.type.startsWith('image/')){alert('অনুগ্রহ করে ছবির ফাইল নির্বাচন করুন।');return;}try{photo=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onerror=reject;reader.onload=()=>{const img=new Image();img.onload=()=>{const c=document.createElement('canvas');const scale=Math.min(1,480/Math.max(img.width,img.height));c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);c.getContext('2d').drawImage(img,0,0,c.width,c.height);resolve(c.toDataURL('image/jpeg',0.72))};img.onerror=reject;img.src=reader.result};reader.readAsDataURL(file)});}catch(err){alert('ছবিটি পড়া যায়নি। অন্য ছবি দিন।');return;}}
+ const m={id:oldId||nextId(),name:$('mName').value.trim(),father:$('mFather').value.trim(),mother:$('mMother').value.trim(),phone:$('mPhone').value.trim(),email:$('mEmail').value.trim(),gender:$('mGender').value,dob:$('mDob').value,blood:$('mBlood').value,joinDate:$('mJoinDate').value||today(),type:$('mType').value,status:$('mStatus').value,address:$('mAddress').value.trim(),permanentAddress:$('mPermanentAddress').value.trim(),village:$('mVillage').value.trim(),ward:$('mWard').value.trim(),union:$('mUnion').value.trim(),postOffice:$('mPostOffice').value.trim(),upazila:$('mUpazila').value.trim(),district:$('mDistrict').value.trim(),occupation:$('mOccupation').value.trim(),committeeRole:$('mCommitteeRole').value,photo};if(!m.name||!m.phone){alert('নাম ও মোবাইল নম্বর লিখুন।');return;}if(members.some(x=>x.phone===m.phone&&x.id!==m.id)){if(!confirm('এই মোবাইল নম্বরটি অন্য সদস্যের আছে। তবুও সংরক্ষণ করবেন?'))return;}if(existing){members=members.map(x=>x.id===oldId?m:x)}else{members.push(m)}try{saveAll();resetMemberForm();go('members');alert(existing?'সদস্যের তথ্য আপডেট হয়েছে।':'সদস্য সফলভাবে যোগ হয়েছে। আইডি: '+m.id)}catch(err){alert('ডেটা সংরক্ষণ করা যায়নি। ছবির সাইজ কমিয়ে আবার চেষ্টা করুন।')}});
+$('memberSearch')?.addEventListener('input',renderMembers);
+$('resetMemberForm')?.addEventListener('click',resetMemberForm);
+$('exportMembersBtn')?.addEventListener('click',()=>{if(!members.length){alert('ডাউনলোড করার মতো সদস্য নেই।');return;}const keys=['id','name','father','mother','phone','email','gender','dob','blood','joinDate','type','status','address','permanentAddress','village','ward','union','postOffice','upazila','district','occupation','committeeRole'];const csv='\ufeff'+[keys.join(','),...members.map(m=>keys.map(k=>'"'+String(m[k]??'').replace(/"/g,'""')+'"').join(','))].join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));a.download='charkajol-members.csv';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)});
+$('fundForm')?.addEventListener('submit',e=>{e.preventDefault();const id=$('fMember').value;const m=members.find(x=>x.id===id);if(!m){alert('আগে একজন সদস্য নির্বাচন করুন।');return;}const amount=Number($('fAmount').value);if(!Number.isFinite(amount)||amount<=0){alert('সঠিক টাকার পরিমাণ লিখুন।');return;}funds.unshift({key:'F'+Date.now(),receipt:'RC-'+String(funds.length+1).padStart(5,'0'),date:$('fDate').value||today(),memberId:m.id,name:m.name,phone:m.phone,type:$('fType').value,amount,note:$('fNote').value.trim()});try{saveAll();$('fundForm').reset();$('fDate').value=today();populateFundMembers();openReceipt(funds[0].key);alert('ফান্ড জমা ও রসিদ তৈরি হয়েছে।')}catch(err){alert('ফান্ডের তথ্য সংরক্ষণ করা যায়নি।')}});
+$('committeeForm')?.addEventListener('submit',e=>{e.preventDefault();const c={name:$('cName').value.trim(),role:$('cRole').value,phone:$('cPhone').value.trim(),term:$('cTerm').value.trim()};if(!c.name)return;committee.push(c);saveAll();$('committeeForm').reset();$('committeeForm').classList.add('hidden');alert('কমিটির সদস্য যোগ হয়েছে।')});
+$('toggleCommitteeForm')?.addEventListener('click',()=>$('committeeForm').classList.toggle('hidden'));
+$('cancelCommitteeForm')?.addEventListener('click',()=>$('committeeForm').classList.add('hidden'));
+$('generateReportBtn')?.addEventListener('click',generateReport);
+$('printReportBtn')?.addEventListener('click',()=>window.print());
+$('globalSearchInput')?.addEventListener('input',e=>{const q=e.target.value.trim().toLowerCase();if(!q)return;const found=members.filter(m=>[m.name,m.id,m.phone,m.address].some(v=>String(v||'').toLowerCase().includes(q)));const box=$('globalSearchResults');if(box){box.innerHTML=found.length?found.map(m=>`<div class="card"><b>${esc(m.name)}</b> — ${esc(m.id)} — ${esc(m.phone)}</div>`).join(''):'<p>কোনো সদস্য পাওয়া যায়নি।</p>';$('globalSearchModal').classList.add('open')}});
+$('closeGlobalSearchModal')?.addEventListener('click',()=>$('globalSearchModal').classList.remove('open'));
+$('closeMemberModal')?.addEventListener('click',()=>$('memberModal').classList.remove('open'));
+$('closeIdCardModal')?.addEventListener('click',()=>$('idCardModal').classList.remove('open'));
+$('printIdCardBtn')?.addEventListener('click',()=>window.print());
+$('installAppBtn')?.addEventListener('click',()=>alert('এই HTML ফাইলটি এখন ব্রাউজারে চলবে। PWA ইনস্টল করতে পরে manifest ও service worker সেটআপ করতে হবে।'));
+if($('fDate'))$('fDate').value=today();if($('eDate'))$('eDate').value=today();
 
 function renderAll(){
  renderMembers();
@@ -999,7 +1105,7 @@ function renderAll(){
  $('statFund').textContent=money(totalDep);
  $('statExpense').textContent=money(totalExp);
  $('statBalance').textContent=money(netBal);
- $('statReceipts').textContent=funds.length;
+ if($('statReceipts'))$('statReceipts').textContent=funds.length;
  if($('adminStatMembers'))$('adminStatMembers').textContent=members.length;
  if($('adminStatDonors'))$('adminStatDonors').textContent=members.filter(m=>m.blood).length;
  if($('adminStatFund'))$('adminStatFund').textContent=money(totalDep);
