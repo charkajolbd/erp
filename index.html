@@ -745,7 +745,7 @@ img[src*="logo"]{object-fit:contain;background:#fff} @media(max-width:650px){.bl
 <script>
 const $=id=>document.getElementById(id);
 const store={get(k,def=[]){try{return JSON.parse(localStorage.getItem('ckbd_'+k))??def}catch{return def}},set(k,v){localStorage.setItem('ckbd_'+k,JSON.stringify(v))}};
-let members=store.get('members'),funds=store.get('funds'),expenses=store.get('expenses',[]),committee=store.get('committee',[{name:'শাকিল মাহমুদ',memberId:'0010-001',role:'সভাপতি',phone:'01700-000000',photo:'admin_photo.jpg',joinDate:'2024-01-01',term:'২০২৪-২০২৬',status:'সক্রিয়'}]),users=store.get('users',[{name:'শাকিল মাহমুদ',username:'admin',phone:'01700-000000',role:'অ্যাডমিন'}]),donors=store.get('donors',[]),donationHistory=store.get('donationHistory',[]),topics=store.get('topics'),currentReceipt=null;
+let members=store.get('members'),funds=store.get('funds'),expenses=store.get('expenses',[]),committee=store.get('committee',[{name:'শাকিল মাহমুদ',memberId:'0010-001',role:'সভাপতি',phone:'01700-000000',photo:'admin_photo.webp',joinDate:'2024-01-01',term:'২০২৪-২০২৬',status:'সক্রিয়'}]),users=store.get('users',[{name:'শাকিল মাহমুদ',username:'admin',phone:'01700-000000',role:'অ্যাডমিন'}]),donors=store.get('donors',[]),donationHistory=store.get('donationHistory',[]),topics=store.get('topics'),currentReceipt=null;
 const bloods=['A+','A-','B+','B-','AB+','AB-','O+','O-'];
 const today=()=>new Date().toISOString().slice(0,10);
 function nextId(){let max=0;members.forEach(m=>{let n=Number((m.id||'').split('-').pop());if(Number.isFinite(n))max=Math.max(max,n)});return '0010-'+String(max+1).padStart(3,'0')}
