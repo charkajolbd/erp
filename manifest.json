@@ -1,19 +1,27 @@
 {
   "name": "Charkajolbd-ERP | চর কাজল সমাজ কল্যাণ সংগঠন",
   "short_name": "Charkajolbd",
+  "description": "চর কাজল সমাজ কল্যাণ সংগঠন অফিশিয়াল ইআরপি ও তথ্য ব্যবস্থাপনা সিস্টেম",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#091e32",
   "theme_color": "#091e32",
-  "orientation": "any",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "logo.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "Install App.png",
       "sizes": "512x512",
       "type": "image/png"
     }
