@@ -11,6 +11,14 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Charkajolbd">
 <title>Charkajolbd-ERP | চর কাজল সমাজ কল্যাণ সংগঠন</title>
+
+<!-- Firebase SDK (v10.7.1 Compat) -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics-compat.js"></script>
+
 <style>
 :root{--navy:#102c46;--blue:#1769aa;--teal:#0b998b;--bg:#f2f6fa;--ink:#203247;--muted:#65758b;--line:#dce5ed;--white:#fff;--red:#c0392b;--gold:#f4b942}
 *{box-sizing:border-box}body{margin:0;font-family:system-ui,"Noto Sans Bengali",Arial,sans-serif;background:var(--bg);color:var(--ink)}button,input,select,textarea{font:inherit}select{cursor:pointer!important;background-color:#f0f9ff!important;color:#0369a1!important;border:1.5px solid #38bdf8!important;border-radius:10px!important;padding:11px 36px 11px 12px!important;font-weight:700!important;font-size:14px!important;appearance:none!important;-webkit-appearance:none!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%230284c7' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:right 10px center!important;background-size:20px!important;box-shadow:0 2px 6px rgba(2,132,199,0.08)!important;transition:all 0.2s ease!important}select:hover{background-color:#e0f2fe!important;border-color:#0284c7!important;box-shadow:0 4px 12px rgba(2,132,199,0.18)!important}select:focus{outline:none!important;background-color:#ffffff!important;border-color:#0284c7!important;box-shadow:0 0 0 3px rgba(56,189,248,0.35)!important}select option{background-color:#ffffff!important;color:#07192a!important;font-weight:600!important}button{cursor:pointer;border:0;border-radius:11px;padding:10px 16px;background:linear-gradient(135deg,#0284c7 0%,#0369a1 100%);color:white;font-weight:700;box-shadow:0 4px 14px rgba(2,132,199,0.35);transition:all 0.25s cubic-bezier(0.4,0,0.2,1)}.button:hover,button:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(2,132,199,0.5);filter:brightness(1.08)}.button:active,button:active{transform:translateY(0)}.secondary{background:linear-gradient(135deg,#e2e8f0 0%,#cbd5e1 100%);color:#1e293b;box-shadow:0 3px 10px rgba(0,0,0,0.08)}.secondary:hover{background:linear-gradient(135deg,#cbd5e1 0%,#94a3b8 100%);color:#0f172a;box-shadow:0 6px 16px rgba(0,0,0,0.15)}.danger{background:linear-gradient(135deg,#f43f5e 0%,#e11d48 100%);color:white;box-shadow:0 4px 14px rgba(225,29,72,0.35)}.danger:hover{box-shadow:0 8px 22px rgba(225,29,72,0.5)}.good{background:linear-gradient(135deg,#10b981 0%,#059669 100%);color:white;box-shadow:0 4px 14px rgba(16,185,129,0.35)}.good:hover{box-shadow:0 8px 22px rgba(16,185,129,0.5)}.hidden{display:none!important}
@@ -258,14 +266,21 @@ select.native-custom-select{position:absolute!important;width:1px!important;heig
    <span style="text-shadow:0 1px 4px rgba(0,0,0,0.6)">Charkajolbd-ERP</span>
    <span style="height:2px;background:linear-gradient(90deg,#ff5252,transparent);flex:1;max-width:70px;border-radius:2px"></span>
   </div>
+  <!-- 3 Role Login Selection Tabs -->
+  <div class="login-role-tabs" style="display:flex;gap:6px;margin:14px 0 18px;background:rgba(0,0,0,0.3);padding:5px;border-radius:16px;border:1.5px solid rgba(255,255,255,0.3)">
+   <button type="button" id="tabAdmin" class="role-tab active" onclick="switchLoginRole('admin')" style="flex:1;padding:10px 4px;font-size:12.5px;font-weight:900;border-radius:12px;background:linear-gradient(135deg,#0284c7 0%,#0369a1 100%);color:#ffffff;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(2,132,199,0.4);transition:all 0.25s">🛡️ এডমিন</button>
+   <button type="button" id="tabUser" class="role-tab" onclick="switchLoginRole('user')" style="flex:1;padding:10px 4px;font-size:12.5px;font-weight:900;border-radius:12px;background:transparent;color:#cbd5e1;border:none;cursor:pointer;transition:all 0.25s">💼 ইউজার</button>
+   <button type="button" id="tabMember" class="role-tab" onclick="switchLoginRole('member')" style="flex:1;padding:10px 4px;font-size:12.5px;font-weight:900;border-radius:12px;background:transparent;color:#cbd5e1;border:none;cursor:pointer;transition:all 0.25s">👤 সদস্য</button>
+  </div>
   <form id="loginForm">
+   <input type="hidden" id="loginRole" value="admin">
    <div class="field" style="position:relative;margin:14px 0">
-    <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;color:#38bdf8;pointer-events:none">👤</span>
-    <input id="loginUser" aria-label="ইউজার আইডি" autocomplete="username" placeholder="আপনার আইডি দিন" style="padding-left:42px;height:46px">
+    <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;color:#38bdf8;pointer-events:none" id="loginIcon">🛡️</span>
+    <input id="loginUser" aria-label="ইমেইল" autocomplete="username" value="charkajolbd@gmail.com" placeholder="আপনার ইমেইল দিন" style="padding-left:42px;height:46px">
    </div>
    <div class="field" style="position:relative;margin:14px 0">
     <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;color:#38bdf8;pointer-events:none">🔒</span>
-    <input id="loginPass" type="password" aria-label="পাসওয়ার্ড" autocomplete="current-password" placeholder="পাসওয়ার্ড দিন" style="padding-left:42px;height:46px">
+    <input id="loginPass" type="password" aria-label="পাসওয়ার্ড" autocomplete="current-password" value="demo123" placeholder="পাসওয়ার্ড দিন" style="padding-left:42px;height:46px">
    </div>
    <div style="display:flex;align-items:center;justify-content:space-between;margin:12px 0 18px;font-size:13px">
     <label style="display:flex;align-items:center;gap:6px;cursor:pointer;color:#ffffff;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,0.4)">
@@ -274,9 +289,9 @@ select.native-custom-select{position:absolute!important;width:1px!important;heig
     </label>
     <a href="#" onclick="showToast('🔑 পাসওয়ার্ড পরিবর্তন বা রিসেট করতে অ্যাডমিনের সাথে যোগাযোগ করুন।', 'error');return false" style="color:#7dd3fc;font-weight:900;text-decoration:none;font-size:13.5px;text-shadow:0 0 12px rgba(56,189,248,0.9), 0 2px 6px rgba(0,0,0,0.9);transition:all 0.2s">🔑 পাসওয়ার্ড ভুলে গেছেন?</a>
    </div>
-   <button type="submit" onclick="doLogin(); return false;">লগইন করুন</button>
+   <button type="submit" id="loginSubmitBtn">এডমিন হিসেবে লগইন করুন</button>
   </form>
-  <div class="hint">নিরাপদ লগইনের জন্য Firebase Authentication-এ তৈরি করা ইউজার আইডি ও পাসওয়ার্ড ব্যবহার করুন।</div>
+  <div class="hint" id="loginHint">Firebase লগইন: আপনার নিবন্ধিত ইমেইল ও পাসওয়ার্ড ব্যবহার করুন।</div>
  </div>
 </section>
 <div id="app" class="app hidden">
@@ -485,6 +500,126 @@ select.native-custom-select{position:absolute!important;width:1px!important;heig
       <button data-go="memberAdd">নতুন সদস্য যোগ করুন</button>
       <button class="good" onclick="openFundDepositModal()">ফান্ড জমা করুন</button>
       <button class="secondary" data-go="blood">রক্তদাতার তালিকা দেখুন</button>
+     </div>
+    </div>
+   </section>
+
+   <!-- User Dashboard (ইউজার/অপারেটর ড্যাশবোর্ড) -->
+   <section id="userDashboard" class="page">
+    <div class="sectionhead">
+     <h3 style="color:#047857;font-size:22px">💼 ইউজার ও তথ্য সংগ্রহকারী ড্যাশবোর্ড</h3>
+     <span class="pill" style="background:#d1fae5;color:#047857;font-weight:700">তথ্য এন্ট্রি ও ফাইল ম্যানেজমেন্ট</span>
+    </div>
+
+    <!-- User Welcome Banner -->
+    <div class="card" style="background:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 50%,#a7f3d0 100%);border:2px solid #10b981;border-radius:18px;padding:22px;margin-bottom:20px;box-shadow:0 8px 24px rgba(16,185,129,0.15)">
+     <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+      <img id="userDashPhoto" src="admin_photo.webp" alt="ইউজার ছবি" style="width:80px;height:80px;border-radius:50%;border:3px solid #047857;object-fit:cover">
+      <div style="flex:1">
+       <h2 id="userDashName" style="margin:0 0 4px;color:#065f46;font-size:22px;font-weight:800">ইউজার (তথ্য সংগ্রহকারী)</h2>
+       <p style="margin:0 0 8px;color:#047857;font-weight:600;font-size:14px">দায়িত্ব: সদস্য ভর্তি ফরম পুরণ, ডেটা এন্ট্রি ও অনুমোদনের জন্য তথ্য জমা দেওয়া।</p>
+       <span class="pill" style="background:#047857;color:white;font-weight:700;font-size:12px;padding:4px 12px">● সক্রিয় ফিল্ড অপারেটর</span>
+      </div>
+     </div>
+    </div>
+
+    <!-- User Stats Cards -->
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:20px">
+     <div class="card stat" style="border-color:#10b981"><small style="color:#047857">📝 আমার জমা দেওয়া তথ্য</small><strong id="userStatMyEntries" style="color:#065f46">0</strong></div>
+     <div class="card stat" style="border-color:#f59e0b"><small style="color:#b45309">⏳ যাচাই অপেক্ষমান</small><strong id="userStatPending" style="color:#92400e">0</strong></div>
+     <div class="card stat" style="border-color:#3b82f6"><small style="color:#1d4ed8">✅ অনুমোদিত সদস্য</small><strong id="userStatApproved" style="color:#1e40af">0</strong></div>
+     <div class="card stat" style="border-color:#6366f1"><small style="color:#4338ca">👥 মোট সিস্টেম সদস্য</small><strong id="userStatMembers" style="color:#3730a3">0</strong></div>
+    </div>
+
+    <!-- User Quick Actions -->
+    <div class="card" style="margin-bottom:20px;border:1.5px solid #a7f3d0">
+     <h4 style="margin:0 0 14px;color:#065f46;font-size:17px">⚡ দ্রুত কার্যক্রম</h4>
+     <div class="toolbar" style="gap:10px;flex-wrap:wrap">
+      <button data-go="memberAdd" style="background:linear-gradient(135deg,#10b981 0%,#047857 100%);color:white;font-weight:700;padding:10px 18px;border-radius:10px;border:none">➕ নতুন সদস্য নিবন্ধিত করুন</button>
+      <button class="secondary" data-go="members" style="padding:10px 18px;border-radius:10px">👥 সদস্য তালিকা দেখুন</button>
+      <button class="secondary" data-go="donorAdd" style="padding:10px 18px;border-radius:10px">🩸 রক্তদাতার তথ্য এন্ট্রি</button>
+     </div>
+    </div>
+
+    <!-- User Submitted Entries Table -->
+    <div class="card">
+     <h4 style="margin:0 0 12px;color:#065f46;font-size:17px">📋 আমার জমা দেওয়া সদস্য নিবন্ধনের তথ্য</h4>
+     <div class="tablewrap" style="background:white;border-radius:12px;border:1px solid #e2e8f0">
+      <table>
+       <thead>
+        <tr><th>আইডি</th><th>নাম</th><th>মোবাইল</th><th>এন্ট্রির তারিখ</th><th>যাচাই স্থিতি</th><th>কার্যক্রম</th></tr>
+       </thead>
+       <tbody id="userSubmittedTableRows">
+        <tr><td colspan="6" class="empty">কোনো ডেটা জমা দেওয়া হয়নি</td></tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </section>
+
+   <!-- Member Dashboard (সদস্য ড্যাশবোর্ড) -->
+   <section id="memberDashboard" class="page">
+    <div class="sectionhead">
+     <h3 style="color:#6d28d9;font-size:22px">👤 সদস্য নিজস্ব ড্যাশবোর্ড ও প্রোফাইল</h3>
+     <span class="pill" style="background:#ede9fe;color:#6d28d9;font-weight:700">সংগঠনের সদস্য একাউন্ট</span>
+    </div>
+
+    <!-- Member Welcome Banner -->
+    <div class="card" style="background:linear-gradient(135deg,#f5f3ff 0%,#ede9fe 50%,#ddd6fe 100%);border:2px solid #8b5cf6;border-radius:20px;padding:24px;margin-bottom:24px;box-shadow:0 10px 30px rgba(139,92,246,0.15)">
+     <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+      <div style="position:relative">
+       <img id="memDashPhoto" src="admin_photo.webp" alt="সদস্য ছবি" style="width:110px;height:120px;border-radius:16px;border:3px solid #6d28d9;object-fit:cover;box-shadow:0 6px 16px rgba(109,40,217,0.25)" onerror="this.src='admin_photo.webp'">
+      </div>
+      <div style="flex:1">
+       <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <h2 id="memDashName" style="margin:0;color:#5b21b6;font-size:26px;font-weight:900">সদস্য নাম</h2>
+        <span id="memDashStatusBadge" class="pill" style="background:#10b981;color:white;font-weight:800;font-size:13px;padding:5px 14px">● সক্রিয় সদস্য</span>
+       </div>
+       <p style="margin:6px 0 10px;color:#6d28d9;font-weight:700;font-size:15px">সদস্য আইডি: <span id="memDashId" style="background:#7c3aed;color:white;padding:2px 10px;border-radius:8px;font-family:monospace">0010-001</span> | পদবি: <span id="memDashType" style="color:#4c1d95">সাধারণ সদস্য</span></p>
+       <p style="margin:0;color:#5b21b6;font-size:13px;font-weight:600">যোগদানের তারিখ: <span id="memDashJoinDate">২০২৪-০১-০১</span> | রক্তের গ্রুপ: <span id="memDashBlood" style="color:#e11d48;font-weight:900">O+</span></p>
+      </div>
+     </div>
+    </div>
+
+    <!-- Member Profile Information Card -->
+    <div class="card" id="memberProfileCard" style="margin-bottom:24px;border:2px solid #ddd6fe">
+     <h4 style="margin:0 0 16px;color:#5b21b6;font-size:19px;display:flex;align-items:center;gap:8px">📜 আমার ব্যক্তিগত তথ্য ও প্রোফাইল</h4>
+     <div class="detailgrid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px" id="memProfileDetailsGrid">
+      <!-- Injected via JavaScript -->
+     </div>
+    </div>
+
+    <!-- Member Funds Deposit Account Card (ফান্ড জমার হিসাব) -->
+    <div class="card" id="memberFundsCard" style="margin-bottom:24px;border:2px solid #c084fc">
+     <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px">
+      <h4 style="margin:0;color:#5b21b6;font-size:19px;display:flex;align-items:center;gap:8px">💰 আমার ফান্ড জমার বিবরণ ও হিসাব</h4>
+      <div style="background:#f3e8ff;padding:6px 16px;border-radius:12px;border:1px solid #d8b4fe;color:#6b21a8;font-weight:800;font-size:15px">
+       মোট জমা: <span id="memTotalFundAmount" style="color:#7e22ce;font-size:18px">৳0</span>
+      </div>
+     </div>
+     <div class="tablewrap" style="background:white;border-radius:14px;border:1px solid #e9d5ff">
+      <table>
+       <thead>
+        <tr><th>রসিদ নং</th><th>তারিখ</th><th>জমার খাত/ধরন</th><th>পরিমাণ (৳)</th><th>পেমেন্ট মেথড</th><th>বিবরণ</th></tr>
+       </thead>
+       <tbody id="memberFundsTableRows">
+        <tr><td colspan="6" class="empty">কোনো জমার হিসাব পাওয়া যায়নি</td></tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+
+    <!-- Member ID Card Section (আইডি কার্ড ডাউনলোড ও প্রিন্ট) -->
+    <div class="card" id="memberIdCardCard" style="background:linear-gradient(135deg,#faf5ff 0%,#f3e8ff 100%);border:2px solid #a855f7;border-radius:20px;padding:24px">
+     <h4 style="margin:0 0 8px;color:#6b21a8;font-size:19px">🪪 আমার ডিজিটাল সদস্য আইডি কার্ড</h4>
+     <p style="color:#7e22ce;font-size:13.5px;margin:0 0 18px">আপনার অফিশিয়াল ডিজিটাল সদস্য আইডি কার্ড নিচে প্রদর্শিত হচ্ছে। আপনি যেকোনো সময় কার্ডটি ডাউনলোড ও প্রিন্ট করতে পারবেন।</p>
+     <div style="display:flex;justify-content:center;align-items:center;margin-bottom:20px">
+      <div id="memberSingleIdCardWrap">
+       <!-- Injected via JS -->
+      </div>
+     </div>
+     <div style="text-align:center;margin-top:16px">
+      <button type="button" onclick="printMyMemberIdCard()" style="background:linear-gradient(135deg,#7c3aed 0%,#6d28d9 100%);color:white;padding:12px 28px;font-size:15px;font-weight:800;border-radius:12px;border:none;cursor:pointer;box-shadow:0 6px 18px rgba(124,58,237,0.35)">🪪 সদস্য আইডি কার্ড প্রিন্ট / ডাউনলোড করুন</button>
      </div>
     </div>
    </section>
@@ -1572,136 +1707,326 @@ select.native-custom-select{position:absolute!important;width:1px!important;heig
   </form>
  </div>
 </div>
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 <script>
 const $=id=>document.getElementById(id);
 const store={get(k,def=[]){try{return JSON.parse(localStorage.getItem('ckbd_'+k))??def}catch{return def}},set(k,v){localStorage.setItem('ckbd_'+k,JSON.stringify(v))}};
 
-// Firebase সংযোগ: পুরোনো localStorage ডেটা স্বয়ংক্রিয়ভাবে আপলোড করা হবে না।
+// Firebase Configuration Setup
 const firebaseConfig = {
- apiKey: "AIzaSyC2jf2CwIVptFVMEkreUr610SCr-jzdkdE",
- authDomain: "charkajolbd-erp.firebaseapp.com",
- projectId: "charkajolbd-erp",
- storageBucket: "charkajolbd-erp.firebasestorage.app",
- messagingSenderId: "696956143600",
- appId: "1:696956143600:web:f1d8d4c16a2163a10bff35",
- measurementId: "G-KJMEJ13QDY"
+  apiKey: "AIzaSyDnaoqbV6sbgOJk7k0ZS2Dd0XqJZVf50JA",
+  authDomain: "charkajolbderp.firebaseapp.com",
+  projectId: "charkajolbderp",
+  storageBucket: "charkajolbderp.firebasestorage.app",
+  messagingSenderId: "142380012123",
+  appId: "1:142380012123:web:525e77ec96e5c39216257e",
+  measurementId: "G-BHL3FWQSKP"
 };
-let fbAuth=null, fbDb=null, firebaseUser=null, firebaseSyncReady=false, firebaseSyncBusy=false;
-const firebaseCollections = ['members','funds','expenses','committee','users','donors','donationHistory','smsLogs','topics'];
-const fbBaselineKey='ckbd_fbBaseline_v1', fbCloudKeysKey='ckbd_fbCloudKeys_v1';
-function fbReadState(key){try{return JSON.parse(localStorage.getItem(key)||'{}')}catch(e){return {}}}
-function fbWriteState(key,value){localStorage.setItem(key,JSON.stringify(value))}
-function fbDocKey(item,index){
- const raw=item?.id ?? item?.username ?? item?.memberId ?? ('row-'+index);
- return String(raw).replaceAll('/','_').slice(0,140) || ('row-'+index);
-}
-function fbLocalCollections(){
- return {members,funds,expenses,committee,users,donors,donationHistory,smsLogs,topics:Array.isArray(topics)?topics:[]};
-}
-function fbInit(){
- try{
-  if(!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-  fbAuth=firebase.auth();
-  fbDb=firebase.firestore();
-  return true;
- }catch(err){
-  console.error('Firebase initialization failed:',err);
-  return false;
- }
-}
-async function fbLoadAndPrepare(){
- const baseline=fbReadState(fbBaselineKey);
- const cloudKeys=fbReadState(fbCloudKeysKey);
- const firstConnection=!localStorage.getItem('ckbd_fbBaselineInitialized_v1');
- const local=fbLocalCollections();
 
- // প্রথমবার: বর্তমান পুরোনো ডেটাকে শুধু baseline হিসেবে চিহ্নিত করা হবে; ক্লাউডে পাঠানো হবে না।
- if(firstConnection){
-  for(const name of firebaseCollections){
-   baseline[name]={};
-   (local[name]||[]).forEach((item,i)=>{baseline[name][fbDocKey(item,i)]=JSON.stringify(item)});
-  }
-  localStorage.setItem('ckbd_fbBaselineInitialized_v1','1');
- }
- for(const name of firebaseCollections){
-  const snap=await fbDb.collection('erpData').doc(name).collection('items').get();
-  cloudKeys[name]=[];
-  const current=fbLocalCollections()[name]||[];
-  const byKey=new Map(current.map((item,i)=>[fbDocKey(item,i),item]));
-  snap.forEach(doc=>{
-   const key=doc.id, payload=doc.data()?.payload;
-   if(payload===undefined) return;
-   cloudKeys[name].push(key);
-   const localItem=byKey.get(key);
-   const localChanged=!!baseline[name] && baseline[name][key]!==undefined &&
-     baseline[name][key]!==JSON.stringify(localItem);
-   if(!localItem || !localChanged) {
-    byKey.set(key,payload);
-    if(!baseline[name]) baseline[name]={};
-    baseline[name][key]=JSON.stringify(payload);
-   }
-  });
-  const merged=[...byKey.values()];
-  if(name==='members') members=merged;
-  else if(name==='funds') funds=merged;
-  else if(name==='expenses') expenses=merged;
-  else if(name==='committee') committee=merged;
-  else if(name==='users') users=merged;
-  else if(name==='donors') donors=merged;
-  else if(name==='donationHistory') donationHistory=merged;
-  else if(name==='smsLogs') smsLogs=merged;
-  else if(name==='topics') topics=merged;
-  store.set(name,merged);
- }
- fbWriteState(fbBaselineKey,baseline);
- fbWriteState(fbCloudKeysKey,cloudKeys);
- firebaseSyncReady=true;
- renderAll();
- await fbSyncChanges();
-}
-async function fbSyncChanges(){
- if(!firebaseSyncReady || !fbDb || !firebaseUser || firebaseSyncBusy) return;
- firebaseSyncBusy=true;
- try{
-  const baseline=fbReadState(fbBaselineKey), cloudKeys=fbReadState(fbCloudKeysKey);
-  const local=fbLocalCollections();
-  for(const name of firebaseCollections){
-   if(!baseline[name]) baseline[name]={};
-   if(!cloudKeys[name]) cloudKeys[name]=[];
-   const rows=Array.isArray(local[name])?local[name]:[];
-   const nowMap=new Map(rows.map((item,i)=>[fbDocKey(item,i),item]));
-   const col=fbDb.collection('erpData').doc(name).collection('items');
-   // ক্লাউডে থাকা কোনো রেকর্ড স্থানীয়ভাবে মুছে গেলে ক্লাউড থেকেও মুছুন।
-   for(const key of [...cloudKeys[name]]){
-    if(!nowMap.has(key)){
-     await col.doc(key).delete();
-     cloudKeys[name]=cloudKeys[name].filter(x=>x!==key);
-     delete baseline[name][key];
+try {
+  if (typeof firebase !== 'undefined' && !firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+    window.firebaseApp = firebase.app();
+    window.firebaseAuth = firebase.auth();
+    window.firebaseDb = firebase.firestore();
+    window.firebaseStorage = firebase.storage();
+    if (typeof firebase.analytics === 'function') {
+      window.firebaseAnalytics = firebase.analytics();
     }
-   }
-   for(const [key,item] of nowMap){
-    const serialized=JSON.stringify(item);
-    if(baseline[name][key]!==serialized){
-     await col.doc(key).set({payload:item,updatedAt:firebase.firestore.FieldValue.serverTimestamp()});
-     baseline[name][key]=serialized;
-     if(!cloudKeys[name].includes(key)) cloudKeys[name].push(key);
-    }
-   }
+    console.log("✅ Firebase successfully initialized for CharkajolBD ERP (charkajolbderp)");
   }
-  fbWriteState(fbBaselineKey,baseline);
-  fbWriteState(fbCloudKeysKey,cloudKeys);
- }catch(err){
-  console.error('Firebase sync error:',err);
-  showToast('⚠️ Firebase-এ সিঙ্ক হয়নি। ইন্টারনেট ও Firestore Rules পরীক্ষা করুন।','error');
- }finally{firebaseSyncBusy=false;}
-}
-if(!fbInit()){
- console.warn('Firebase SDK could not initialize.');
+} catch (e) {
+  console.warn("⚠️ Firebase load notice:", e);
 }
 
+// 3 Login Panels Role Switching
+window.activeLoginRole = 'admin';
+
+window.switchLoginRole = function(role) {
+  window.activeLoginRole = role;
+  const roleInput = $('loginRole');
+  if (roleInput) roleInput.value = role;
+
+  const btnAdmin = $('tabAdmin');
+  const btnUser = $('tabUser');
+  const btnMember = $('tabMember');
+  const loginUser = $('loginUser');
+  const loginIcon = $('loginIcon');
+  const submitBtn = $('loginSubmitBtn');
+  const loginHint = $('loginHint');
+
+  const activeBg = 'linear-gradient(135deg,#0284c7 0%,#0369a1 100%)';
+  const inactiveBg = 'transparent';
+
+  if (btnAdmin) {
+    btnAdmin.style.background = (role === 'admin') ? activeBg : inactiveBg;
+    btnAdmin.style.color = (role === 'admin') ? '#ffffff' : '#cbd5e1';
+    btnAdmin.style.boxShadow = (role === 'admin') ? '0 4px 12px rgba(2,132,199,0.4)' : 'none';
+  }
+  if (btnUser) {
+    btnUser.style.background = (role === 'user') ? activeBg : inactiveBg;
+    btnUser.style.color = (role === 'user') ? '#ffffff' : '#cbd5e1';
+    btnUser.style.boxShadow = (role === 'user') ? '0 4px 12px rgba(2,132,199,0.4)' : 'none';
+  }
+  if (btnMember) {
+    btnMember.style.background = (role === 'member') ? activeBg : inactiveBg;
+    btnMember.style.color = (role === 'member') ? '#ffffff' : '#cbd5e1';
+    btnMember.style.boxShadow = (role === 'member') ? '0 4px 12px rgba(2,132,199,0.4)' : 'none';
+  }
+
+  if (role === 'admin') {
+    if (loginIcon) loginIcon.textContent = '🛡️';
+    if (loginUser) {
+      loginUser.placeholder = 'আপনার এডমিন আইডি / ইমেইল দিন';
+      loginUser.value = 'admin';
+    }
+    if (submitBtn) submitBtn.textContent = 'এডমিন হিসেবে লগইন করুন';
+    if (loginHint) loginHint.innerHTML = 'Firebase লগইন: আপনার নিবন্ধিত ইমেইল ও পাসওয়ার্ড ব্যবহার করুন।';
+  } else if (role === 'user') {
+    if (loginIcon) loginIcon.textContent = '💼';
+    if (loginUser) {
+      loginUser.placeholder = 'আপনার ইউজার আইডি / ইমেইল দিন';
+      loginUser.value = 'user';
+    }
+    if (submitBtn) submitBtn.textContent = 'ইউজার হিসেবে লগইন করুন';
+    if (loginHint) loginHint.innerHTML = 'অফলাইন ডেমো লগইন: <b>user</b> / <b>demo123</b> (ইউজার ডাটা এন্ট্রি প্যানেল)';
+  } else if (role === 'member') {
+    if (loginIcon) loginIcon.textContent = '👤';
+    if (loginUser) {
+      loginUser.placeholder = 'আপনার সদস্য আইডি (যেমন: MB-1001) / ইমেইল';
+      loginUser.value = 'MB-1001';
+    }
+    if (submitBtn) submitBtn.textContent = 'সদস্য হিসেবে লগইন করুন';
+    if (loginHint) loginHint.innerHTML = 'অফলাইন ডেমো লগইন: <b>MB-1001</b> / <b>demo123</b> (সদস্য প্যানেল)';
+  }
+};
+
+// Role-based Access Control & UI Renderer
+window.currentUserRole = 'admin';
+window.currentUserData = null;
+
+window.applyRolePermissions = function(role, userData = null) {
+  window.currentUserRole = role;
+  window.currentUserData = userData;
+
+  const boxAdmin = $('box_adminMgmt');
+  const boxSettings = $('box_settingsMgmt');
+  const boxSms = $('box_smsMgmt');
+  const boxCommittee = $('box_committeeMgmt');
+  const boxMember = $('box_memberMgmt');
+  const boxFund = $('box_fundMgmt');
+  const boxReceipt = $('box_receiptMgmt');
+  const boxReport = $('box_reportMgmt');
+  const boxBlood = $('box_bloodMgmt');
+
+  const sideFootName = document.querySelector('.sidefoot div div:first-child');
+  const sideFootRole = document.querySelector('.sidefoot div div:last-child');
+  const sideFootImg = document.querySelector('.sidefoot img');
+
+  const currentUserEl = $('currentUser');
+  const roleLabel = role === 'admin' ? 'Admin' : (role === 'user' ? 'User' : 'Member');
+  const nameLabel = userData?.name || (role === 'admin' ? 'শাকিল মাহমুদ' : (role === 'user' ? 'ইউজার অপারেটর' : 'সম্মানিত সদস্য'));
+  if (currentUserEl) {
+    currentUserEl.innerHTML = `<span class="dot"></span> ${esc(nameLabel)} (${roleLabel})`;
+  }
+
+  const topbarImg = document.querySelector('#userMenuDropdownWrap img');
+  if (topbarImg && userData?.photo) {
+    topbarImg.src = userData.photo;
+  }
+
+  if (role === 'admin') {
+    if (boxAdmin) boxAdmin.classList.remove('hidden');
+    if (boxSettings) boxSettings.classList.remove('hidden');
+    if (boxSms) boxSms.classList.remove('hidden');
+    if (boxCommittee) boxCommittee.classList.remove('hidden');
+    if (boxMember) boxMember.classList.remove('hidden');
+    if (boxFund) boxFund.classList.remove('hidden');
+    if (boxReceipt) boxReceipt.classList.remove('hidden');
+    if (boxReport) boxReport.classList.remove('hidden');
+    if (boxBlood) boxBlood.classList.remove('hidden');
+
+    if (sideFootName) sideFootName.textContent = nameLabel;
+    if (sideFootRole) sideFootRole.textContent = 'এডমিন (এডমিনিস্ট্রেটর)';
+    if (sideFootImg && userData?.photo) sideFootImg.src = userData.photo;
+
+    go('dashboard');
+  } else if (role === 'user') {
+    if (boxAdmin) boxAdmin.classList.add('hidden');
+    if (boxSettings) boxSettings.classList.add('hidden');
+    if (boxSms) boxSms.classList.add('hidden');
+    if (boxCommittee) boxCommittee.classList.remove('hidden');
+    if (boxMember) boxMember.classList.remove('hidden');
+    if (boxFund) boxFund.classList.remove('hidden');
+    if (boxReceipt) boxReceipt.classList.remove('hidden');
+    if (boxReport) boxReport.classList.remove('hidden');
+    if (boxBlood) boxBlood.classList.remove('hidden');
+
+    if (sideFootName) sideFootName.textContent = nameLabel;
+    if (sideFootRole) sideFootRole.textContent = 'ইউজার (তথ্য সংগ্রহকারী)';
+    if (sideFootImg && userData?.photo) sideFootImg.src = userData.photo;
+
+    renderUserDashboard();
+    go('userDashboard');
+  } else if (role === 'member') {
+    if (boxAdmin) boxAdmin.classList.add('hidden');
+    if (boxSettings) boxSettings.classList.add('hidden');
+    if (boxSms) boxSms.classList.add('hidden');
+    if (boxCommittee) boxCommittee.classList.add('hidden');
+    if (boxMember) boxMember.classList.add('hidden');
+    if (boxFund) boxFund.classList.add('hidden');
+    if (boxReceipt) boxReceipt.classList.add('hidden');
+    if (boxReport) boxReport.classList.add('hidden');
+    if (boxBlood) boxBlood.classList.add('hidden');
+
+    if (sideFootName) sideFootName.textContent = nameLabel;
+    if (sideFootRole) sideFootRole.textContent = `সদস্য (আইডি: ${userData?.memberId || '0010-001'})`;
+    if (sideFootImg && userData?.photo) sideFootImg.src = userData.photo;
+
+    renderMemberDashboard(userData);
+    go('memberDashboard');
+  }
+};
+
+window.renderUserDashboard = function() {
+  if (typeof members === 'undefined') return;
+  const total = members.length;
+  const myEntries = members.filter(m => m.submittedBy === (window.currentUserData?.name || 'ইউজার') || m.createdBy === window.currentUserData?.name).length || total;
+  const pending = members.filter(m => m.status === 'পেন্ডিং' || m.status === 'যাচাই অপেক্ষমান' || m.status === 'নিষ্ক্রিয়').length;
+  const approved = members.filter(m => m.status === 'সক্রিয়' || m.status === 'অনুমোদিত').length;
+
+  if ($('userStatMembers')) $('userStatMembers').textContent = total;
+  if ($('statUserTotalSystem')) $('statUserTotalSystem').textContent = total;
+  if ($('userStatMyEntries')) $('userStatMyEntries').textContent = myEntries;
+  if ($('statUserMyEntries')) $('statUserMyEntries').textContent = myEntries;
+  if ($('userStatPending')) $('userStatPending').textContent = pending;
+  if ($('statUserPending')) $('statUserPending').textContent = pending;
+  if ($('userStatApproved')) $('userStatApproved').textContent = approved;
+  if ($('statUserApproved')) $('statUserApproved').textContent = approved;
+  if ($('userStatFundReceipts')) $('userStatFundReceipts').textContent = (store.get('receipts') || []).length;
+
+  if ($('userDashPhoto') && window.currentUserData?.photo) {
+    $('userDashPhoto').src = window.currentUserData.photo;
+  }
+  if ($('userDashName')) {
+    $('userDashName').textContent = window.currentUserData?.name || 'ইউজার (তথ্য সংগ্রহকারী)';
+  }
+
+  const userRows = $('userSubmittedTableRows');
+  if (userRows) {
+    const userMembers = members.slice(0, 10);
+    if (userMembers.length) {
+      userRows.innerHTML = userMembers.map(m => `
+        <tr>
+          <td><b>${esc(m.id || m.memberId)}</b></td>
+          <td>${esc(m.name)}</td>
+          <td>${esc(m.phone || '-')}</td>
+          <td>${esc(m.joinDate || m.registrationDate || '-')}</td>
+          <td><span class="pill" style="background:${m.status === 'সক্রিয়' ? '#d1fae5' : '#fef3c7'};color:${m.status === 'সক্রিয়' ? '#047857' : '#b45309'}">${esc(m.status || 'সক্রিয়')}</span></td>
+          <td>
+            <button onclick="viewMember('${m.id}')" style="padding:4px 8px;font-size:11px">👁️ দেখুন</button>
+          </td>
+        </tr>
+      `).join('');
+    } else {
+      userRows.innerHTML = '<tr><td colspan="6" class="empty">কোনো সদস্য ডেটা পাওয়া যায়নি</td></tr>';
+    }
+  }
+};
+
+window.renderMemberDashboard = function(userData) {
+  if (typeof members === 'undefined') return;
+
+  let targetMember = null;
+  const targetId = userData?.memberId || userData?.username || '0010-001';
+  targetMember = members.find(m => m.id === targetId || m.memberId === targetId || m.phone === targetId || m.name === userData?.name) || members[0];
+
+  if (!targetMember) return;
+
+  if ($('memberProfileName')) $('memberProfileName').textContent = targetMember.name;
+  if ($('memDashName')) $('memDashName').textContent = targetMember.name;
+
+  if ($('memberProfileRole')) $('memberProfileRole').textContent = targetMember.committeeRole || targetMember.type || 'সাধারণ সদস্য';
+  if ($('memDashType')) $('memDashType').textContent = targetMember.committeeRole || targetMember.type || 'সাধারণ সদস্য';
+
+  if ($('memberProfileId')) $('memberProfileId').textContent = `আইডি: ${targetMember.id || targetMember.memberId}`;
+  if ($('memDashId')) $('memDashId').textContent = targetMember.id || targetMember.memberId;
+
+  if ($('memDashJoinDate')) $('memDashJoinDate').textContent = targetMember.joinDate || targetMember.registrationDate || '২০২৪-০১-০১';
+  if ($('memDashBlood')) $('memDashBlood').textContent = targetMember.bloodGroup || targetMember.blood || 'O+';
+
+  if ($('memDashStatusBadge')) {
+    const isAct = (targetMember.status || 'সক্রিয়') === 'সক্রিয়';
+    $('memDashStatusBadge').textContent = isAct ? '● সক্রিয় সদস্য' : '● নিষ্ক্রিয় সদস্য';
+    $('memDashStatusBadge').style.background = isAct ? '#10b981' : '#ef4444';
+  }
+
+  const photoUrl = targetMember.photo || userData?.photo || 'admin_photo.webp';
+  if ($('memberProfilePhoto')) $('memberProfilePhoto').src = photoUrl;
+  if ($('memDashPhoto')) $('memDashPhoto').src = photoUrl;
+
+  const grid = $('memProfileDetailsGrid');
+  if (grid) {
+    grid.innerHTML = `
+      <div style="background:#f8fafc;padding:12px;border-radius:10px;border:1px solid #e2e8f0"><small style="color:#64748b;display:block">পূর্ণ নাম</small><strong style="color:#1e293b;font-size:15px">${esc(targetMember.name)}</strong></div>
+      <div style="background:#f8fafc;padding:12px;border-radius:10px;border:1px solid #e2e8f0"><small style="color:#64748b;display:block">সদস্য নম্বর</small><strong style="color:#7c3aed;font-size:15px;font-family:monospace">${esc(targetMember.id || targetMember.memberId)}</strong></div>
+      <div style="background:#f8fafc;padding:12px;border-radius:10px;border:1px solid #e2e8f0"><small style="color:#64748b;display:block">পিতার নাম</small><strong style="color:#1e293b;font-size:15px">${esc(targetMember.fatherName || '-')}</strong></div>
+      <div style="background:#f8fafc;padding:12px;border-radius:10px;border:1px solid #e2e8f0"><small style="color:#64748b;display:block">মোবাইল নম্বর</small><strong style="color:#0284c7;font-size:15px">${esc(targetMember.phone || '-')}</strong></div>
+      <div style="background:#f8fafc;padding:12px;border-radius:10px;border:1px solid #e2e8f0"><small style="color:#64748b;display:block">রক্তের গ্রুপ</small><strong style="color:#e11d48;font-size:15px">${esc(targetMember.bloodGroup || targetMember.blood || '-')}</strong></div>
+      <div style="background:#f8fafc;padding:12px;border-radius:10px;border:1px solid #e2e8f0"><small style="color:#64748b;display:block">জেলা / উপজেলা / ইউনিয়ন</small><strong style="color:#1e293b;font-size:14px">${esc(targetMember.district || 'পটুয়াখালী')} / ${esc(targetMember.upazila || 'গলাচিপা')} / ${esc(targetMember.union || 'চরকাজল')}</strong></div>
+      <div style="background:#f8fafc;padding:12px;border-radius:10px;border:1px solid #e2e8f0"><small style="color:#64748b;display:block">ঠিকানা</small><strong style="color:#1e293b;font-size:14px">${esc(targetMember.address || 'চর কাজল, গলাচিপা')}</strong></div>
+      <div style="background:#f8fafc;padding:12px;border-radius:10px;border:1px solid #e2e8f0"><small style="color:#64748b;display:block">যোগদানের তারিখ</small><strong style="color:#1e293b;font-size:14px">${esc(targetMember.joinDate || targetMember.registrationDate || '-')}</strong></div>
+    `;
+  }
+
+  const allFunds = store.get('funds', []);
+  const myFunds = allFunds.filter(f => f.memberId === targetMember.id || f.memberId === targetMember.memberId || f.name === targetMember.name);
+  const totalDeposit = myFunds.reduce((acc, f) => acc + (Number(f.amount) || 0), 0);
+  const lastDeposit = myFunds.length ? myFunds[myFunds.length - 1] : null;
+
+  const depositText = `৳${totalDeposit.toLocaleString('bn-BD')}`;
+  if ($('memberStatTotalDeposit')) $('memberStatTotalDeposit').textContent = depositText;
+  if ($('memTotalFundAmount')) $('memTotalFundAmount').textContent = depositText;
+  if ($('memberStatLastDepositDate')) $('memberStatLastDepositDate').textContent = lastDeposit ? (lastDeposit.date || lastDeposit.created || '-') : 'কোনো জমা নেই';
+  if ($('memberStatType')) $('memberStatType').textContent = targetMember.type || 'সাধারণ সদস্য';
+
+  const rowsHtml = myFunds.length ? myFunds.map(f => `
+    <tr>
+      <td>${esc(f.receiptNo || 'REC-' + f.id)}</td>
+      <td>${esc(f.date || f.created || '-')}</td>
+      <td>${esc(f.type || 'মাসিক চাঁদা / অনুদান')}</td>
+      <td style="color:#059669;font-weight:800">৳${(Number(f.amount) || 0).toLocaleString('bn-BD')}</td>
+      <td>${esc(f.paymentMethod || f.method || 'ক্যাশ / বিকাশ')}</td>
+      <td>${esc(f.note || f.authorizer || '-')}</td>
+    </tr>
+  `).join('') : '<tr><td colspan="6" class="empty">কোনো ফান্ড জমার বিবরণী পাওয়া যায়নি</td></tr>';
+
+  if ($('memberDepositHistoryTable')) $('memberDepositHistoryTable').innerHTML = rowsHtml;
+  if ($('memberFundsTableRows')) $('memberFundsTableRows').innerHTML = rowsHtml;
+
+  const cardContainer = $('memberSelfIdCardContainer');
+  const cardWrap = $('memberSingleIdCardWrap');
+  if (typeof generateIdCardHtml === 'function') {
+    const html = generateIdCardHtml(targetMember);
+    if (cardContainer) cardContainer.innerHTML = html;
+    if (cardWrap) cardWrap.innerHTML = html;
+  }
+};
+
+window.printMyMemberIdCard = function() {
+  window.downloadMemberSelfIdCard();
+};
+
+window.downloadMemberSelfIdCard = function() {
+  if (typeof members === 'undefined') return;
+  const targetId = window.currentUserData?.memberId || '0010-001';
+  const member = members.find(m => m.id === targetId || m.memberId === targetId || m.name === window.currentUserData?.name) || members[0];
+  if (member && typeof openPrintWindow === 'function' && typeof generateIdCardHtml === 'function') {
+    const html = generateIdCardHtml(member);
+    openPrintWindow(`সদস্য আইডি কার্ড - ${member.name}`, html);
+  } else {
+    showToast('⚠️ আইডি কার্ড প্রদর্শন বা ডাউনলোড করতে সমস্যা হচ্ছে।', 'error');
+  }
+};
 
 const initial52Members = [
  { name: "মোঃ জহির প্যাঁদা", phone: "01723453568" },
@@ -1782,7 +2107,7 @@ if(!Array.isArray(loadedMembers) || loadedMembers.length === 0){
  store.set('members', loadedMembers);
 }
 
-let members=loadedMembers,funds=store.get('funds'),expenses=store.get('expenses',[]),committee=store.get('committee',[{name:'শাকিল মাহমুদ',memberId:'0010-001',role:'সভাপতি',phone:'01700-000000',photo:'admin_photo.webp',joinDate:'2024-01-01',term:'২০২৪-২০২৬',status:'সক্রিয়'}]),users=store.get('users',[{name:'শাকিল মাহমুদ',username:'admin',phone:'01700-000000',role:'অ্যাডমিন'}]),donors=store.get('donors',[]),donationHistory=store.get('donationHistory',[]),smsLogs=store.get('smsLogs',[]),smsConfig=store.get('smsConfig',{gateway:'bulksmsbd',apiKey:'',senderId:'',waInstance:''}),topics=store.get('topics',[]),currentReceipt=null;
+let members=loadedMembers,funds=store.get('funds'),expenses=store.get('expenses',[]),committee=store.get('committee',[{name:'শাকিল মাহমুদ',memberId:'0010-001',role:'সভাপতি',phone:'01700-000000',photo:'admin_photo.webp',joinDate:'2024-01-01',term:'২০২৪-২০২৬',status:'সক্রিয়'}]),users=store.get('users',[{name:'শাকিল মাহমুদ',username:'admin',phone:'01700-000000',role:'অ্যাডমিন'}]),donors=store.get('donors',[]),donationHistory=store.get('donationHistory',[]),smsLogs=store.get('smsLogs',[]),smsConfig=store.get('smsConfig',{gateway:'bulksmsbd',apiKey:'',senderId:'',waInstance:''}),topics=store.get('topics'),currentReceipt=null;
 const bloods=['A+','A-','B+','B-','AB+','AB-','O+','O-'];
 const today=()=>new Date().toISOString().slice(0,10);
 function nextId(){let max=0;members.forEach(m=>{let n=Number((m.id||'').split('-').pop());if(Number.isFinite(n))max=Math.max(max,n)});return '0010-'+String(max+1).padStart(3,'0')}
@@ -1812,13 +2137,7 @@ function showToast(msg, type = 'success') {
   }, 2200);
 }
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function saveAll(){
- store.set('members',members);store.set('funds',funds);store.set('expenses',expenses);
- store.set('committee',committee);store.set('users',users);store.set('donors',donors);
- store.set('donationHistory',donationHistory);store.set('smsLogs',smsLogs);
- store.set('smsConfig',smsConfig);store.set('topics',topics);renderAll();
- if(firebaseSyncReady && firebaseUser) fbSyncChanges();
-}
+function saveAll(){store.set('members',members);store.set('funds',funds);store.set('expenses',expenses);store.set('committee',committee);store.set('users',users);store.set('donors',donors);store.set('donationHistory',donationHistory);store.set('smsLogs',smsLogs);store.set('smsConfig',smsConfig);store.set('topics',topics);renderAll()}
 
 function getGoogleSheetConfig(){return store.get('googleSheetConfig',{});}
 function loadGoogleSheetSettings(){const c=getGoogleSheetConfig();if($('googleSheetEndpoint'))$('googleSheetEndpoint').value=c.url||'';if($('googleSheetSecret'))$('googleSheetSecret').value=c.secret||'';if($('googleSheetStatus'))$('googleSheetStatus').textContent=c.url?'Google Sheets URL সংরক্ষিত আছে।':'সংযোগ সেটআপ করা হয়নি।';}
@@ -2206,6 +2525,23 @@ function setLanguage(lang){
 }
 
 function go(page){
+ const role = window.currentUserRole || 'admin';
+ if (role === 'member' && page !== 'memberDashboard') {
+  if (typeof showToast === 'function') showToast('❌ সদস্য হিসেবে শুধুমাত্র আপনার নিজস্ব সদস্য পোর্টাল ব্যবহারের অনুমতি রয়েছে।', 'error');
+  page = 'memberDashboard';
+ } else if (role === 'user') {
+  const allowedUserPages = [
+   'userDashboard', 'members', 'memberAdd', 'memberUpdate', 'memberIdCardPhoto',
+   'fundDeposit', 'depositList', 'receiptList', 'receipts', 'reports',
+   'committeePanel', 'donorAdd', 'donorList', 'donorSearch', 'blood',
+   'donationHistory', 'emergencyBlood', 'orgInfo', 'changePassword'
+  ];
+  if (!allowedUserPages.includes(page)) {
+   if (typeof showToast === 'function') showToast('❌ ইউজার রোলে এই পেজ বা সেটিংস ব্যবহারের অনুমতি নেই।', 'error');
+   page = 'userDashboard';
+  }
+ }
+
  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
  $(page)?.classList.add('active');
  document.querySelectorAll('.navbtn').forEach(b=>{
@@ -2295,44 +2631,140 @@ document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',(
 document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
 $('menuToggle').onclick=()=>$('sidebar').classList.toggle('open');
 window.doLogin = async function(e) {
- if(e && typeof e.preventDefault==='function') e.preventDefault();
- const username=(document.getElementById('loginUser')?.value||'').trim();
- const password=document.getElementById('loginPass')?.value||'';
- if(!username || !password){showToast('⚠️ ইউজার আইডি ও পাসওয়ার্ড দিন।','error');return false;}
- if(!fbAuth || !fbDb){showToast('⚠️ Firebase সংযোগ চালু হয়নি। ইন্টারনেট পরীক্ষা করুন।','error');return false;}
- const loginEmail=username.includes('@')?username:(username.toLowerCase()+'@charkajolbd-erp.firebaseapp.com');
- try{
-  const credential=await fbAuth.signInWithEmailAndPassword(loginEmail,password);
-  firebaseUser=credential.user;
-  const roleDoc=await fbDb.collection('users').doc(firebaseUser.uid).get();
-  const roleData=roleDoc.exists?roleDoc.data():null;
-  if(!roleData || roleData.active!==true || roleData.role!=='admin'){
-   await fbAuth.signOut();firebaseUser=null;
-   showToast('⛔ এই ইউজারের অ্যাডমিন অনুমতি নেই। Firebase users ডকুমেন্ট পরীক্ষা করুন।','error');
-   return false;
+  if (e && typeof e.preventDefault === 'function') e.preventDefault();
+  const selectedRole = window.activeLoginRole || 'admin';
+  const userVal = document.getElementById('loginUser')?.value.trim();
+  const passVal = document.getElementById('loginPass')?.value.trim();
+
+  if (!userVal) {
+    if (typeof showToast === 'function') showToast('⚠️ দয়া করে ইউজার আইডি দিন।', 'error');
+    else alert('দয়া করে ইউজার আইডি দিন।');
+    return false;
   }
-  await fbLoadAndPrepare();
-  const loginScreen=document.getElementById('loginScreen'), app=document.getElementById('app');
-  if(loginScreen)loginScreen.classList.add('hidden');
-  if(app)app.classList.remove('hidden');
-  const current=document.getElementById('currentUser');
-  if(current)current.innerHTML='<span class="dot"></span> '+(roleData.name||username)+' (Admin)';
-  go('dashboard');
-  showToast('👋 Firebase লগইন সফল হয়েছে।');
+  if (!passVal) {
+    if (typeof showToast === 'function') showToast('⚠️ দয়া করে পাসওয়ার্ড দিন।', 'error');
+    else alert('দয়া করে পাসওয়ার্ড দিন।');
+    return false;
+  }
+
+  // 1. Firebase Authentication attempt if SDK initialized
+  if (window.firebaseAuth && window.firebaseDb) {
+    try {
+      let loginEmail = userVal;
+      if (!loginEmail.includes('@')) {
+        loginEmail = `${userVal.toLowerCase()}@charkajolbd.org`;
+      }
+      const userCred = await window.firebaseAuth.signInWithEmailAndPassword(loginEmail, passVal);
+      const uid = userCred.user.uid;
+
+      const userDoc = await window.firebaseDb.collection('users').doc(uid).get();
+      if (!userDoc.exists) {
+        await window.firebaseAuth.signOut();
+        showToast('❌ users কালেকশনে আপনার অ্যাকাউন্টের তথ্য পাওয়া যায়নি।', 'error');
+        return false;
+      }
+      const userData = { uid: uid, email: loginEmail, ...userDoc.data() };
+      if (userData.active !== true) {
+        await window.firebaseAuth.signOut();
+        showToast('❌ আপনার অ্যাকাউন্ট নিষ্ক্রিয়। অ্যাডমিনের সঙ্গে যোগাযোগ করুন।', 'error');
+        return false;
+      }
+      const assignedRole = userData.role;
+      if (assignedRole !== selectedRole) {
+        await window.firebaseAuth.signOut();
+        showToast('❌ এই অ্যাকাউন্টের জন্য নির্বাচিত লগইন প্যানেলটি অনুমোদিত নয়।', 'error');
+        return false;
+      }
+
+      const loginScreen = document.getElementById('loginScreen');
+      const app = document.getElementById('app');
+      if (loginScreen) loginScreen.classList.add('hidden');
+      if (app) app.classList.remove('hidden');
+
+      applyRolePermissions(assignedRole, userData);
+      renderAll();
+      showToast(`👋 ${assignedRole === 'admin' ? 'এডমিন' : assignedRole === 'user' ? 'ইউজার' : 'সদস্য'} হিসেবে ফায়ারবেস লগইন সফল হয়েছে!`);
+      return false;
+    } catch (fbErr) {
+      console.warn("Firebase authentication error:", fbErr);
+      const messages = {
+        'auth/invalid-credential': 'ইমেইল অথবা পাসওয়ার্ড সঠিক নয়।',
+        'auth/user-not-found': 'এই ইমেইলে কোনো অ্যাকাউন্ট পাওয়া যায়নি।',
+        'auth/wrong-password': 'পাসওয়ার্ড সঠিক নয়।',
+        'auth/too-many-requests': 'অনেকবার চেষ্টা হয়েছে। কিছুক্ষণ পরে আবার চেষ্টা করুন।'
+      };
+      const msg = messages[fbErr.code] || ('Firebase লগইন ব্যর্থ: ' + (fbErr.message || fbErr.code || 'অজানা সমস্যা'));
+      if (typeof showToast === 'function') showToast('❌ ' + msg, 'error'); else alert(msg);
+      return false;
+    }
+  }
+
+  // Firebase is required: do not allow demo/local credentials to bypass authentication.
+  if (!window.firebaseAuth || !window.firebaseDb) {
+    const msg = 'Firebase সংযোগ পাওয়া যায়নি। ইন্টারনেট সংযোগ ও Firebase সেটআপ পরীক্ষা করুন।';
+    if (typeof showToast === 'function') showToast('❌ ' + msg, 'error'); else alert(msg);
+    return false;
+  }
+  // 2. Local Fallback / Demo Auth Verification
+  let isValid = false;
+  let userData = { name: userVal, role: selectedRole };
+
+  if (selectedRole === 'admin') {
+    if ((userVal.toLowerCase() === 'admin' || userVal.includes('admin')) && passVal === 'demo123') {
+      isValid = true;
+      userData = { name: 'শাকিল মাহমুদ', role: 'admin', memberId: '0010-001', photo: 'admin_photo.webp' };
+    }
+  } else if (selectedRole === 'user') {
+    if ((userVal.toLowerCase() === 'user' || userVal.includes('user')) && passVal === 'demo123') {
+      isValid = true;
+      userData = { name: 'ইউজার অপারেটর', role: 'user', memberId: '0010-002', photo: 'admin_photo.webp' };
+    }
+  } else if (selectedRole === 'member') {
+    if ((userVal.toUpperCase().startsWith('MB') || userVal.startsWith('0010') || userVal.toLowerCase() === 'member' || userVal.includes('member')) && passVal === 'demo123') {
+      isValid = true;
+      const mId = (userVal.toUpperCase().startsWith('MB') || userVal.startsWith('0010')) ? userVal : '0010-001';
+      const matchedMem = (typeof members !== 'undefined') ? members.find(m => m.id === mId || m.memberId === mId || m.phone === userVal) : null;
+      userData = {
+        name: matchedMem ? matchedMem.name : 'সম্মানিত সদস্য',
+        role: 'member',
+        memberId: matchedMem ? (matchedMem.id || matchedMem.memberId) : mId,
+        photo: matchedMem ? matchedMem.photo : 'admin_photo.webp'
+      };
+    }
+  } else if (passVal === 'demo123') {
+    isValid = true;
+    userData = { name: userVal, role: selectedRole, memberId: '0010-001' };
+  }
+
+  if (!isValid) {
+    if (typeof showToast === 'function') showToast('❌ ভুল আইডি বা পাসওয়ার্ড! আবার চেষ্টা করুন।', 'error');
+    else alert('ভুল আইডি বা পাসওয়ার্ড!');
+    return false;
+  }
+
+  const loginScreen = document.getElementById('loginScreen');
+  const app = document.getElementById('app');
+  if (loginScreen) loginScreen.classList.add('hidden');
+  if (app) app.classList.remove('hidden');
+
+  applyRolePermissions(selectedRole, userData);
+
+  try {
+    renderAll();
+  } catch (err) {
+    console.error('RenderAll error:', err);
+  }
+
+  if (typeof showToast === 'function') {
+    showToast(`👋 ${selectedRole === 'admin' ? 'এডমিন' : selectedRole === 'user' ? 'ইউজার' : 'সদস্য'} হিসেবে লগইন সফল হয়েছে!`);
+  }
   return false;
- }catch(err){
-  console.error('Firebase login error:',err);
-  const message=err.code==='auth/invalid-credential'||err.code==='auth/wrong-password'||err.code==='auth/user-not-found'
-   ?'ইউজার আইডি বা পাসওয়ার্ড সঠিক নয়।'
-   :'Firebase লগইন হয়নি: '+(err.message||err.code||'অজানা সমস্যা');
-  showToast('⚠️ '+message,'error');
-  return false;
- }
 };
 
 window.doLogout = function() {
-  if(fbAuth) fbAuth.signOut().catch(err=>console.error('Firebase signout:',err));
-  firebaseUser=null;firebaseSyncReady=false;
+  if (window.firebaseAuth && window.firebaseAuth.currentUser) {
+    window.firebaseAuth.signOut().catch(err => console.warn("Signout error:", err));
+  }
   const menu = document.getElementById('userDropdownMenu');
   const arrow = document.getElementById('userMenuArrow');
   if (menu) menu.classList.add('hidden');
@@ -2341,7 +2773,8 @@ window.doLogout = function() {
   const loginScreen = document.getElementById('loginScreen');
   if (app) app.classList.add('hidden');
   if (loginScreen) loginScreen.classList.remove('hidden');
-}
+  if (typeof showToast === 'function') showToast('👋 সফলভাবে লগআউট হয়েছেন।');
+};
 
 $('loginForm')?.addEventListener('submit', e => {
   e.preventDefault();
